@@ -73,6 +73,7 @@ int two(FILE* fp)
             --r;
         }
 
+        // get first and last
         qsort(n, 9, sizeof(map), last);
         if (l == r && !isInt(line[l]))
             r = n[0].i;
