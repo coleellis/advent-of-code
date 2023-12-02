@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.24)
+project(Year2023 C)
+
+set(CMAKE_C_STANDARD 99)
+
+# challenges for each day
+add_subdirectory(day-01)
+add_subdirectory(day-02)

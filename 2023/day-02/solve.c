@@ -22,10 +22,10 @@ int one(FILE *fp)
     {
         int x = 0;
         char *stripped = strtok(line, "\n");
-        
+
         // get game number
         char *n = strtok_r(stripped, ":", &colonPtr);
-        n = strtok_r(n, " ", &lhsPtr);
+        strtok_r(n, " ", &lhsPtr);
         n = strtok_r(NULL, " ", &lhsPtr);
 
         // get list of turns
@@ -39,8 +39,8 @@ int one(FILE *fp)
             while (c != NULL)
             {
                 // get key value
-                char *i = strtok_r(c, " ", &spacePtr);
-                char *v = strtok_r(NULL, " ", &spacePtr);
+                char const *i = strtok_r(c, " ", &spacePtr);
+                char const *v = strtok_r(NULL, " ", &spacePtr);
 
                 // check if conditions are met
                 int pass = 1;
@@ -50,6 +50,7 @@ int one(FILE *fp)
                     pass = 0;
                 else if (strcmp(v, "blue") == 0 && atoi(i) > maxes.blue)
                     pass = 0;
+
                 if (!pass)
                     ++x;
 
@@ -69,16 +70,15 @@ int two(FILE *fp)
 {
     char *line = NULL;
     size_t len;
-    char *colonPtr, *lhsPtr, *semiPtr, *commaPtr, *spacePtr;
+    char *colonPtr, *semiPtr, *commaPtr, *spacePtr;
 
     int total = 0;
     while (getline(&line, &len, fp) != -1)
     {
         Max maxes = {0, 0, 0};
-        // printf("%s", line);
         char *stripped = strtok(line, "\n");
         // get game number
-        char *n = strtok_r(stripped, ":", &colonPtr);
+        strtok_r(stripped, ":", &colonPtr);
 
         // get list of turns
         char *t = strtok_r(NULL, ":", &colonPtr);
@@ -91,8 +91,8 @@ int two(FILE *fp)
             while (c != NULL)
             {
                 // get key value
-                char *i = strtok_r(c, " ", &spacePtr);
-                char *v = strtok_r(NULL, " ", &spacePtr);
+                char const *i = strtok_r(c, " ", &spacePtr);
+                char const *v = strtok_r(NULL, " ", &spacePtr);
 
                 // get the power
                 if (strcmp(v, "red") == 0)
@@ -120,8 +120,11 @@ int main()
         printf("Bad file read\n");
         exit(EXIT_FAILURE);
     }
+
     printf("ONE: %d\n", one(fp));
     fseek(fp, 0, 0);
     printf("TWO: %d\n", two(fp));
+
+    fclose(fp);
     return 0;
 }

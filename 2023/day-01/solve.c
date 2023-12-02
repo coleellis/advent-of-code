@@ -115,5 +115,7 @@ int main()
     printf("ONE: %d\n", one(fp));
     fseek(fp, 0, 0);
     printf("TWO: %d\n", two(fp));
+
+    fclose(fp);
     return 0;
 }

@@ -1,6 +1,4 @@
 .DS_Store
 .idea
 .vscode
-**/solve
-**/part01
-**/part02
+cmake-build-debug
