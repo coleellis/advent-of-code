@@ -6,3 +6,4 @@ set(CMAKE_C_STANDARD 99)
 # challenges for each day
 add_subdirectory(day-01)
 add_subdirectory(day-02)
+add_subdirectory(day-03)
