@@ -1,4 +1,4 @@
-data = open('input.txt').read().splitlines();
+data = open("input.txt").read().splitlines()
 
 red = 12
 green = 13
@@ -6,46 +6,46 @@ blue = 14
 
 total = 0
 for line in data:
-    id = line.split(':')[0].split(' ')[1]
-    turns = line.split(':')[1].strip().split('; ')
+    id = line.split(":")[0].split(" ")[1]
+    turns = line.split(":")[1].strip().split("; ")
     n = 0
     for t in turns:
-        c = t.split(', ')
+        c = t.split(", ")
         passing = True
         for a in c:
-            x, y = a.split(' ')
-            if y == 'red' and int(x) > red:
+            x, y = a.split(" ")
+            if y == "red" and int(x) > red:
                 passing = False
-            elif y == 'green' and int(x) > green:
+            elif y == "green" and int(x) > green:
                 passing = False
-            elif y == 'blue' and int(x) > blue:
+            elif y == "blue" and int(x) > blue:
                 passing = False
         if passing:
             n += 1
     if n == len(turns):
         total += int(id)
-            
-print('one:', total)
+
+print("one:", total)
 
 total = 0
 for line in data:
     power = 1
     maxes = {red: 0, green: 0, blue: 0}
-    id = line.split(':')[0].split(' ')[1]
-    turns = line.split(':')[1].strip().split('; ')
+    id = line.split(":")[0].split(" ")[1]
+    turns = line.split(":")[1].strip().split("; ")
     n = 0
     for t in turns:
-        c = t.split(', ')
+        c = t.split(", ")
         for a in c:
-            x, y = a.split(' ')
-            if y == 'red':
+            x, y = a.split(" ")
+            if y == "red":
                 maxes[red] = max(maxes[red], int(x))
-            elif y == 'green':
+            elif y == "green":
                 maxes[green] = max(maxes[green], int(x))
-            elif y == 'blue':
+            elif y == "blue":
                 maxes[blue] = max(maxes[blue], int(x))
     for m in maxes:
         power *= maxes[m]
     total += power
 
-print('two:', total)
+print("two:", total)

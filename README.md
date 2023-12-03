@@ -34,4 +34,4 @@ Challenges for challenges completed before Wakatime integrations is not known.
 </details>
 </div>
 
-> *All challenges are solved in C. Some challenges have a second solution in Python to work on my list-processing skills.*
+> _All challenges are solved in C. Some challenges have a second solution in Python to work on my list-processing skills._

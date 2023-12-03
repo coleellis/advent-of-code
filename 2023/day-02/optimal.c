@@ -23,7 +23,7 @@ int one(FILE *fp)
         Max m = {12, 13, 14};
         int i, x = 0;
         char v[128];
-        
+
         // get kv-pairs
         while (fscanf(fp, "%d %s", &i, v) == 2)
         {
