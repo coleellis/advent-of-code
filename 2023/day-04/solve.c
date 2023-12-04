@@ -4,23 +4,54 @@
 #include <ctype.h>
 #include <advent.h>
 
-int one(FILE *fp)
+size_t nlines = 0;
+char ***vert = NULL;
+char ***winning = NULL;
+char ***given = NULL;
+size_t n_given = 0, n_win = 0;
+
+void get_data(FILE *fp)
 {
-	char *line = NULL;
-	size_t len = 0;
+	char **lines = readlines(fp, &nlines);
+	vert = malloc(nlines * sizeof(char **));
+	winning = malloc(nlines * sizeof(char **));
+	given = malloc(nlines * sizeof(char **));
+
+	for (size_t n = 0; n < nlines; ++n)
+	{
+		vert[n] = split(lines[n], "|", NULL);
+		winning[n] = split(strip(split(vert[n][0], ":", NULL)[1]), " ", &n_win);
+		given[n] = split(strip(vert[n][1]), " ", &n_given);
+	}
+
+	free(lines);
+}
+
+void free_data()
+{
+	for (size_t n = 0; n < nlines; ++n)
+	{
+		free(vert[n]);
+		free(winning[n]);
+		free(given[n]);
+	}
+	free(vert);
+	free(winning);
+	free(given);
+}
+
+int one()
+{
 	int one = 0;
-	while (getline(&line, &len, fp) != -1)
+	for (size_t n = 0; n < nlines; ++n)
 	{
 		int card = 0;
-		size_t n_given = 0, n_win = 0;
-		char **vert = split(line, "|", NULL);
-		char **winning = split(strip(split(vert[0], ":", NULL)[1]), " ", &n_win);
-		char **given = split(strip(vert[1]), " ", &n_given);
-		for (size_t i = 0; i < n_given; i++)
+		char **w = winning[n], **g = given[n];
+		for (size_t i = 0; i < n_given; ++i)
 		{
-			for (size_t j = 0; j < n_win; j++)
+			for (size_t j = 0; j < n_win; ++j)
 			{
-				if (given[i] && winning[j] && strcmp(given[i], winning[j]) == 0)
+				if (g[i] && w[j] && strcmp(g[i], w[j]) == 0)
 				{
 					card = (card == 0) ? 1 : card * 2;
 					break;
@@ -28,58 +59,36 @@ int one(FILE *fp)
 			}
 		}
 		one += card;
-		free(vert);
-		free(given);
-		free(winning);
 	}
-	if (line)
-		free(line);
 	return one;
 }
 
-int two(FILE *fp)
+int two()
 {
-	char *line = NULL;
-	size_t len = 0;
-	int two = 0, l_num = 0, t_num = 0;
-	// get number of lines
-	while (getline(&line, &len, fp) != -1)
-		++t_num;
-	fseek(fp, 0, 0);
-
 	// make an array of card counts
-	int *cards = malloc(t_num * sizeof(int));
-	for (int i = 0; i < t_num; i++)
+	int *cards = malloc(nlines * sizeof(int));
+	for (int i = 0; i < nlines; ++i)
 		cards[i] = 1;
 
-	while (getline(&line, &len, fp) != -1)
+	int two = 0;
+	for (size_t n = 0; n < nlines; ++n)
 	{
 		int card = 0;
-		size_t n_given = 0, n_win = 0;
-		char **vert = split(line, "|", NULL);
-		char **winning = split(strip(split(vert[0], ":", NULL)[1]), " ", &n_win);
-		char **given = split(strip(vert[1]), " ", &n_given);
+		char **w = winning[n], **g = given[n];
 		for (size_t i = 0; i < n_given; i++)
 		{
 			for (size_t j = 0; j < n_win; j++)
 			{
-				if (given[i] && winning[j] && strcmp(given[i], winning[j]) == 0)
+				if (g[i] && w[j] && strcmp(g[i], w[j]) == 0)
 					card += 1;
 			}
 		}
 		// add number of matches to next cards in line
 		for (size_t i = 0; i < card; ++i)
-			cards[l_num + i + 1] += cards[l_num];
-
-		free(vert);
-		free(given);
-		free(winning);
-		++l_num;
+			cards[n + i + 1] += cards[n];
 	}
-	if (line)
-		free(line);
 
-	for (size_t i = 0; i < t_num; ++i)
+	for (size_t i = 0; i < nlines; ++i)
 		two += cards[i];
 
 	free(cards);
@@ -95,10 +104,11 @@ int main()
 		exit(EXIT_FAILURE);
 	}
 
-	printf("ONE: %d\n", one(fp));
-	fseek(fp, 0, 0);
-	printf("TWO: %d\n", two(fp));
+	get_data(fp);
+	printf("ONE: %d\n", one());
+	printf("TWO: %d\n", two());
 
+	free_data();
 	fclose(fp);
 	return 0;
 }

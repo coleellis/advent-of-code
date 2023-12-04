@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <stdio.h>
 #include "advent.h"
 
 // perform python-like stripping
@@ -59,6 +60,25 @@ char **split(const char *str, const char *delim, size_t *len)
 
     // return list
     if (len)
-        *len = num;
+        *len = idx;
     return list;
+}
+
+char** readlines(FILE* fp, size_t* len)
+{
+    // get number of lines
+    size_t num = 0;
+    char* line = NULL;
+    while (getline(&line, len, fp) != -1)
+        ++num;
+    fseek(fp, 0, 0);
+
+    char** lines = malloc(num * sizeof(char*));
+    for (size_t i = 0; i < num; ++i)
+    {
+        getline(&line, len, fp);
+        lines[i] = strdup(line);
+    }
+    if (len) *len = num;
+    return lines;
 }

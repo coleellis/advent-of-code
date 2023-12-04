@@ -7,5 +7,6 @@
 
 char *strip(char *str);
 char **split(const char *str, const char *delim, size_t *len);
+char** readlines(FILE* fp, size_t* len);
 
 #endif // ADVENT_H
