@@ -69,14 +69,15 @@ char** readlines(FILE* fp, size_t* len)
     // get number of lines
     size_t num = 0;
     char* line = NULL;
-    while (getline(&line, len, fp) != -1)
+    size_t dummy;
+    while (getline(&line, &dummy, fp) != -1)
         ++num;
     fseek(fp, 0, 0);
 
     char** lines = malloc(num * sizeof(char*));
     for (size_t i = 0; i < num; ++i)
     {
-        getline(&line, len, fp);
+        getline(&line, &dummy, fp);
         lines[i] = strdup(line);
     }
     if (len) *len = num;
