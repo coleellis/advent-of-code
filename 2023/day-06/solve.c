@@ -19,6 +19,10 @@ void get_data(FILE *fp)
 	dists = malloc(items * sizeof(int));
 	for (size_t i = 0; i < items; ++i)
 		dists[i] = atoi(d[i]);
+
+	free(lines);
+	free(t);
+	free(d);
 }
 
 int one()
@@ -75,6 +79,9 @@ int main()
 	printf("ONE: %d\n", one(fp));
 	fseek(fp, 0, 0);
 	printf("TWO: %d\n", two(fp));
+
+	free(times);
+	free(dists);
 
 	fclose(fp);
 	return 0;
