@@ -1,30 +1,24 @@
-data = [x.strip() for x in open("input.txt").readlines()]
+from functools import reduce
 
-total = 0
-for line in data:
-    score = 0
-    line = line.split("|")
-    winning = line[0].split(":")[1].strip().split(" ")
-    given = [x for x in line[1].strip().split(" ") if x != ""]
-    for x in given:
-        if x in winning:
-            score = 1 if score == 0 else score * 2
-    total += score
+data = [x.strip() for x in open('input.txt')]
 
-print(total)
+one = 0
+for x in data:
+    l = x.split('|')
+    w = list(map(int, l[0].split(":")[1].split()))
+    g = list(map(int, l[1].split()))
+    ins = [x in w for x in g]
+    score = reduce(lambda a,c: a*2 if c and a!=0 else 1 if c else a, ins)
+    one += score if score else 0
+print(one)
 
-num = [1 for x in data]
-count_next = 0
-for l, line in enumerate(data):
-    line = line.split("|")
-    winning = line[0].split(":")[1].strip().split(" ")
-    given = [x for x in line[1].strip().split(" ") if x != ""]
-    for x in given:
-        if x in winning:
-            count_next += 1
-    for idx in range(count_next):
-        num[l + idx + 1] += num[l]
-    count_next = 0
+n = [1 for _ in data]
+for k, x in enumerate(data):
+    l = x.split('|')
+    w = list(map(int, l[0].split(":")[1].split()))
+    g = list(map(int, l[1].split()))
+    c = sum(1 for x in w if x in g)
+    for i in range(c):
+        n[k+i+1] += n[k]
 
-
-print(sum(num))
+print(sum(n))

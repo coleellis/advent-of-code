@@ -1,33 +1,17 @@
+from functools import reduce
+
 data = open('input.txt', 'r').readlines()
+times = list(map(int, data[0].split(':')[1].strip().split()))
+dists = list(map(int, data[1].split(':')[1].strip().split()))
 
-items = []
-times = data[0].split(':')[1].strip().split(' ')
-times = list(filter(lambda x: x != '', times))
-dists = data[1].split(':')[1].strip().split(' ')
-dists = list(filter(lambda x: x != '', dists))
-for i in range(len(times)):
-    items.append((int(times[i]), int(dists[i])))
+def win(t, d):
+    return sum(1 for i in range(t) if i * (t - i) > d)
 
-# Part 1
-one = 1
-ways = 0
-for item in items:
-    time, dist = item
-    for t in range(time):
-        if t * (time - t) > dist:
-            ways += 1
-    one *= ways
-    ways = 0
-
+one = reduce(lambda x, y: x * y, map(win, times, dists))
 print("ONE:", one)
 
-# Part 2
 time = int(''.join(map(str, times)))
 dist = int(''.join(map(str, dists)))
 
-two = 0
-for t in range(time):
-    if t * (time - t) > dist:
-        two += 1
-
+two = sum(1 for i in range(time) if i * (time - i) > dist)
 print("TWO:", two)
