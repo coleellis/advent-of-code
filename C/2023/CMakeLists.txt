@@ -1,0 +1,41 @@
+cmake_minimum_required(VERSION 3.24)
+project(Year2023 C)
+
+set(CMAKE_C_STANDARD 99)
+set(IN_DIR "${CMAKE_SOURCE_DIR}/_input/2023")
+set(OUT_DIR "${CMAKE_BINARY_DIR}/2023")
+
+# day 1
+add_executable(2023-Day01 day01.c)
+configure_file(${IN_DIR}/day01.txt ${OUT_DIR}/day01.txt COPYONLY)
+target_link_libraries(2023-Day01 PRIVATE advent)
+
+# day 2
+add_executable(2023-Day02 day02.c)
+configure_file(${IN_DIR}/day02.txt ${OUT_DIR}/day02.txt COPYONLY)
+target_link_libraries(2023-Day02 PRIVATE advent)
+
+# day 3
+add_executable(2023-Day03 day03.c)
+configure_file(${IN_DIR}/day03.txt ${OUT_DIR}/day03.txt COPYONLY)
+target_link_libraries(2023-Day03 PRIVATE advent)
+
+# day 4
+add_executable(2023-Day04 day04.c)
+configure_file(${IN_DIR}/day04.txt ${OUT_DIR}/day04.txt COPYONLY)
+target_link_libraries(2023-Day04 PRIVATE advent)
+
+# day 5
+add_executable(2023-Day05 day05.c)
+configure_file(${IN_DIR}/day05.txt ${OUT_DIR}/day05.txt COPYONLY)
+target_link_libraries(2023-Day05 PRIVATE advent)
+
+# day 6
+add_executable(2023-Day06 day06.c)
+configure_file(${IN_DIR}/day06.txt ${OUT_DIR}/day06.txt COPYONLY)
+target_link_libraries(2023-Day06 PRIVATE advent)
+
+# day 7
+add_executable(2023-Day07 day07.c)
+configure_file(${IN_DIR}/day07.txt ${OUT_DIR}/day07.txt COPYONLY)
+target_link_libraries(2023-Day07 PRIVATE advent)
