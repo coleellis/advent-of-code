@@ -32,7 +32,7 @@ def c_write():
         f.write(
             f"configure_file(${{IN_DIR}}/d{ay}.txt ${{OUT_DIR}}/d{ay}.txt COPYONLY)\n"
         )
-        f.write(f"target_link_libraries({int(year)}-D{ay} PRIVATE advent)\n")
+        f.write(f"target_link_libraries({int(year)}-D{ay} PRIVATE advent)")
 
     filename = f"d{ay}.c"
 
@@ -55,7 +55,7 @@ def c_write():
         f.write("\n")
         f.write("int main()\n")
         f.write("{\n")
-        f.write('\tFILE *fp = fopen("input.txt", "r");\n')
+        f.write(f'\tFILE *fp = fopen("d{ay}.txt", "r");\n')
         f.write("\tif (!fp)\n")
         f.write("\t{\n")
         f.write('\t\tprintf("Bad file read\\n");\n')
@@ -85,15 +85,16 @@ def py_write():
     os.chdir(f"{year}")
 
     filename = f"day{int(day):02d}.py"
-    text = f"day{int(day):02d}.txt"
+    text = f"_input/{year}/day{int(day):02d}.txt"
     with open(filename, "w") as f:
-        f.write(f'data = [x.strip() for x in open("{text}", "r").readlines()]')
+        f.write(f'data = [x.strip() for x in open("../{text}", "r").readlines()]\n\n')
         f.write("one = 0\n")
         f.write('print(f"ONE: {one}")\n')
         f.write("two = 0\n")
         f.write('print(f"TWO: {two}")\n')
 
     os.chdir("../..")
+    os.system(f"touch ./Python/{text}")
 
 def hs_write():
     os.chdir("Haskell")

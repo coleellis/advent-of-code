@@ -1,6 +1,6 @@
 import numpy as np
 
-with open("input.txt", "r") as f:
+with open("../_input/2022/day08.txt", "r") as f:
     lines = f.readlines()
     lines = [entry.strip() for entry in lines]
 

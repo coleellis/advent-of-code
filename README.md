@@ -9,6 +9,7 @@ Challenges for challenges completed before Wakatime integrations is not known.
 <div style="display: flex; justify-content: space-between">
 <details>
 <summary>2023 Time-Checks</summary>
+<b>Day 7</b>: 29 minutes<br>
 <b>Day 6</b>: 11 minutes<br>
 <b>Day 5</b>: 42 minutes<br>
 <b>Day 4</b>: 10 minutes<br>

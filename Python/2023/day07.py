@@ -1,6 +1,6 @@
 import collections
 
-lines = [i.strip() for i in open("day07.txt").readlines()]
+lines = [i.strip() for i in open("../_input/2023/day07.txt").readlines()]
 
 
 def one(h):

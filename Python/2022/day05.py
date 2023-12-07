@@ -1,4 +1,4 @@
-with open("input.txt", "r") as f:
+with open("../_input/2022/day05.txt", "r") as f:
     raw_data = f.readlines()
 
 # strip the lines

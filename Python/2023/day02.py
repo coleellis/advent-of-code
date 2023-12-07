@@ -1,4 +1,4 @@
-data = open("input.txt").read().splitlines()
+data = open("../_input/2023/day02.txt").read().splitlines()
 
 red = 12
 green = 13
@@ -25,7 +25,7 @@ for line in data:
     if n == len(turns):
         total += int(id)
 
-print("one:", total)
+print("ONE:", total)
 
 total = 0
 for line in data:
@@ -48,4 +48,4 @@ for line in data:
         power *= maxes[m]
     total += power
 
-print("two:", total)
+print("TWO:", total)
