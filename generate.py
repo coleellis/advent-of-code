@@ -85,7 +85,9 @@ def py_write():
     os.chdir(f"{year}")
 
     filename = f"day{int(day):02d}.py"
+    text = f"day{int(day):02d}.txt"
     with open(filename, "w") as f:
+        f.write(f'data = [x.strip() for x in open("{text}", "r").readlines()]')
         f.write("one = 0\n")
         f.write('print(f"ONE: {one}")\n')
         f.write("two = 0\n")
@@ -102,7 +104,7 @@ def hs_write():
 
     os.chdir(f"{year}")
 
-    filename = f"Day{int(day):02d}.hs"
+    filename = f"day{int(day):02d}.hs"
     with open(filename, "w") as f:
         f.write("module DayXX where\n")
         f.write("\n")
