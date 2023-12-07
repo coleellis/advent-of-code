@@ -4,7 +4,6 @@
 #include <stdio.h>
 #include "advent.h"
 
-// perform python-like stripping
 char *strip(char *str)
 {
     // strip leading whitespace
@@ -21,7 +20,6 @@ char *strip(char *str)
     return str;
 }
 
-// perform python-like split on string
 char **split(const char *str, const char *delim, size_t *len)
 {
     // make copy
@@ -64,22 +62,49 @@ char **split(const char *str, const char *delim, size_t *len)
     return list;
 }
 
-char** readlines(FILE* fp, size_t* len)
+char **readlines(FILE *fp, size_t *len)
 {
     // get number of lines
     size_t num = 0;
-    char* line = NULL;
+    char *line = NULL;
     size_t dummy;
     while (getline(&line, &dummy, fp) != -1)
         ++num;
     fseek(fp, 0, 0);
 
-    char** lines = malloc(num * sizeof(char*));
+    char **lines = malloc(num * sizeof(char *));
     for (size_t i = 0; i < num; ++i)
     {
         getline(&line, &dummy, fp);
         lines[i] = strdup(line);
     }
-    if (len) *len = num;
+    if (len)
+        *len = num;
     return lines;
+}
+
+int indexOf(const char *str, char c)
+{
+    const char *l = strchr(str, c);
+    return l != NULL ? (l - str) : -1;
+}
+
+int *rev(int *arr, size_t len)
+{
+    for (size_t i = 0; i < len / 2; ++i)
+    {
+        int tmp = arr[i];
+        arr[i] = arr[len - i - 1];
+        arr[len - i - 1] = tmp;
+    }
+    return arr;
+}
+
+char *replace(const char *s, char a, char b)
+{
+    char *ret = strdup(s);
+    for (size_t i = 0; i < strlen(s); ++i)
+        if (s[i] == a)
+            ret[i] = b;
+    return ret;
 }
