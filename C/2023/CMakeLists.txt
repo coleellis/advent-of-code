@@ -39,3 +39,8 @@ target_link_libraries(2023-Day06 PRIVATE advent)
 add_executable(2023-Day07 day07.c)
 configure_file(${IN_DIR}/day07.txt ${OUT_DIR}/day07.txt COPYONLY)
 target_link_libraries(2023-Day07 PRIVATE advent)
+
+# day 8
+add_executable(2023-Day08 day08.c)
+configure_file(${IN_DIR}/day08.txt ${OUT_DIR}/day08.txt COPYONLY)
+target_link_libraries(2023-Day08 PRIVATE advent)

@@ -54,4 +54,20 @@ int *rev(int *arr, size_t len);
  */
 char *replace(const char *s, char a, char b);
 
+/**
+ * Gets the GCD of two numbers
+ * @param a First long
+ * @param b Second long
+ * @return gcd(a, b) -> long
+ */
+long gcd(long a, long b);
+
+/**
+ * Gets the LCM of an array of numbers
+ * @param a Array of numbers
+ * @param n Size of the array
+ * @return LCM of the array -> long
+ */
+long lcm(const long a[], size_t n);
+
 #endif // ADVENT_H

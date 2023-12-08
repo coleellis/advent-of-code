@@ -108,3 +108,18 @@ char *replace(const char *s, char a, char b)
             ret[i] = b;
     return ret;
 }
+
+long gcd(long a, long b)
+{
+    if (b == 0)
+        return a;
+    return gcd(b, a % b);
+}
+
+long lcm(const long a[], size_t n)
+{
+    long ans = a[0];
+    for (size_t i = 1; i < n; ++i)
+        ans = (((a[i] * ans)) / (gcd(a[i], ans)));
+    return ans;
+}
