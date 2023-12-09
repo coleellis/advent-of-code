@@ -11,9 +11,10 @@ My goal is to solve each challenge using multiple languages to provide the most 
 I have a significant number of solutions in C. I'm currently learning Haskell and plan to solve some of the challenges in it.
 
 A few rules I've set for myself:
-* No LLM tooling (including Copilot)
-* To the best of my ability, no external libraries (exception: `functools` and `itertools` in Python)
-* I can use my own libraries for shared functions between challenges
+
+- No LLM tooling (including Copilot)
+- To the best of my ability, no external libraries (exception: `functools` and `itertools` in Python)
+- I can use my own libraries for shared functions between challenges
 
 # Challenge Calendars
 
@@ -29,14 +30,20 @@ A few rules I've set for myself:
 
 ### 2022 Challenges
 
-| M             | T             | W   | R             | F             | S             | U             |
-| ------------- | ------------- | --- | ------------- | ------------- | ------------- | ------------- |
-|               |               |     | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |
-| ![](gold.ico) | ![](gold.ico) |     | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |               |
-| ![](gold.ico) | ![](gold.ico) |     |               |               |               |               |
-|               |               |     |               |               |               |               |
-|               |               |     |               |               |               |               |
+| M             | T             | W             | R             | F             | S             | U             |
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
+|               |               |               | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |
+| ![](gold.ico) | ![](gold.ico) |               | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |
+| ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |               |               |               |               |
+|               |               |               |               |               |               |               |
+|               |               |               |               |               |               |               |
 
+### 2021 Challenges
+### 2020 Challenges
+### 2019 Challenges
+### 2018 Challenges
+### 2017 Challenges
+### 2016 Challenges
 ### 2015 Challenges
 
 | M   | T   | W   | R   | F             | S   | U   |

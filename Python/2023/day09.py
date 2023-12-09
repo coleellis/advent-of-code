@@ -1,8 +1,13 @@
-data = [x.strip().split() for x in open("../_input/2023/day09.txt", "r").readlines()]
+"""
+--- Day 9: Mirage Maintenance ---
+"""
+from aocd import get_data
+
+data = [x.strip().split() for x in get_data(day=9, year=2023).split("\n")]
 data = [[int(x) for x in line] for line in data]
 
-one = 0
-two = 0
+ONE = 0
+TWO = 0
 for line in data:
     # make a list of sequential differences
     d = line
@@ -19,7 +24,7 @@ for line in data:
             a.insert(0, a[0] - p[i - 1][0])
 
     # target is the last value in the last list
-    one += p[-1][-1]
-    two += p[-1][0]
-print(f"ONE: {one}")
-print(f"TWO: {two}")
+    ONE += p[-1][-1]
+    TWO += p[-1][0]
+print(f"Part 1: {ONE}")
+print(f"Part 2: {TWO}")

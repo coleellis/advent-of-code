@@ -1,4 +1,7 @@
-from aocd import get_data, submit
+"""
+--- Day 1: Calorie Counting ---
+"""
+from aocd import get_data
 
 d = [z.split() for z in get_data(day=1, year=2022).split("\n\n")]
 n = [sum([int(x) for x in z]) for z in d]

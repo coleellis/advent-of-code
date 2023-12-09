@@ -1,7 +1,12 @@
+"""
+--- Day 8: Treetop Tree House ---
+"""
 import numpy as np
 from aocd import get_data
 
-lines = [l.strip() for l in get_data(day=8, year=2022).split("\n")]
+stream = get_data(day=14, year=2022)
+
+lines = [l.strip() for l in stream.split("\n")]
 
 trees = np.zeros((len(lines), len(lines[0])), dtype=int)
 for i, line in enumerate(lines):
@@ -29,6 +34,7 @@ scenic_scores = np.zeros((len(lines), len(lines[0])), dtype=int)
 
 
 def compute_scenic_score(route):
+    """Returns the scenic score of a route"""
     big_trees_array = list(route >= 0)
     if True in big_trees_array:
         return big_trees_array.index(True) + 1

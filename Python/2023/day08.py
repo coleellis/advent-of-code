@@ -1,21 +1,29 @@
+"""
+--- Day 8: Haunted Wasteland ---
+"""
 from functools import reduce
 from math import gcd
+from aocd import get_data
 
-data = [x.strip() for x in open("../_input/2023/day08.txt", "r").readlines()]
+stream = get_data(day=8, year=2023)
+
+data = [x.strip() for x in stream.split("\n")]
 
 def gen_tree(d):
-    tree = {}
+    """Generates a tree from the input data"""
+    t = {}
     for l, line in enumerate(d):
         if l < 2:
             continue
         line = line.split()
-        tree[line[0]] = [line[2][1:-1], line[3][:-1]]
-    return tree
+        t[line[0]] = [line[2][1:-1], line[3][:-1]]
+    return t
 
 repeater = data[0]
 tree = gen_tree(data)
 
 def parse(starts):
+    """Returns the number of possible paths"""
     n = {}
     i = 0
     while len(list(n.keys())) != len(starts):

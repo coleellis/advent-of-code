@@ -1,4 +1,10 @@
-data = open("../_input/2023/day02.txt").read().splitlines()
+"""
+--- Day 2: Cube Conundrum ---
+"""
+from aocd import get_data
+
+data = get_data(day=2, year=2023).split("\n")
+# data = open("test.txt").read().split("\n")
 
 red = 12
 green = 13
@@ -11,16 +17,16 @@ for line in data:
     n = 0
     for t in turns:
         c = t.split(", ")
-        passing = True
+        PASSING = True
         for a in c:
             x, y = a.split(" ")
             if y == "red" and int(x) > red:
-                passing = False
+                PASSING = False
             elif y == "green" and int(x) > green:
-                passing = False
+                PASSING = False
             elif y == "blue" and int(x) > blue:
-                passing = False
-        if passing:
+                PASSING = False
+        if PASSING:
             n += 1
     if n == len(turns):
         total += int(id)

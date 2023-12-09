@@ -1,8 +1,12 @@
-from aocd import get_data
+"""
+--- Day 6: Tuning Trouble ---
+"""
 from collections import Counter
+from aocd import get_data
 
 
 def solve(s, l):
+    """Returns the first index of a substring of length l with all unique characters"""
     i = 0
     while len(Counter(s[i : i + l]).keys()) != l:
         i += 1

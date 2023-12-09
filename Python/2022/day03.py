@@ -1,7 +1,13 @@
+"""
+--- Day 3: Rucksack Reorganization ---
+"""
+import string
+import re
 from aocd import get_data
-import string, re
 
-i = lambda x: (string.ascii_lowercase + string.ascii_uppercase).index(x) + 1
+def i(x):
+    """Get index of letter in alphabet"""
+    return (string.ascii_lowercase + string.ascii_uppercase).index(x) + 1
 
 lines = get_data(day=3, year=2022)
 halves = [(x[: len(x) // 2], x[len(x) // 2 :]) for x in lines.split("\n")]
