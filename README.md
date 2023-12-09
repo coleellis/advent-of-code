@@ -2,40 +2,47 @@
 
 [![wakatime](https://wakatime.com/badge/user/018c2398-15b4-48fa-922a-a730fce8bcbd/project/018c23e8-2162-4616-8a7e-281d01d40ea2.svg)](https://wakatime.com/badge/user/018c2398-15b4-48fa-922a-a730fce8bcbd/project/018c23e8-2162-4616-8a7e-281d01d40ea2)
 
-My solutions for the Advent of Code challenges. Total time spent on challenges visible via Wakatime.
+My solutions for the Advent of Code challenges. The Wakatime badge shows my entire time spent on this repository. I only started using Wakatime recently, so the time spent on the 2015 (and many of the 2022) challenges is not included.
 
-Challenges for challenges completed before Wakatime integrations is not known.
+# Languages
 
-<div style="display: flex; justify-content: space-between">
-<details>
-<summary>2023 Time-Checks</summary>
-<b>Day 7</b>: 29 minutes<br>
-<b>Day 6</b>: 11 minutes<br>
-<b>Day 5</b>: 42 minutes<br>
-<b>Day 4</b>: 10 minutes<br>
-<b>Day 3</b>: 35 minutes<br>
-<b>Day 2</b>: 17 minutes<br>
-<b>Day 1</b>: 1 hour 5 minutes
-</details>
+My goal is to solve each challenge using multiple languages to provide the most exposure. 2023 is my first year going for speed, so I've been using Python for the initial solution and then solving it in other languages later.
 
-<details>
-<summary>2022 Time-Checks</summary>
-<b>Day 12</b>: <i>Unknown</i><br>
-<b>Day 10</b>: <i>Unknown</i><br>
-<b>Day 9</b>: <i>Unknown</i><br>
-<b>Day 8</b>: <i>Unknown</i><br>
-<b>Day 6</b>: <i>Unknown</i><br>
-<b>Day 5</b>: <i>Unknown</i><br>
-<b>Day 4</b>: <i>Unknown</i><br>
-<b>Day 3</b>: <i>Unknown</i><br>
-<b>Day 2</b>: <i>Unknown</i><br>
-<b>Day 1</b>: <i>Unknown</i>
-</details>
+I have a significant number of solutions in C. I'm currently learning Haskell and plan to solve some of the challenges in it.
 
-<details>
-<summary>2015 Time-Checks</summary>
-<b>Day 4</b>: <i>Unknown</i>
-</details>
-</div>
+A few rules I've set for myself:
+* No LLM tooling (including Copilot)
+* To the best of my ability, no external libraries (exception: `functools` and `itertools` in Python)
+* I can use my own libraries for shared functions between challenges
 
-> _All challenges are solved in C. Some challenges have a second solution in Python to work on my list-processing skills._
+# Challenge Calendars
+
+### 2023 Challenges
+
+| M             | T             | W             | R             | F             | S             | U             |
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
+|               |               |               |               | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |
+| ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |               |               |
+|               |               |               |               |               |               |               |
+|               |               |               |               |               |               |               |
+|               |               |               |               |               |               |               |
+
+### 2022 Challenges
+
+| M             | T             | W   | R             | F             | S             | U             |
+| ------------- | ------------- | --- | ------------- | ------------- | ------------- | ------------- |
+|               |               |     | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |
+| ![](gold.ico) | ![](gold.ico) |     | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |               |
+| ![](gold.ico) | ![](gold.ico) |     |               |               |               |               |
+|               |               |     |               |               |               |               |
+|               |               |     |               |               |               |               |
+
+### 2015 Challenges
+
+| M   | T   | W   | R   | F             | S   | U   |
+| --- | --- | --- | --- | ------------- | --- | --- |
+|     |     |     |     | ![](gold.ico) |     |     |
+|     |     |     |     |               |     |     |
+|     |     |     |     |               |     |     |
+|     |     |     |     |               |     |     |
+|     |     |     |     |               |     |     |
