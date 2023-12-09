@@ -1,8 +1,7 @@
 import numpy as np
+from aocd import get_data
 
-with open("../_input/2022/day08.txt", "r") as f:
-    lines = f.readlines()
-    lines = [entry.strip() for entry in lines]
+lines = [l.strip() for l in get_data(day=8, year=2022).split("\n")]
 
 trees = np.zeros((len(lines), len(lines[0])), dtype=int)
 for i, line in enumerate(lines):

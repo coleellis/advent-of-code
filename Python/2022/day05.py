@@ -1,5 +1,6 @@
-with open("../_input/2022/day05.txt", "r") as f:
-    raw_data = f.readlines()
+from aocd import get_data
+
+raw_data = get_data(day=5, year=2022).split("\n")
 
 # strip the lines
 strip_data = []
