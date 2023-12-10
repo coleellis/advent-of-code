@@ -1,4 +1,9 @@
+"""
+Generate the files for a new day
+"""
+
 import argparse
+import os
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-y", "--year", type=int, default=2023, help="Advent Calendar Year")
@@ -8,16 +13,16 @@ args = parser.parse_args()
 year = args.year
 day = args.day
 
-# attempt to make the year directory
-import os
-
 
 def c_write():
+    """
+    Generate the C files for the day
+    """
     os.chdir("C")
     try:
         os.mkdir(f"{year}")
         # if we're here, we made a new directory
-        with open("CMakeLists.txt", "a") as f:
+        with open("CMakeLists.txt", "a", encoding="utf-8") as f:
             f.write(f"add_subdirectory({year})\n")
     except FileExistsError:
         pass
@@ -26,7 +31,7 @@ def c_write():
     ay = f"ay{int(day):02d}"
 
     # generate the day's files
-    with open("CMakeLists.txt", "a") as f:
+    with open("CMakeLists.txt", "a", encoding="utf-8") as f:
         f.write(f"\n\n# day {int(day)}\n")
         f.write(f"add_executable({int(year)}-D{ay} d{ay}.c)\n")
         f.write(
@@ -36,7 +41,7 @@ def c_write():
 
     filename = f"d{ay}.c"
 
-    with open(filename, "w") as f:
+    with open(filename, "w", encoding="utf-8") as f:
         f.write("#include <stdio.h>\n")
         f.write("#include <stdlib.h>\n")
         f.write("#include <string.h>\n")
@@ -76,6 +81,9 @@ def c_write():
 
 
 def py_write():
+    """
+    Generate the Python files for the day
+    """
     os.chdir("Python")
     try:
         os.mkdir(f"{year}")
@@ -86,17 +94,25 @@ def py_write():
 
     filename = f"day{int(day):02d}.py"
     text = f"_input/{year}/day{int(day):02d}.txt"
-    with open(filename, "w") as f:
-        f.write(f'data = [x.strip() for x in open("../{text}", "r").readlines()]\n\n')
+    with open(filename, "w", encoding="utf-8") as f:
+        f.write("from aocd import get_data, submit\n\n")
+        f.write(f'# stream = get_data(day={int(day)}, year={year}).split("\\n")\n')
+        f.write('stream = open("test.txt").read().split("\\n")\n\n')
         f.write("one = 0\n")
-        f.write('print(f"ONE: {one}")\n')
-        f.write("two = 0\n")
-        f.write('print(f"TWO: {two}")\n')
+        f.write("two = 0\n\n")
+        f.write('print("Part 1:", one)\n')
+        f.write(f'# submit(one, part="a", day={int(day)}, year={year})\n')
+        f.write('print("Part 2:", two)\n')
+        f.write(f'# submit(two, part="b", day={int(day)}, year={year})\n')
 
     os.chdir("../..")
     os.system(f"touch ./Python/{text}")
 
+
 def hs_write():
+    """
+    Generate the Haskell files for the day
+    """
     os.chdir("Haskell")
     try:
         os.mkdir(f"{year}")
@@ -106,7 +122,7 @@ def hs_write():
     os.chdir(f"{year}")
 
     filename = f"day{int(day):02d}.hs"
-    with open(filename, "w") as f:
+    with open(filename, "w", encoding="utf-8") as f:
         f.write("module DayXX where\n")
         f.write("\n")
         f.write("one :: String -> Int\n")

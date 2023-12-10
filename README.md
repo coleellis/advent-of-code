@@ -34,16 +34,22 @@ A few rules I've set for myself:
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 |               |               |               | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |
 | ![](gold.ico) | ![](gold.ico) |               | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |
-| ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |               |               |               |               |
+| ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |               |               |               |
 |               |               |               |               |               |               |               |
 |               |               |               |               |               |               |               |
 
 ### 2021 Challenges
+
 ### 2020 Challenges
+
 ### 2019 Challenges
+
 ### 2018 Challenges
+
 ### 2017 Challenges
+
 ### 2016 Challenges
+
 ### 2015 Challenges
 
 | M   | T   | W   | R   | F             | S   | U   |
