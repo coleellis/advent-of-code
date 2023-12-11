@@ -106,7 +106,6 @@ def py_write():
         f.write(f'# submit(two, part="b", day={int(day)}, year={year})\n')
 
     os.chdir("../..")
-    os.system(f"touch ./Python/{text}")
 
 
 def hs_write():
