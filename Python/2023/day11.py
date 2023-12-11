@@ -4,7 +4,7 @@
 import itertools
 from aocd import get_data
 
-stream = get_data(day=11, year=2023).split("\n")
+stream = get_data(day=11, year=2023).splitlines()
 
 
 def shortest_path(pair):
@@ -13,7 +13,7 @@ def shortest_path(pair):
     return abs(s[0] - f[0]) + abs(s[1] - f[1])
 
 
-def solve(dup=1):
+def solve(dup):
     """Solve the cosmic expansion problem for some duplicate size"""
     # get the original points
     p = set()
@@ -22,32 +22,31 @@ def solve(dup=1):
             if c == "#":
                 p.add((x, y))
 
-    # get the rows that are empty
+    # get empty rows and columns
     rows = []
     for i, x in enumerate(stream):
         if x.find("#") == -1:
             rows.append(i)
-    # do the same for the columns
     t = list(zip(*stream))
     cols = []
     for i, x in enumerate(t):
         if not any("#" in e for e in x):
             cols.append(i)
 
+    # duplicate rows/columns dup times
     n = set()
     for x, y in p:
-        r_inc = sum(1 for r in rows if r < y) * dup
-        c_inc = sum(1 for c in cols if c < x) * dup
+        r_inc = sum(1 for r in rows if r < y) * (dup - 1)
+        c_inc = sum(1 for c in cols if c < x) * (dup - 1)
         n.add((x + c_inc, y + r_inc))
 
     zz = 0
     for pair in itertools.combinations(n, 2):
-        c = shortest_path(pair)
-        zz += c
+        zz += shortest_path(pair)
     return zz
 
 
-one = solve(1)
+one = solve(2)
 print("Part 1:", one)
-two = solve(999999)
+two = solve(100000)
 print("Part 2:", two)
