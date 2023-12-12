@@ -6,19 +6,18 @@
 char grid[142][142] = {0};
 
 // get number from grid, replace with '.'
-int getnumber(int x, int y)
+int getnumber(const int x, int y)
 {
-	int result;
 	while (isdigit(grid[x][y]))
 		--y;
-	result = strtol(grid[x] + (++y), NULL, 10);
+	const int result = strtol(grid[x] + (++y), NULL, 10);
 	while (isdigit(grid[x][y]))
 		grid[x][y++] = '.';
 	return result;
 }
 
 // part 1 - get sum of all adjacent numbers
-int getparts(int x, int y)
+int getparts(const int x, const int y)
 {
 
 	int sum = 0;
@@ -30,7 +29,7 @@ int getparts(int x, int y)
 }
 
 // part 2 - get sum of all gears, but multiply instead of add
-int getgears(int x, int y)
+int getgears(const int x, const int y)
 {
 	int nums = 0;
 	int sum = 0;

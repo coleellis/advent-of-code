@@ -30,7 +30,8 @@ int one()
 	int one = 1;
 	for (size_t i = 0; i < items; ++i)
 	{
-		int t = times[i], d = dists[i], w = 0;
+		const int t = times[i], d = dists[i];
+		long w = 0;
 		for (size_t j = 0; j < t; ++j)
 		{
 			if (j * (t - j) > d)
@@ -43,7 +44,6 @@ int one()
 
 long two()
 {
-	long time, dist;
 	char tstr[20] = "", dstr[20] = "";
 	for (int i = 0; i < items; ++i)
 	{
@@ -53,8 +53,7 @@ long two()
 		strcat(tstr, t);
 		strcat(dstr, d);
 	}
-	time = atol(tstr);
-	dist = atol(dstr);
+	const long time = atol(tstr), dist = atol(dstr);
 
 	int two = 0;
 	for (long i = 0; i < time; ++i)

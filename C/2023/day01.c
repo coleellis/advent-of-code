@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
 
-int isInt(char c)
+int isInt(const char c)
 {
     return c >= 0x30 && c <= 0x39;
 }

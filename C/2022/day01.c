@@ -29,10 +29,10 @@ int one(FILE *fp)
 
     // get the max
     uint32_t max = 0;
-    for (uint32_t i = 0; i < 1000; ++i)
+    for (uint32_t j = 0; j < 1000; ++j)
     {
-        if (totals[i] > max)
-            max = totals[i];
+        if (totals[j] > max)
+            max = totals[j];
     }
     if (line)
         free(line);

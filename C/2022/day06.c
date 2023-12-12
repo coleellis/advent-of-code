@@ -22,10 +22,7 @@ int solve(FILE *fp, int strlen)
     // prep the input
     char *line = NULL;
     size_t len;
-    ssize_t read;
-
-    // read the line
-    read = getline(&line, &len, fp);
+    const ssize_t read = getline(&line, &len, fp);
 
     // parse the file
     int i = 0;

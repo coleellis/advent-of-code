@@ -20,7 +20,7 @@ int one(FILE *fp)
     // get kv-pairs with colon
     while (fscanf(fp, "%s %d:", buf, &n) == 2)
     {
-        Max m = {12, 13, 14};
+        const Max m = {12, 13, 14};
         int i, x = 0;
         char v[128];
 

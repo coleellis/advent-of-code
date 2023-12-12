@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
 #include <advent.h>
 
 typedef struct Point
@@ -13,13 +12,14 @@ typedef struct Point
 size_t items = 0;
 Point *p = NULL;
 
-void get_data(FILE *fp, size_t dup)
+void get_data(FILE *fp, const size_t dup)
 {
     size_t l;
     char **lines = readlines(fp, &l);
 
     // get all the points
-    size_t r = l, c = strlen(strip(lines[0]));
+    const size_t r = l;
+    const size_t c = strlen(strip(lines[0]));
     for (size_t y = 0; y < l; ++y)
     {
         for (size_t x = 0; x < c; ++x)

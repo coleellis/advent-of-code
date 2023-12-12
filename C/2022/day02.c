@@ -12,8 +12,7 @@ int one(FILE *fp)
   int total_score = 0;
   while (getline(&line, &len, fp) != -1)
   {
-    char enemy = line[0];
-    char self = line[2];
+    const char enemy = line[0], self = line[2];
 
     total_score += ((int)self - 'W'); // score for self move
 
@@ -24,7 +23,7 @@ int one(FILE *fp)
       continue;
     }
 
-    int difference = ((int)self - 'X') - ((int)enemy - 'A');
+    const int difference = ((int)self - 'X') - ((int)enemy - 'A');
     if (difference == 1 || difference == -2)
     {
       total_score += 6;
@@ -54,8 +53,7 @@ int two(FILE *fp)
   int total_score = 0;
   while (getline(&line, &len, fp) != -1)
   {
-    char enemy = line[0];
-    char self = line[2];
+    const char enemy = line[0], self = line[2];
 
     total_score += 3 * ((int)self - 'X'); // score for match result
 
@@ -101,7 +99,6 @@ int main(void)
   printf("ONE: %d\n", one(fp));
   fseek(fp, 0, 0);
   printf("TWO: %d\n", two(fp));
-  return 0;
 
   return 0;
 }

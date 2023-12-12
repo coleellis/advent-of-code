@@ -16,13 +16,13 @@ int height, width;
 
 // Functions declarations
 int BFS(int x, int y);
-int inQueue(node const *n);
+int inQueue(node const *curr);
 void free_memory(node *list);
 int getValue(int x, int y);
 node *buildNode(int x, int y, int steps);
 void enqueue(node **list, node *n);
 
-int BFS(int x, int y)
+int BFS(const int x, const int y)
 {
   // Free memory of the queue and visited
   free_memory(queue);
@@ -33,8 +33,7 @@ int BFS(int x, int y)
   node *start = buildNode(x, y, 0);
 
   // Neighbors coordinates
-  int dx[] = {1, 0, -1, 0};
-  int dy[] = {0, 1, 0, -1};
+  const int dx[] = {1, 0, -1, 0}, dy[] = {0, 1, 0, -1};
 
   // Add starting node to the queue
   queue = start;
@@ -42,10 +41,9 @@ int BFS(int x, int y)
   while (queue != NULL)
   {
     // Get data from current node
-    int x = queue->x;
-    int y = queue->y;
-    int value = getValue(x, y);
-    int steps = queue->steps;
+    const int xx = queue->x, yy = queue->y;
+    const int value = getValue(xx, yy);
+    const int steps = queue->steps;
 
     // Remove node from the queue
     node *current = queue;
@@ -60,8 +58,7 @@ int BFS(int x, int y)
     for (int i = 0; i < 4; i++)
     {
       // Get neighbor coordinates
-      int nx = x + dx[i];
-      int ny = y + dy[i];
+      const int nx = xx + dx[i], ny = yy + dy[i];
 
       // Check if neighbor is in the map
       if (nx >= 0 && nx < width && ny >= 0 && ny < height)
@@ -71,7 +68,7 @@ int BFS(int x, int y)
           return steps + 1;
 
         // check if neighbor is movable
-        int neighbor_value = getValue(nx, ny);
+        const int neighbor_value = getValue(nx, ny);
         if (neighbor_value <= value + 1)
         {
           node *n = buildNode(nx, ny, steps + 1);
@@ -89,10 +86,10 @@ int BFS(int x, int y)
   return INT_MAX;
 }
 
-int inQueue(node const *curr)
+int inQueue(const node *curr)
 {
   // Check if node is in the queue
-  node *ptr = queue;
+  const node *ptr = queue;
   while (ptr != NULL)
   {
     if (curr->x == ptr->x && curr->y == ptr->y && curr->steps >= ptr->steps)
@@ -123,9 +120,9 @@ void free_memory(node *list)
   }
 }
 
-int getValue(int x, int y)
+int getValue(const int x, const int y)
 {
-  char value = map[y][x];
+  const char value = map[y][x];
   switch (value)
   {
   case 'S':
@@ -137,7 +134,7 @@ int getValue(int x, int y)
   }
 }
 
-node *buildNode(int x, int y, int steps)
+node *buildNode(const int x, const int y, const int steps)
 {
   node *new_node = malloc(sizeof(node));
   new_node->x = x;

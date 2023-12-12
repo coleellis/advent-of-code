@@ -98,6 +98,7 @@ int one(FILE *fp)
             tallest = (grid[i][j] > tallest) ? grid[i][j] : tallest;
         }
     }
+    free(grid);
 
     // count the number of visible
     int num_visible = 0;
@@ -109,7 +110,7 @@ int one(FILE *fp)
                 ++num_visible;
         }
     }
-
+    free(vis);
     return num_visible;
 }
 
@@ -150,7 +151,7 @@ int two(FILE *fp)
     {
         for (size_t col = 1; col < cols - 1; ++col)
         {
-            char height = grid[row][col];
+            const char height = grid[row][col];
             size_t point_score = 1;
 
             // check the up direction

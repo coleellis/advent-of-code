@@ -16,9 +16,9 @@ int c_map(const void *a, const void *b)
 {
 	const Map aa = *(const Map *)a;
 	const Map bb = *(const Map *)b;
-	int tupleLength = 6;
+	const int tl = 6;
 
-	for (int i = 0; i < tupleLength; i++)
+	for (int i = 0; i < tl; i++)
 	{
 		if (aa.k[i] != bb.k[i])
 		{

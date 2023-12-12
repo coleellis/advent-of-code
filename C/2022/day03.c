@@ -68,7 +68,7 @@ int two(FILE *fp)
     char *first = NULL;
     char *second = NULL;
     char *third = NULL;
-    ssize_t f_read, s_read, t_read;
+    ssize_t f_read;
     size_t len = 0;
 
     // get the input
@@ -77,8 +77,8 @@ int two(FILE *fp)
     while ((f_read = getline(&first, &len, fp)) != -1)
     {
         // get the second and third lines
-        s_read = getline(&second, &len, fp);
-        t_read = getline(&third, &len, fp);
+        const ssize_t s_read = getline(&second, &len, fp);
+        const ssize_t t_read = getline(&third, &len, fp);
 
         // check for commonality
         for (uint16_t i = 0; i < f_read - 1; ++i)

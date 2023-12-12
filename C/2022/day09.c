@@ -14,7 +14,7 @@ typedef struct Vector
     int y;
 } Vector;
 
-Vector build_vector(struct Point head, struct Point tail)
+Vector build_vector(const Point head, const Point tail)
 {
     Vector *ret = malloc(sizeof(Vector));
     ret->x = head.x - tail.x;
@@ -42,7 +42,7 @@ int compare(const void *a, const void *b)
     }
 }
 
-int toInt(char first, char second)
+int toInt(const char first, const char second)
 {
     char *string = malloc(2 * sizeof(char));
     string[0] = first;
@@ -51,7 +51,7 @@ int toInt(char first, char second)
     return atoi(string);
 }
 
-int equal(Point a, Point b) { return (a.x == b.x && a.y == b.y); }
+int equal(const Point a, const Point b) { return (a.x == b.x && a.y == b.y); }
 
 int one(FILE *fp)
 {
@@ -87,7 +87,7 @@ int one(FILE *fp)
                 exit(EXIT_FAILURE);
             }
             // build the vector
-            Vector distance = build_vector(head, tail);
+            const Vector distance = build_vector(head, tail);
 
             // adjust tail location based on vector
             if (distance.x == 2)
@@ -144,9 +144,9 @@ int one(FILE *fp)
     return visited;
 }
 
-Point adjust(Point head, Point tail)
+Point adjust(const Point head, Point tail)
 {
-    Vector distance = build_vector(head, tail);
+    const Vector distance = build_vector(head, tail);
 
     // adjust tail location based on vector
     if (distance.x == 2)
@@ -230,6 +230,7 @@ int two(FILE *fp)
     }
 
     // sort the list of points
+    tail_visits = realloc(tail_visits, count * sizeof(Point));
     qsort(tail_visits, count, sizeof(Point), compare);
 
     // count non-duplicates

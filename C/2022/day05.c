@@ -10,7 +10,7 @@ char *one(FILE *fp)
 
     // read until the newline
     size_t des_line = 0;
-    int num_stacks;
+    int num_stacks = 0;
     while ((read = getline(&line, &len, fp)) != 1)
     {
         // our desired line guaranteed starts with a space
@@ -66,6 +66,7 @@ char *one(FILE *fp)
             rev_stack[j] = stacks[i][size[i] - j - 1];
         free(stacks[i]);
         stacks[i] = rev_stack;
+        free(rev_stack);
     }
 
     // push the line twice to get to the right spot
@@ -85,7 +86,7 @@ char *one(FILE *fp)
         char *num = malloc(3 * sizeof(char));
         for (; line[idx] != ' '; ++idx)
             num[num_idx++] = line[idx];
-        size_t moving = atoi(num);
+        const size_t moving = atoi(num);
 
         // move to second
         idx += 2;
@@ -97,7 +98,7 @@ char *one(FILE *fp)
         num = malloc(3 * sizeof(char));
         for (; line[idx] != ' '; ++idx)
             num[num_idx++] = line[idx];
-        size_t origin = atoi(num) - 1;
+        const size_t origin = atoi(num) - 1;
 
         // move to third
         idx += 2;
@@ -109,7 +110,7 @@ char *one(FILE *fp)
         num = malloc(3 * sizeof(char));
         for (; line[idx] != '\n'; ++idx)
             num[num_idx++] = line[idx];
-        size_t destination = atoi(num) - 1;
+        const size_t destination = atoi(num) - 1;
 
         // perform the action
         for (size_t action = 0; action < moving; ++action)
@@ -128,6 +129,7 @@ char *one(FILE *fp)
     for (size_t i = 0; i < num_stacks; ++i)
         free(stacks[i]);
     free(stacks);
+    free(size);
 
     return ret;
 }
@@ -141,7 +143,7 @@ char *two(FILE *fp)
 
     // read until the newline
     size_t des_line = 0;
-    int num_stacks;
+    int num_stacks = 0;
     while ((read = getline(&line, &len, fp)) != 1)
     {
         // our desired line guaranteed starts with a space
@@ -155,10 +157,7 @@ char *two(FILE *fp)
             num_stacks = atoi(num);
             break;
         }
-        else
-        {
-            ++des_line;
-        }
+        ++des_line;
     }
 
     // this resets the file to start reading from the beginning
@@ -197,6 +196,7 @@ char *two(FILE *fp)
             rev_stack[j] = stacks[i][size[i] - j - 1];
         free(stacks[i]);
         stacks[i] = rev_stack;
+        free(rev_stack);
     }
 
     // push the line twice to get to the right spot
@@ -216,7 +216,7 @@ char *two(FILE *fp)
         char *num = malloc(3 * sizeof(char));
         for (; line[idx] != ' '; ++idx)
             num[num_idx++] = line[idx];
-        size_t moving = atoi(num);
+        const size_t moving = atoi(num);
 
         // move to second
         idx += 2;
@@ -228,7 +228,7 @@ char *two(FILE *fp)
         num = malloc(3 * sizeof(char));
         for (; line[idx] != ' '; ++idx)
             num[num_idx++] = line[idx];
-        size_t origin = atoi(num) - 1;
+        const size_t origin = atoi(num) - 1;
 
         // move to third
         idx += 2;
@@ -240,7 +240,7 @@ char *two(FILE *fp)
         num = malloc(3 * sizeof(char));
         for (; line[idx] != '\n'; ++idx)
             num[num_idx++] = line[idx];
-        size_t destination = atoi(num) - 1;
+        const size_t destination = atoi(num) - 1;
 
         // perform the action
         for (size_t action = 0; action < moving; ++action)
@@ -260,6 +260,7 @@ char *two(FILE *fp)
     for (size_t i = 0; i < num_stacks; ++i)
         free(stacks[i]);
     free(stacks);
+    free(size);
 
     return ret;
 }
