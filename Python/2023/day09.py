@@ -3,6 +3,8 @@
 """
 from aocd import get_data
 
+print(get_data(day=9, year=2023))
+
 data = [x.strip().split() for x in get_data(day=9, year=2023).split("\n")]
 data = [[int(x) for x in line] for line in data]
 
