@@ -106,6 +106,13 @@ void sprint(const char** a, size_t n);
 void dprint(const int* a, size_t n);
 
 /**
+ * Prints an array of longs separated by spaces
+ * @param a Array of integers
+ * @param n Size of the array
+ */
+void lprint(const long* a, size_t n);
+
+/**
  * Prints an array of floats/doubles separated by spaces
  * @param a Array of floats/doubles
  * @param n Size of the array

@@ -8,93 +8,74 @@ typedef struct Point {
     long y;
 } Point;
 
-size_t items = 0;
-Point* p = NULL;
+Point* points = NULL;
+size_t npoints = 0;
 
-void get_data(FILE* fp, const size_t dup)
-{
-    size_t l;
-    char** lines = readlines(fp, &l);
-
-    // get all the points
-    const size_t r = l;
-    const size_t c = strlen(strip(lines[0]));
-    for (size_t y = 0; y < l; ++y) {
-        for (size_t x = 0; x < c; ++x) {
-            if (lines[y][x] == '#') {
-                p = realloc(p, sizeof(Point) * (++items));
-                p[items - 1] = (Point) { x, y };
+void get_data(FILE* fp) {
+    size_t n = 0;
+    char** lines = readlines(fp, &n);
+    for (size_t i = 0; i < n; ++i) {
+        for (size_t j = 0; j < strlen(strip(lines[i])); ++j) {
+            if (lines[i][j] == '#') {
+                points = realloc(points, ++npoints * sizeof(Point));
+                points[npoints - 1] = (Point){j, i};
             }
         }
     }
-
-    // get the rows and cols that are empty
-    int* rows = malloc(r * sizeof(int));
-    int* cols = malloc(c * sizeof(int));
-    size_t rr = 0, cc = 0;
-    for (size_t y = 0; y < r; ++y) {
-        int b = 1;
-        for (size_t x = 0; x < c; ++x) {
-            if (lines[y][x] == '#') {
-                b = 0;
-                break;
-            }
-        }
-        if (b)
-            rows[rr++] = y;
-    }
-    rows = realloc(rows, rr * sizeof(int));
-    for (size_t x = 0; x < c; ++x) {
-        int b = 1;
-        for (size_t y = 0; y < l; ++y) {
-            if (lines[y][x] == '#') {
-                b = 0;
-                break;
-            }
-        }
-        if (b)
-            cols[cc++] = x;
-    }
-    cols = realloc(cols, cc * sizeof(int));
-
-    // duplicate the empty columns/rows dup times
-    for (size_t i = 0; i < items; ++i) {
-        size_t nr = 0, nc = 0;
-        for (size_t j = 0; j < rr; ++j) {
-            if (rows[j] < p[i].y)
-                ++nr;
-            else
-                break;
-        }
-        for (size_t j = 0; j < cc; ++j) {
-            if (cols[j] < p[i].x)
-                ++nc;
-            else
-                break;
-        }
-        p[i] = (Point) { p[i].x + (dup - 1) * nc, p[i].y + (dup - 1) * nr };
-    }
-
-    free(rows);
-    free(cols);
     free(lines);
 }
 
-long solve()
-{
-    long r = 0;
-    for (size_t i = 0; i < items; ++i)
-        for (size_t j = i + 1; j < items; ++j)
-            r += (labs(p[i].x - p[j].x) + labs(p[i].y - p[j].y));
+Point* scale(FILE* fp, const long dup) {
+    fseek(fp, 0, SEEK_SET);
+    size_t n = 0;
+    char** lines = readlines(fp, &n);
+    long *rows = NULL, *cols = NULL;
+    long nrow = 0, ncol = 0;
+    // check for empty horizontal lines
+    for (size_t i = 0; i < n; ++i) {
+        if (indexOf(lines[i], '#') == -1) {
+            rows = realloc(rows, sizeof(long) * (++nrow));
+            rows[nrow - 1] = i;
+        }
+    }
+    // check for empty vertical lines
+    for (size_t i = 0; i < strlen(strip(lines[0])); ++i) {
+        int empty = 1;
+        for (size_t j = 0; j < n; ++j) {
+            if (lines[j][i] == '#') {
+                empty = 0;
+                break;
+            }
+        }
+        if (empty) {
+            cols = realloc(cols, sizeof(long) * (++ncol));
+            cols[ncol - 1] = i;
+        }
+    }
+    Point* r = calloc(npoints, sizeof(Point));
+    for (size_t i = 0; i < npoints; ++i) {
+        size_t r_inc = 0, c_inc = 0;
+        for (size_t j = 0; j < nrow; ++j)
+            if (rows && points[i].y > rows[j])
+                ++r_inc;
+        for (size_t j = 0; j < ncol; ++j)
+            if (cols && points[i].x > cols[j])
+                ++c_inc;
+        r[i] = (Point){points[i].x + c_inc * (dup - 1), points[i].y + r_inc * (dup - 1)};
+    }
+    free(rows);
+    free(cols);
     return r;
 }
 
-void reset(FILE* fp)
-{
-    free(p);
-    p = NULL;
-    items = 0;
-    fseek(fp, 0, SEEK_SET);
+long solve(FILE* fp, const long dup) {
+    const Point* pp = scale(fp, dup);
+
+    size_t r = 0;
+    for (size_t i = 0; i < npoints; ++i)
+        for (size_t j = i + 1; j < npoints; ++j)
+            r += (labs(pp[i].x - pp[j].x) + labs(pp[i].y - pp[j].y));
+    return r;
 }
 
 int main()
@@ -105,14 +86,11 @@ int main()
         exit(EXIT_FAILURE);
     }
 
-    get_data(fp, 2);
-    printf("Part 1: %ld\n", solve());
-    reset(fp);
+    get_data(fp);
+    printf("Part 1: %ld\n", solve(fp, 2));
+    printf("Part 2: %ld\n", solve(fp, 1000000));
 
-    get_data(fp, 1000000);
-    printf("Part 2: %ld\n", solve());
-    reset(fp);
-
+    free(points);
     fclose(fp);
     return 0;
 }
