@@ -64,3 +64,18 @@ target_link_libraries(2023-Day11 PRIVATE advent)
 add_executable(2023-Day12 day12.c)
 configure_file(${IN_DIR}/day12.txt ${OUT_DIR}/day12.txt COPYONLY)
 target_link_libraries(2023-Day12 PRIVATE advent)
+
+# day 13
+add_executable(2023-Day13 day13.c)
+configure_file(${IN_DIR}/day13.txt ${OUT_DIR}/day13.txt COPYONLY)
+target_link_libraries(2023-Day13 PRIVATE advent)
+
+# day 14
+add_executable(2023-Day14 day14.c)
+configure_file(${IN_DIR}/day14.txt ${OUT_DIR}/day14.txt COPYONLY)
+target_link_libraries(2023-Day14 PRIVATE advent)
+
+# day 15
+add_executable(2023-Day15 day15.c)
+configure_file(${IN_DIR}/day15.txt ${OUT_DIR}/day15.txt COPYONLY)
+target_link_libraries(2023-Day15 PRIVATE advent)

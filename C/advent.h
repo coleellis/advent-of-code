@@ -1,6 +1,9 @@
 #ifndef ADVENT_H
 #define ADVENT_H
 
+#include <stdio.h>
+#include <stdlib.h>
+
 #define SIZE(arr) (sizeof(arr) / sizeof((arr)[0]))
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
 #define MIN(a, b) ((a) < (b) ? (a) : (b))
@@ -10,7 +13,7 @@
  * @param str String to strip
  * @return In-place stripped string
  */
-char *strip(char *str);
+char* strip(char* str);
 
 /**
  * Perform Python-like string splitting
@@ -19,7 +22,7 @@ char *strip(char *str);
  * @param len Number of elements in returned list
  * @return List of split substrings
  */
-char **split(const char *str, const char *delim, size_t *len);
+char** split(const char* str, const char* delim, size_t* len);
 
 /**
  * Reads the lines of a binary
@@ -27,15 +30,15 @@ char **split(const char *str, const char *delim, size_t *len);
  * @param len number of elements in returned list
  * @return List of lines found in file
  */
-char **readlines(FILE *fp, size_t *len);
+char** readlines(FILE* fp, size_t* len);
 
 /**
- * Finds the index of a substring in a string
+ * Finds the index of a character in a string
  * @param str String
  * @param chr Character to index
  * @return index if found, else -1
  */
-int indexOf(const char *str, char chr);
+int indexOf(const char* str, char chr);
 
 /**
  * In-place reversal of an array
@@ -43,7 +46,7 @@ int indexOf(const char *str, char chr);
  * @param len Size of array
  * @return Array post-reversal
  */
-int *rev(int *arr, size_t len);
+int* rev(int* arr, size_t len);
 
 /**
  * Replaces every instance of a char with another
@@ -52,7 +55,7 @@ int *rev(int *arr, size_t len);
  * @param b Character replacing
  * @return Copy of string with characters replaced
  */
-char *replace(const char *s, char a, char b);
+char* replace(const char* s, char a, char b);
 
 /**
  * Gets the GCD of two numbers
@@ -69,5 +72,35 @@ long gcd(long a, long b);
  * @return LCM of the array -> long
  */
 long lcm(const long a[], size_t n);
+
+/**
+ * Turns an array of strings containing integers into an integer array
+ * Example: ["3", "24", "-5"] -> [3, 24, -5]
+ * @param a array containing Strings
+ * @param n Size of the array
+ * @return New array containing integers (old array freed)
+ */
+int* intify(char** a, size_t n);
+
+/**
+ * Prints an array of strings separated by spaces
+ * @param a Array of strings
+ * @param n Size of the array
+ */
+void sprint(const char** a, size_t n);
+
+/**
+ * Prints an array of integers separated by spaces
+ * @param a Array of integers
+ * @param n Size of the array
+ */
+void dprint(const int* a, size_t n);
+
+/**
+ * Prints an array of floats/doubles separated by spaces
+ * @param a Array of floats/doubles
+ * @param n Size of the array
+ */
+void fprint(const double* a, size_t n);
 
 #endif // ADVENT_H
