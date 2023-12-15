@@ -83,6 +83,15 @@ long lcm(const long a[], size_t n);
 int* intify(char** a, size_t n);
 
 /**
+ * Turns an array of strings containing longs into a long array
+ * Example: ["3", "24", "-5"] -> [3, 24, -5]
+ * @param a array containing Strings
+ * @param n Size of the array
+ * @return New array containing integers (old array freed)
+ */
+long* longify(char** a, size_t n);
+
+/**
  * Prints an array of strings separated by spaces
  * @param a Array of strings
  * @param n Size of the array

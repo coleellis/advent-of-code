@@ -127,6 +127,15 @@ int* intify(char** a, const size_t n)
     return r;
 }
 
+long* longify(char** a, const size_t n)
+{
+    long* r = calloc(n, sizeof(long));
+    for (size_t i = 0; i < n; ++i)
+        r[i] = atol(a[i]);
+    free(a);
+    return r;
+}
+
 void sprint(const char** a, const size_t n)
 {
     for (size_t i = 0; i < n; ++i)
