@@ -25,6 +25,9 @@ def symmetry(arr, margin):
 stream = get_data(day=13, year=2023).split("\n\n")
 stream = [line.splitlines() for line in stream]
 
+for l in stream:
+    print(l)
+
 
 def iterate(margin):
     """Iterate across all puzzles and get symmetry score"""
