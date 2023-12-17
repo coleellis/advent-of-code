@@ -55,7 +55,7 @@ A few rules I've set for myself:
 | M             | T             | W             | R             | F             | S             | U             |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 |               | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |
-| ![](gold.ico) |               |               |               |               |               |               |
+| ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |               |
 |               |               |               |               |               |               |               |
 |               |               |               |               |               |               |               |
 |               |               |               |               |               |               |               |
