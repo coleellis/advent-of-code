@@ -25,7 +25,7 @@ A few rules I've set for myself:
 |               |               |               |               | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |
 | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |
 | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |
-|               |               |               |               |               |               |               |
+| ![](gold.ico) |               |               |               |               |               |               |
 |               |               |               |               |               |               |               |
 
 ### 2022 Challenges
