@@ -3,7 +3,7 @@
 """
 from aocd import get_data
 
-stream = get_data(day=12, year=2023).split("\n")
+stream = get_data(day=12, year=2023).splitlines()
 data = [x.strip() for x in stream]
 grid = {}
 

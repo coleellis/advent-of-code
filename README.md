@@ -13,7 +13,8 @@ I have a significant number of solutions in C. I'm currently learning Haskell an
 A few rules I've set for myself:
 
 - No LLM tooling (including Copilot)
-- To the best of my ability, no external libraries (exception: `functools` and `itertools` in Python)
+- To the best of my ability, no external libraries (exception: `functools`, `itertools`, and `numpy` in Python)
+  - _Accidentally broke this one using `scikit-spatial` on Day 18, oops, the fix is one line too😖_
 - I can use my own libraries for shared functions between challenges
 
 # Challenge Calendars
@@ -56,6 +57,6 @@ A few rules I've set for myself:
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 |               | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |
 | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |
-| ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |               |               |               |               |
+| ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |
 |               |               |               |               |               |               |               |
 |               |               |               |               |               |               |               |
