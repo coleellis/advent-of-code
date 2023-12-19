@@ -8,18 +8,11 @@ My solutions for the Advent of Code challenges. The Wakatime badge shows my enti
 
 My goal is to solve each challenge using multiple languages to provide the most exposure. 2023 is my first year going for speed, so I've been using Python for the initial solution and then solving it in other languages later.
 
-I have a significant number of solutions in C. I'm currently learning Haskell and plan to solve some of the challenges in it.
-
-A few rules I've set for myself:
-
-- No LLM tooling (including Copilot)
-- To the best of my ability, no external libraries (exception: `functools`, `itertools`, and `numpy` in Python)
-  - _Accidentally broke this one using `scikit-spatial` on Day 18, oops, the fix is one line too😖_
-- I can use my own libraries for shared functions between challenges
+I have a significant number of solutions in C and Python. I'm currently learning Haskell and plan to solve some of the challenges in it.
 
 # Challenge Calendars
 
-### 2023 Challenges
+### 2023 Challenges ( 36/50 )
 
 | M             | T             | W             | R             | F             | S             | U             |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
@@ -29,7 +22,7 @@ A few rules I've set for myself:
 | ![](gold.ico) |               |               |               |               |               |               |
 |               |               |               |               |               |               |               |
 
-### 2022 Challenges
+### 2022 Challenges ( 22/50 )
 
 | M             | T             | W             | R             | F             | S             | U             |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
@@ -51,12 +44,12 @@ A few rules I've set for myself:
 
 ### 2016 Challenges
 
-### 2015 Challenges
+### 2015 Challenges ( 50/50 )
 
 | M             | T             | W             | R             | F             | S             | U             |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 |               | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |
 | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |
 | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |
-|               |               |               |               |               |               |               |
+| ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |               |               |
 |               |               |               |               |               |               |               |
