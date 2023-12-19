@@ -42,7 +42,15 @@ I have a significant number of solutions in C and Python. I'm currently learning
 
 ### 2017 Challenges
 
-### 2016 Challenges
+### 2016 Challenges ( 2/50 )
+
+| M             | T             | W             | R             | F             | S             | U             |
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
+|               |               |               | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |
+| ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |               |               |               |               |
+|               |               |               |               |               |               |               |
+|               |               |               |               |               |               |               |
+|               |               |               |               |               |               |               |
 
 ### 2015 Challenges ( 50/50 )
 

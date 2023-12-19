@@ -44,12 +44,12 @@ for s in stream[1].splitlines():
 def check(json, rule):
     """parse the rule"""
     if "<" in rule[0]:
-        r = rule[0].split("<")
-        if json[r[0]] < int(r[1]):
+        rr = rule[0].split("<")
+        if json[rr[0]] < int(rr[1]):
             return rule[1]
     else:
-        r = rule[0].split(">")
-        if json[r[0]] > int(r[1]):
+        rr = rule[0].split(">")
+        if json[rr[0]] > int(rr[1]):
             return rule[1]
     return rule[2]
 
@@ -102,5 +102,5 @@ for s in ss:
         ONE += reduce(lambda x, y: x + y, [s[k] for k in s.keys()])
 print("Part 1:", ONE)
 
-xmas = {k: P.closed(1, 4000) for k in "xmas"}
-print("Part 2:", recurse(xmas, rules["in"]))
+lst = {k: P.closed(1, 4000) for k in "xmas"}
+print("Part 2:", recurse(lst, rules["in"]))
