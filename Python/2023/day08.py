@@ -7,7 +7,7 @@ from aocd import get_data
 
 stream = get_data(day=8, year=2023)
 
-data = [x.strip() for x in stream.split("\n")]
+data = [x.strip() for x in stream.splitlines()]
 
 def gen_tree(d):
     """Generates a tree from the input data"""
