@@ -19,7 +19,7 @@ I have a significant number of solutions in C and Python. I'm currently learning
 |               |               |               |               | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |
 | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |
 | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |
-| ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |               |               |
+| ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |               |
 |               |               |               |               |               |               |               |
 
 ### 2022 Challenges ( 22/50 )
