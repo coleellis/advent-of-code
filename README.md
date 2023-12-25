@@ -12,7 +12,7 @@ I have a significant number of solutions in C and Python. I'm currently learning
 
 # Challenge Calendars
 
-### 2023 Challenges ( 42/50 )
+### 2023 Challenges ( 50/50 )
 
 | M             | T             | W             | R             | F             | S             | U             |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
@@ -20,7 +20,7 @@ I have a significant number of solutions in C and Python. I'm currently learning
 | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |
 | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |
 | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |
-|               |               |               |               |               |               |               |
+| ![](gold.ico) |               |               |               |               |               |               |
 
 ### 2022 Challenges ( 22/50 )
 
