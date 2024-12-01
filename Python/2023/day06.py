@@ -1,6 +1,7 @@
 """
 --- Day 6: Wait For It ---
 """
+
 from functools import reduce
 from aocd import get_data
 

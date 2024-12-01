@@ -1,6 +1,7 @@
 """
 --- Day 1: Not Quite Lisp ---
 """
+
 from aocd import get_data
 
 stream = get_data(day=1, year=2015)

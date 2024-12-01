@@ -1,6 +1,7 @@
 """
 --- Day 13: Point of Incidence ---
 """
+
 from aocd import get_data
 import numpy as np
 

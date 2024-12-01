@@ -1,6 +1,7 @@
 """
 --- Day 17: No Such Thing as Too Much ---
 """
+
 from itertools import combinations
 from aocd import get_data
 

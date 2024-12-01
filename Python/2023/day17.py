@@ -1,6 +1,7 @@
 """
 --- Day 17: Clumsy Crucible ---
 """
+
 from heapq import heappop, heappush
 from aocd import get_data
 

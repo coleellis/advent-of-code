@@ -1,6 +1,7 @@
 """
 --- Day 4: Security Through Obscurity ---
 """
+
 import re
 from aocd import get_data
 

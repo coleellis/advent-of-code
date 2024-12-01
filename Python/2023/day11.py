@@ -1,6 +1,7 @@
 """
 --- Day 11: Cosmic Expansion ---
 """
+
 import itertools
 from aocd import get_data
 

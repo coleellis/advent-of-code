@@ -1,6 +1,7 @@
 """
 --- Day 2: I Was Told There Would Be No Math ---
 """
+
 from aocd import get_data
 
 stream = get_data(day=2, year=2015).splitlines()

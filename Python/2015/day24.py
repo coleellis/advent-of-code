@@ -1,6 +1,7 @@
 """
 --- Day 24: It Hangs in the Balance ---
 """
+
 from itertools import combinations
 from functools import reduce
 from operator import mul

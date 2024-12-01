@@ -1,6 +1,7 @@
 """
 --- Day 9: Mirage Maintenance ---
 """
+
 from aocd import get_data
 
 print(get_data(day=9, year=2023))

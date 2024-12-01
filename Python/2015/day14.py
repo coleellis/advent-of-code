@@ -1,6 +1,7 @@
 """
 --- Day 14: Reindeer Olympics ---
 """
+
 import re
 from aocd import get_data
 

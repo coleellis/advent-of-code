@@ -1,6 +1,7 @@
 """
 --- Day 25: Let It Snow ---
 """
+
 from aocd import get_data
 
 stream = get_data(year=2015, day=25).split()

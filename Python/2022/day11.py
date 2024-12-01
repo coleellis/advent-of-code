@@ -1,6 +1,7 @@
 """
 --- Day 11: Monkey in the Middle ---
 """
+
 from aocd import get_data
 
 stream = get_data(day=11, year=2022).split("\n\n")

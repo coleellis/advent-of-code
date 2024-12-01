@@ -1,6 +1,7 @@
 """
 --- Day 18: Lavaduct Lagoon ---
 """
+
 from skspatial.measurement import area_signed
 from aocd import get_data
 

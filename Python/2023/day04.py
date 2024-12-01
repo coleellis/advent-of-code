@@ -1,6 +1,7 @@
 """
 --- Day 4: Scratchcards ---
 """
+
 from functools import reduce
 from aocd import get_data
 

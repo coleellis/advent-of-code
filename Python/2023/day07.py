@@ -1,6 +1,7 @@
 """
 --- Day 7: Camel Cards ---
 """
+
 import collections
 from aocd import get_data
 

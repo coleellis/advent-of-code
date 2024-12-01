@@ -1,6 +1,7 @@
 """
 --- Day 15: Lens Library ---
 """
+
 from aocd import get_data
 
 stream = get_data(day=15, year=2023).strip().split(",")

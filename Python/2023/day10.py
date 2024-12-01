@@ -1,6 +1,7 @@
 """
 --- Day 10: Pipe Maze ---
 """
+
 from aocd import get_data
 
 stream = get_data(day=10, year=2023).split("\n")

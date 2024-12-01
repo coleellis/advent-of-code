@@ -1,6 +1,7 @@
 """
 --- Day 4: Camp Cleanup ---
 """
+
 from aocd import get_data
 
 stream = get_data(day=3, year=2022)

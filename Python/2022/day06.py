@@ -1,6 +1,7 @@
 """
 --- Day 6: Tuning Trouble ---
 """
+
 from collections import Counter
 from aocd import get_data
 

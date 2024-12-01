@@ -1,6 +1,7 @@
 """
 --- Day 20: Pulse Propagation ---
 """
+
 from math import prod
 from aocd import get_data
 

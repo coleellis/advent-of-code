@@ -1,6 +1,7 @@
 """
 --- Day 21: RPG Simulator 20XX ---
 """
+
 from itertools import combinations
 from aocd import get_data
 
