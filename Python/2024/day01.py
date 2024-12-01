@@ -1,6 +1,7 @@
 """
 --- Day 01: Historian Hysteria ---
 """
+
 from aocd import get_data
 
 data = get_data(day=1, year=2024).splitlines()
@@ -15,7 +16,7 @@ for l in data:
 
 first = sorted(left)
 second = sorted(right)
-ONE = sum(abs(b - a) for a,b in zip(first, second))
+ONE = sum(abs(b - a) for a, b in zip(first, second))
 print("ONE:", ONE)
 
 TWO = sum(x * right.count(x) for x in left)
