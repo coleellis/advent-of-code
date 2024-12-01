@@ -1,6 +1,7 @@
 """
 --- Day 8: Treetop Tree House ---
 """
+
 import numpy as np
 from aocd import get_data
 

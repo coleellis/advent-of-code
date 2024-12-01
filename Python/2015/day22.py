@@ -1,6 +1,7 @@
 """
 --- Day 22: Wizard Simulator 20XX ---
 """
+
 from aocd import get_data
 
 stream = get_data(year=2015, day=22).splitlines()

@@ -1,6 +1,7 @@
 """
 --- Day 21: Step Counter ---
 """
+
 from collections import deque
 import numpy as np
 from aocd import get_data

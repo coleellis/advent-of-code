@@ -1,6 +1,7 @@
 """
 --- Day 6: Signals and Noise ---
 """
+
 from aocd import get_data
 
 stream = get_data(year=2016, day=6).splitlines()

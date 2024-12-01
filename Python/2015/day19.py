@@ -1,6 +1,7 @@
 """
 --- Day 19: Medicine for Rudolph ---
 """
+
 import re
 from aocd import get_data
 

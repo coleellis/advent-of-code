@@ -1,6 +1,7 @@
 """
 --- Day 23: A Long Walk ---
 """
+
 import networkx as nx
 from networkx.classes.function import path_weight
 from aocd import get_data

@@ -1,6 +1,7 @@
 """
 --- Day 2: Bathroom Security ---
 """
+
 from aocd import get_data
 
 stream = get_data(year=2016, day=2).splitlines()

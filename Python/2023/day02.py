@@ -1,6 +1,7 @@
 """
 --- Day 2: Cube Conundrum ---
 """
+
 from aocd import get_data
 
 data = get_data(day=2, year=2023).split("\n")

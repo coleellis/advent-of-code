@@ -1,6 +1,7 @@
 """
 --- Day 25: Snowverload ---
 """
+
 from math import prod
 import networkx as nx
 from aocd import get_data

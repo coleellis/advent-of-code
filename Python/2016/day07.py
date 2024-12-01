@@ -1,6 +1,7 @@
 """
 --- Day 7: Internet Protocol Version 7 ---
 """
+
 import re
 from aocd import get_data
 

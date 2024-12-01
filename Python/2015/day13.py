@@ -1,6 +1,7 @@
 """
 --- Day 13: Knights of the Dinner Table ---
 """
+
 from itertools import permutations
 from aocd import get_data
 

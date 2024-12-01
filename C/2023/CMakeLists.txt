@@ -79,3 +79,53 @@ target_link_libraries(2023-Day14 PRIVATE advent)
 add_executable(2023-Day15 day15.c)
 configure_file(${IN_DIR}/day15.txt ${OUT_DIR}/day15.txt COPYONLY)
 target_link_libraries(2023-Day15 PRIVATE advent)
+
+# day 16
+add_executable(2023-Day16 day16.c)
+configure_file(${IN_DIR}/day16.txt ${OUT_DIR}/day16.txt COPYONLY)
+target_link_libraries(2023-Day16 PRIVATE advent)
+
+# day 17
+add_executable(2023-Day17 day17.c)
+configure_file(${IN_DIR}/day17.txt ${OUT_DIR}/day17.txt COPYONLY)
+target_link_libraries(2023-Day17 PRIVATE advent)
+
+# day 18
+add_executable(2023-Day18 day18.c)
+configure_file(${IN_DIR}/day18.txt ${OUT_DIR}/day18.txt COPYONLY)
+target_link_libraries(2023-Day18 PRIVATE advent)
+
+# day 19
+add_executable(2023-Day19 day19.c)
+configure_file(${IN_DIR}/day19.txt ${OUT_DIR}/day19.txt COPYONLY)
+target_link_libraries(2023-Day19 PRIVATE advent)
+
+# day 20
+add_executable(2023-Day20 day20.c)
+configure_file(${IN_DIR}/day20.txt ${OUT_DIR}/day20.txt COPYONLY)
+target_link_libraries(2023-Day20 PRIVATE advent)
+
+# day 21
+add_executable(2023-Day21 day21.c)
+configure_file(${IN_DIR}/day21.txt ${OUT_DIR}/day21.txt COPYONLY)
+target_link_libraries(2023-Day21 PRIVATE advent)
+
+# day 22
+add_executable(2023-Day22 day22.c)
+configure_file(${IN_DIR}/day22.txt ${OUT_DIR}/day22.txt COPYONLY)
+target_link_libraries(2023-Day22 PRIVATE advent)
+
+# day 23
+add_executable(2023-Day23 day23.c)
+configure_file(${IN_DIR}/day23.txt ${OUT_DIR}/day23.txt COPYONLY)
+target_link_libraries(2023-Day23 PRIVATE advent)
+
+# day 24
+add_executable(2023-Day24 day24.c)
+configure_file(${IN_DIR}/day24.txt ${OUT_DIR}/day24.txt COPYONLY)
+target_link_libraries(2023-Day24 PRIVATE advent)
+
+# day 25
+add_executable(2023-Day25 day25.c)
+configure_file(${IN_DIR}/day25.txt ${OUT_DIR}/day25.txt COPYONLY)
+target_link_libraries(2023-Day25 PRIVATE advent)

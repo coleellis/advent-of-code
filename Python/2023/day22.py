@@ -1,6 +1,7 @@
 """
 --- Day 22: Sand Slabs ---
 """
+
 from aocd import get_data
 
 stream = get_data(day=22, year=2023).splitlines()

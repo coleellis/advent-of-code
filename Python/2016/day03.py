@@ -1,6 +1,7 @@
 """
 --- Day 3: Squares With Three Sides ---
 """
+
 import re
 from aocd import get_data
 

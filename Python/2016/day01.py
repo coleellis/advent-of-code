@@ -1,6 +1,7 @@
 """
 --- Day 1: No Time for a Taxicab ---
 """
+
 from aocd import get_data
 
 stream = get_data(year=2016, day=1).split(", ")

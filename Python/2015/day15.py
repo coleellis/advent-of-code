@@ -1,6 +1,7 @@
 """
 --- Day 15: Science for Hungry People ---
 """
+
 import re
 from itertools import combinations
 from aocd import get_data

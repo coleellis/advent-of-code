@@ -1,6 +1,7 @@
 """
 --- Day 12: JSAbacusFramework.io ---
 """
+
 import re
 import json
 from aocd import get_data

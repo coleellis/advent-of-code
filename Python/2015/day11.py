@@ -1,6 +1,7 @@
 """
 --- Day 11: Corporate Policy ---
 """
+
 import re
 from aocd import get_data
 

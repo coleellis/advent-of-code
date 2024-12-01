@@ -1,6 +1,7 @@
 """
 --- Day 14: Regolith Reservoir ---
 """
+
 from aocd import get_data
 
 stream = get_data(day=14, year=2022).splitlines()

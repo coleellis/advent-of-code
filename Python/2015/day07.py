@@ -1,6 +1,7 @@
 """
 --- Day 7: Some Assembly Required ---
 """
+
 from aocd import get_data
 
 stream = get_data(day=7, year=2015).splitlines()

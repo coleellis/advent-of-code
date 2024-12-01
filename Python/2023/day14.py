@@ -1,6 +1,7 @@
 """
 --- Day 14: Parabolic Reflector Dish ---
 """
+
 from aocd import get_data
 import numpy as np
 

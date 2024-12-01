@@ -1,6 +1,7 @@
 """
 --- Day 18: Like a GIF For Your Yard ---
 """
+
 from aocd import get_data
 
 stream = get_data(day=18, year=2015).splitlines()

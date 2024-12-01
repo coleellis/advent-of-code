@@ -1,6 +1,7 @@
 """
 --- Day 19: Aplenty ---
 """
+
 import re
 from functools import reduce
 from math import prod

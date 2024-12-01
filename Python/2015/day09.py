@@ -1,6 +1,7 @@
 """
 --- Day 9: All in a Single Night ---
 """
+
 from aocd import get_data
 
 stream = get_data(day=9, year=2015).splitlines()

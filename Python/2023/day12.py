@@ -1,6 +1,7 @@
 """
 --- Day 12: Hot Springs ---
 """
+
 from aocd import get_data
 
 stream = get_data(day=12, year=2023).splitlines()

@@ -150,7 +150,8 @@ void dprint(const int* a, const size_t n)
     printf("\n");
 }
 
-void lprint(const long* a, const size_t n) {
+void lprint(const long* a, const size_t n)
+{
     for (size_t i = 0; i < n; ++i)
         printf("%ld ", a[i]);
     printf("\n");

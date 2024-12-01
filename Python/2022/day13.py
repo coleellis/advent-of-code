@@ -1,6 +1,7 @@
 """
 --- Day 13: Distress Signal ---
 """
+
 from itertools import zip_longest
 from aocd import get_data
 

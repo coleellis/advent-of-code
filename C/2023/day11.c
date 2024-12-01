@@ -11,21 +11,23 @@ typedef struct Point {
 Point* points = NULL;
 size_t npoints = 0;
 
-void get_data(FILE* fp) {
+void get_data(FILE* fp)
+{
     size_t n = 0;
     char** lines = readlines(fp, &n);
     for (size_t i = 0; i < n; ++i) {
         for (size_t j = 0; j < strlen(strip(lines[i])); ++j) {
             if (lines[i][j] == '#') {
                 points = realloc(points, ++npoints * sizeof(Point));
-                points[npoints - 1] = (Point){j, i};
+                points[npoints - 1] = (Point) { j, i };
             }
         }
     }
     free(lines);
 }
 
-Point* scale(FILE* fp, const long dup) {
+Point* scale(FILE* fp, const long dup)
+{
     fseek(fp, 0, SEEK_SET);
     size_t n = 0;
     char** lines = readlines(fp, &n);
@@ -61,14 +63,15 @@ Point* scale(FILE* fp, const long dup) {
         for (size_t j = 0; j < ncol; ++j)
             if (cols && points[i].x > cols[j])
                 ++c_inc;
-        r[i] = (Point){points[i].x + c_inc * (dup - 1), points[i].y + r_inc * (dup - 1)};
+        r[i] = (Point) { points[i].x + c_inc * (dup - 1), points[i].y + r_inc * (dup - 1) };
     }
     free(rows);
     free(cols);
     return r;
 }
 
-long solve(FILE* fp, const long dup) {
+long solve(FILE* fp, const long dup)
+{
     const Point* pp = scale(fp, dup);
 
     size_t r = 0;

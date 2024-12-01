@@ -1,6 +1,7 @@
 """
 --- Day 3: Perfectly Spherical Houses in a Vacuum ---
 """
+
 from aocd import get_data
 
 stream = get_data(day=3, year=2015)

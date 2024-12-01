@@ -1,6 +1,7 @@
 """
 --- Day 10: Elves Look, Elves Say ---
 """
+
 import itertools
 from aocd import get_data
 
