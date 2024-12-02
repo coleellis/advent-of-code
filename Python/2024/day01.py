@@ -1,5 +1,5 @@
 """
---- Day 01: Historian Hysteria ---
+--- Day 1: Historian Hysteria ---
 """
 
 from aocd import get_data
