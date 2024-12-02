@@ -1,8 +1,16 @@
+# Configuration Directories
 .DS_Store
 .idea
 .vscode
+
+# Python ignores
+Python/**/.venv
+
+# C ignores
 C/.cache
-cmake-build-debug
-build
-**/_input
-**/test.txt
+C/cmake-build-debug
+C/.cmake-backup
+C/bin
+
+# Input files
+**/*.txt
