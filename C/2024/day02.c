@@ -35,7 +35,7 @@ bool safe(int *row, size_t len)
 int *tokenize(char *line, size_t *len)
 {
     size_t i = 0;
-    int *arr = calloc(++i, sizeof(int));
+    int   *arr = calloc(++i, sizeof(int));
 
     char *ptr;
     char *token = strtok_r(line, " ", &ptr);
@@ -84,10 +84,10 @@ int main(int argc, char **argv)
     }
 
     // Run through
-    char *line = NULL;
+    char  *line = NULL;
     size_t len;
-    int one = 0;
-    int two = 0;
+    int    one = 0;
+    int    two = 0;
     while (getline(&line, &len, fp) != -1)
     {
         // Part 1
