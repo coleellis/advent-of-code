@@ -1,6 +1,7 @@
 .DS_Store
 .idea
 .vscode
+C/.cache
 cmake-build-debug
 build
 **/_input
