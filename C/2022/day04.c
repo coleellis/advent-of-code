@@ -29,7 +29,7 @@ int two(FILE *fp)
     return c;
 }
 
-int main()
+int main(void)
 {
     FILE *fp = fopen("day04.txt", "r");
     if (!fp)

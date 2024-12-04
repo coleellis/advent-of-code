@@ -5,22 +5,22 @@
 
 typedef struct node
 {
-    int x, y, steps;
+    int          x, y, steps;
     struct node *next;
 } node;
 
 // Global variable declaration
 char *map[50];
 node *queue, *visited;
-int height, width;
+int   height, width;
 
 // Functions declarations
-int BFS(int x, int y);
-int inQueue(node const *curr);
-void free_memory(node *list);
-int getValue(int x, int y);
+int   BFS(int x, int y);
+int   inQueue(node const *curr);
+void  free_memory(node *list);
+int   getValue(int x, int y);
 node *buildNode(int x, int y, int steps);
-void enqueue(node **list, node *n);
+void  enqueue(node **list, node *n);
 
 int BFS(const int x, const int y)
 {

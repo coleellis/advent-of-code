@@ -34,7 +34,7 @@ long *solve(FILE *fp)
     char **lines = readlines(fp, &num_lines);
     for (size_t i = 0; i < num_lines; ++i)
     {
-        long *nums = longify(split(strip(lines[i]), " ", &items), items);
+        long       *nums = longify(split(strip(lines[i]), " ", &items), items);
         const long *r = recurse(nums, items);
         sol[0] += r[0];
         sol[1] += r[items + 1];
@@ -44,7 +44,7 @@ long *solve(FILE *fp)
     return sol;
 }
 
-int main()
+int main(void)
 {
     FILE *fp = fopen("day09.txt", "r");
     if (!fp)

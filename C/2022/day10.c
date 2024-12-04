@@ -4,11 +4,11 @@
 int one(FILE *fp)
 {
     size_t len;
-    char *line = NULL;
+    char  *line = NULL;
 
-    size_t cycles = 1;   // cycle counter
-    int keys[6] = { 0 }; // holds strengths at indices
-    int X = 1;           // register value of X
+    size_t cycles = 1;      // cycle counter
+    int    keys[6] = { 0 }; // holds strengths at indices
+    int    X = 1;           // register value of X
     while (getline(&line, &len, fp) != -1)
     {
         // check cycles
@@ -39,11 +39,11 @@ int one(FILE *fp)
 void two(FILE *fp)
 {
     size_t len;
-    char *line = NULL;
+    char  *line = NULL;
 
-    size_t cycles = 1;        // cycle counter
-    int X = 1;                // register value of X
-    char lights[240] = { 0 }; // array of lights
+    size_t cycles = 1;          // cycle counter
+    int    X = 1;               // register value of X
+    char   lights[240] = { 0 }; // array of lights
     while (getline(&line, &len, fp) != -1)
     {
         int position = (cycles - 1) % 40;
@@ -84,7 +84,7 @@ void two(FILE *fp)
     }
 }
 
-int main()
+int main(void)
 {
     FILE *fp = fopen("day10.txt", "r");
     if (!fp)

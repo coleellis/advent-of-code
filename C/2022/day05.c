@@ -4,13 +4,13 @@
 char *one(FILE *fp)
 {
     // prep the input
-    char *line = NULL;
+    char   *line = NULL;
     ssize_t read;
-    size_t len = 0;
+    size_t  len = 0;
 
     // read until the newline
     size_t des_line = 0;
-    int num_stacks = 0;
+    int    num_stacks = 0;
     while ((read = getline(&line, &len, fp)) != 1)
     {
         // our desired line guaranteed starts with a space
@@ -18,7 +18,7 @@ char *one(FILE *fp)
         {
             // get the number of stacks
             size_t num_idx = 0;
-            char *num = malloc(3 * sizeof(char));
+            char  *num = malloc(3 * sizeof(char));
             for (int idx = read - 2; line[idx] != ' '; --idx)
                 num[num_idx++] = line[idx];
             num_stacks = atoi(num);
@@ -83,7 +83,7 @@ char *one(FILE *fp)
 
         // get first number
         size_t num_idx = 0;
-        char *num = malloc(3 * sizeof(char));
+        char  *num = malloc(3 * sizeof(char));
         for (; line[idx] != ' '; ++idx)
             num[num_idx++] = line[idx];
         const size_t moving = atoi(num);
@@ -136,13 +136,13 @@ char *one(FILE *fp)
 char *two(FILE *fp)
 {
     // prep the input
-    char *line = NULL;
+    char   *line = NULL;
     ssize_t read;
-    size_t len = 0;
+    size_t  len = 0;
 
     // read until the newline
     size_t des_line = 0;
-    int num_stacks = 0;
+    int    num_stacks = 0;
     while ((read = getline(&line, &len, fp)) != 1)
     {
         // our desired line guaranteed starts with a space
@@ -150,7 +150,7 @@ char *two(FILE *fp)
         {
             // get the number of stacks
             size_t num_idx = 0;
-            char *num = malloc(3 * sizeof(char));
+            char  *num = malloc(3 * sizeof(char));
             for (int idx = read - 2; line[idx] != ' '; --idx)
                 num[num_idx++] = line[idx];
             num_stacks = atoi(num);
@@ -212,7 +212,7 @@ char *two(FILE *fp)
 
         // get first number
         size_t num_idx = 0;
-        char *num = malloc(3 * sizeof(char));
+        char  *num = malloc(3 * sizeof(char));
         for (; line[idx] != ' '; ++idx)
             num[num_idx++] = line[idx];
         const size_t moving = atoi(num);
@@ -264,7 +264,7 @@ char *two(FILE *fp)
     return ret;
 }
 
-int main()
+int main(void)
 {
     FILE *fp = fopen("day05.txt", "r");
     if (!fp)

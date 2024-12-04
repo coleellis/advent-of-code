@@ -9,7 +9,7 @@ int isInt(const char c)
 
 int one(FILE *fp)
 {
-    char *line = NULL;
+    char  *line = NULL;
     size_t len;
 
     int t = 0;
@@ -40,7 +40,7 @@ typedef struct map
 {
     char *first;
     char *last;
-    int i;
+    int   i;
 } map;
 
 int first(const void *a, const void *b)
@@ -55,10 +55,10 @@ int last(const void *a, const void *b)
 int two(FILE *fp)
 {
     // starter pack
-    char *s[9] = { "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
-    char *line = NULL;
+    char  *s[9] = { "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+    char  *line = NULL;
     size_t len;
-    int t = 0;
+    int    t = 0;
 
     while (getline(&line, &len, fp) != -1)
     {
@@ -112,7 +112,7 @@ int two(FILE *fp)
     return t;
 }
 
-int main()
+int main(void)
 {
     FILE *fp = fopen("day01.txt", "r");
     if (!fp)

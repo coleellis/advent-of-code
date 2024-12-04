@@ -58,7 +58,7 @@ def c_write():
         f.write("\treturn 0;\n")
         f.write("}\n")
         f.write("\n")
-        f.write("int main()\n")
+        f.write("int main(void)\n")
         f.write("{\n")
         f.write(f'\tFILE *fp = fopen("d{ay}.txt", "r");\n')
         f.write("\tif (!fp)\n")

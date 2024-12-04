@@ -3,11 +3,11 @@
 #include <stdlib.h>
 #include <string.h>
 
-size_t nlines = 0;
+size_t  nlines = 0;
 char ***vert = NULL;
 char ***winning = NULL;
 char ***given = NULL;
-size_t n_given = 0, n_win = 0;
+size_t  n_given = 0, n_win = 0;
 
 void get_data(FILE *fp)
 {
@@ -26,7 +26,7 @@ void get_data(FILE *fp)
     free(lines);
 }
 
-void free_data()
+void free_data(void)
 {
     for (size_t n = 0; n < nlines; ++n)
     {
@@ -39,12 +39,12 @@ void free_data()
     free(given);
 }
 
-int one()
+int one(void)
 {
     int one = 0;
     for (size_t n = 0; n < nlines; ++n)
     {
-        int card = 0;
+        int    card = 0;
         char **w = winning[n], **g = given[n];
         for (size_t i = 0; i < n_given; ++i)
         {
@@ -62,7 +62,7 @@ int one()
     return one;
 }
 
-int two()
+int two(void)
 {
     // make an array of card counts
     int *cards = malloc(nlines * sizeof(int));
@@ -72,7 +72,7 @@ int two()
     int two = 0;
     for (size_t n = 0; n < nlines; ++n)
     {
-        int card = 0;
+        int    card = 0;
         char **w = winning[n], **g = given[n];
         for (size_t i = 0; i < n_given; i++)
         {
@@ -94,7 +94,7 @@ int two()
     return two;
 }
 
-int main()
+int main(void)
 {
     FILE *fp = fopen("day04.txt", "r");
     if (!fp)

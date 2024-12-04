@@ -4,8 +4,8 @@
 
 int one(FILE *fp)
 {
-    char *line = NULL;
-    size_t len = 0;
+    char   *line = NULL;
+    size_t  len = 0;
     ssize_t read;
 
     // initialize array
@@ -48,12 +48,12 @@ int compare(const void *a, const void *b)
 
 int two(FILE *fp)
 {
-    char *line = NULL;
-    size_t len = 0;
+    char   *line = NULL;
+    size_t  len = 0;
     ssize_t read;
 
     // initialize array
-    int totals[1000] = { 0 };
+    int      totals[1000] = { 0 };
     uint16_t i = 0;
     uint32_t sum = 0;
 
@@ -82,7 +82,7 @@ int two(FILE *fp)
     return totals[0] + totals[1] + totals[2];
 }
 
-int main()
+int main(void)
 {
     FILE *fp = fopen("day01.txt", "r");
     if (!fp)

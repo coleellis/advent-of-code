@@ -35,7 +35,7 @@ Point *scale(FILE *fp, const long dup)
     fseek(fp, 0, SEEK_SET);
     size_t n = 0;
     char **lines = readlines(fp, &n);
-    long *rows = NULL, *cols = NULL;
+    long  *rows = NULL, *cols = NULL;
     size_t nrow = 0, ncol = 0;
     // check for empty horizontal lines
     for (size_t i = 0; i < n; ++i)
@@ -92,7 +92,7 @@ long solve(FILE *fp, const long dup)
     return r;
 }
 
-int main()
+int main(void)
 {
     FILE *fp = fopen("day11.txt", "r");
     if (!fp)

@@ -3,9 +3,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-int *times = NULL;
+int   *times = NULL;
 size_t items = 0;
-int *dists = NULL;
+int   *dists = NULL;
 
 void get_data(FILE *fp)
 {
@@ -30,7 +30,7 @@ int one()
     for (size_t i = 0; i < items; ++i)
     {
         const int t = times[i], d = dists[i];
-        long w = 0;
+        long      w = 0;
         for (int j = 0; j < t; ++j)
         {
             if (j * (t - j) > d)
@@ -63,7 +63,7 @@ long two()
     return two;
 }
 
-int main()
+int main(void)
 {
     FILE *fp = fopen("day06.txt", "r");
     if (!fp)

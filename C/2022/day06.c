@@ -23,8 +23,8 @@ int unique(char *string, size_t length)
 int solve(FILE *fp, int strlen)
 {
     // prep the input
-    char *line = NULL;
-    size_t len;
+    char         *line = NULL;
+    size_t        len;
     const ssize_t read = getline(&line, &len, fp);
 
     // parse the file
@@ -50,7 +50,7 @@ int solve(FILE *fp, int strlen)
     return -1;
 }
 
-int main()
+int main(void)
 {
     FILE *fp = fopen("day06.txt", "r");
     if (!fp)

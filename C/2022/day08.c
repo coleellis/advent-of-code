@@ -10,9 +10,9 @@ enum Visible
 int one(FILE *fp)
 {
     // prep file
-    char *line = NULL;
+    char   *line = NULL;
     ssize_t read;
-    size_t len;
+    size_t  len;
 
     // get the size of the file
     size_t rows = 0;
@@ -123,9 +123,9 @@ int one(FILE *fp)
 int two(FILE *fp)
 {
     // prep file
-    char *line = NULL;
+    char   *line = NULL;
     ssize_t read;
-    size_t len;
+    size_t  len;
 
     // get the size of the file
     size_t rows = 0;
@@ -158,7 +158,7 @@ int two(FILE *fp)
         for (size_t col = 1; col < cols - 1; ++col)
         {
             const char height = grid[row][col];
-            size_t point_score = 1;
+            size_t     point_score = 1;
 
             // check the up direction
             size_t up_score = 1;
@@ -215,7 +215,7 @@ int two(FILE *fp)
     return max_score;
 }
 
-int main()
+int main(void)
 {
     FILE *fp = fopen("day08.txt", "r");
     if (!fp)

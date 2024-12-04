@@ -5,7 +5,7 @@
 int one(FILE *fp)
 {
     // initialize reader variables
-    char *line = NULL;
+    char  *line = NULL;
     size_t len = 0;
 
     // read the file
@@ -46,7 +46,7 @@ int one(FILE *fp)
 int two(FILE *fp)
 {
     // initialize reader variables
-    char *line = NULL;
+    char  *line = NULL;
     size_t len = 0;
 
     // read the file

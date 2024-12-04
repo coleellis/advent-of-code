@@ -59,7 +59,7 @@ int equal(const Point a, const Point b)
 
 int one(FILE *fp)
 {
-    char *line = NULL;
+    char  *line = NULL;
     size_t len = 0;
 
     // head and tail positions
@@ -196,7 +196,7 @@ Point adjust(const Point head, Point tail)
 
 int two(FILE *fp)
 {
-    char *line = NULL;
+    char  *line = NULL;
     size_t len = 0;
 
     // build the chain
@@ -261,7 +261,7 @@ int two(FILE *fp)
     return visited;
 }
 
-int main()
+int main(void)
 {
     // Get input file
     FILE *fp = fopen("day09.txt", "r");

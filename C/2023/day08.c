@@ -11,8 +11,8 @@ typedef struct
     char r[4];
 } Node;
 
-char *generator = NULL;
-Node *tree = NULL;
+char  *generator = NULL;
+Node  *tree = NULL;
 size_t e = 0;
 
 Node *get(const char *k)
@@ -70,7 +70,7 @@ long parse(char **s, long l)
     return lcm(k, l);
 }
 
-int main()
+int main(void)
 {
     FILE *fp = fopen("day08.txt", "r");
     if (!fp)

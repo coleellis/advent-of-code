@@ -52,7 +52,7 @@ int getgears(const int x, const int y)
 long one(FILE *fp)
 {
     char buf[145];
-    int x = 0;
+    int  x = 0;
     while (fgets(buf, 145, fp) != NULL)
     {
         buf[140] = '\0';
@@ -70,7 +70,7 @@ long one(FILE *fp)
 long two(FILE *fp)
 {
     char buf[145];
-    int x = 0;
+    int  x = 0;
     while (fgets(buf, 145, fp) != NULL)
     {
         buf[140] = '\0';
@@ -85,7 +85,7 @@ long two(FILE *fp)
     return two;
 }
 
-int main()
+int main(void)
 {
     FILE *fp = fopen("day03.txt", "r");
     if (fp == NULL)

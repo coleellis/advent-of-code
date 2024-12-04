@@ -8,7 +8,7 @@
 typedef struct Map
 {
     int *k;
-    int v;
+    int  v;
 } Map;
 
 int c_map(const void *a, const void *b)
@@ -88,14 +88,14 @@ int *two(const char *h)
 {
     const size_t l = strlen(h);
     // get indices for each char
-    int indices[l];
+    int    indices[l];
     size_t ns;
     for (size_t i = 0; i < l; ++i)
         indices[i] = indexOf("J23456789TXQKA", h[i]);
 
     // get the best hand based on the joker wildcard
     const char *p = "J23456789TQKA";
-    int **list = malloc(1000 * sizeof(int *));
+    int       **list = malloc(1000 * sizeof(int *));
     for (ns = 0; ns < strlen(p); ++ns)
         list[ns] = one(replace(h, 'J', p[ns]));
     list = realloc(list, ns * sizeof(int *));
@@ -111,7 +111,7 @@ int *two(const char *h)
     return ret;
 }
 
-int main()
+int main(void)
 {
     FILE *fp = fopen("day07.txt", "r");
     if (!fp)

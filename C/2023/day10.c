@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-int main()
+int main(void)
 {
     FILE *fp = fopen("day10.txt", "r");
     if (!fp)
