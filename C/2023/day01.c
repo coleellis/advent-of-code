@@ -66,7 +66,7 @@ int two(FILE *fp)
         map *n = malloc(9 * sizeof(map));
         for (int i = 0; i < 9; ++i)
         {
-            n[i] = (map) { strstr(line, s[i]), strstr(line, s[i]), i + 1 };
+            n[i]     = (map) { strstr(line, s[i]), strstr(line, s[i]), i + 1 };
             char *re = n[i].last;
             while (re != NULL)
             {

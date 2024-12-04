@@ -47,12 +47,12 @@ int BFS(const int x, const int y)
 
         // Remove node from the queue
         node *current = queue;
-        queue = queue->next;
+        queue         = queue->next;
         current->next = NULL;
 
         // Add current node to the visited queue
         current->next = visited;
-        visited = current;
+        visited       = current;
 
         // Find neighbors
         for (int i = 0; i < 4; i++)
@@ -115,7 +115,7 @@ void free_memory(node *list)
     while (list)
     {
         node *temp = list;
-        list = list->next;
+        list       = list->next;
         free(temp);
     }
 }
@@ -136,11 +136,11 @@ int getValue(const int x, const int y)
 
 node *buildNode(const int x, const int y, const int steps)
 {
-    node *new_node = malloc(sizeof(node));
-    new_node->x = x;
-    new_node->y = y;
+    node *new_node  = malloc(sizeof(node));
+    new_node->x     = x;
+    new_node->y     = y;
     new_node->steps = steps;
-    new_node->next = NULL;
+    new_node->next  = NULL;
     return new_node;
 }
 
@@ -171,7 +171,7 @@ int main(void)
     }
 
     // Read data for file
-    int index = 0;
+    int index  = 0;
     map[index] = malloc(100);
     while (fscanf(file, "%s", map[index]) != EOF)
     {
@@ -180,7 +180,7 @@ int main(void)
 
     // Declare height and width of the heightmap
     height = index;
-    width = strlen(map[0]);
+    width  = strlen(map[0]);
 
     // Find Starting coordinates and calculate shortest path
     int part1 = INT_MAX;

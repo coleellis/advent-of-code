@@ -6,7 +6,7 @@
 bool safe(int *row, size_t len)
 {
     bool safe = true;
-    bool inc = true;
+    bool inc  = true;
 
     for (size_t i = 0; i < len - 1; ++i)
     {
@@ -34,7 +34,7 @@ bool safe(int *row, size_t len)
 
 int *tokenize(char *line, size_t *len)
 {
-    size_t i = 0;
+    size_t i   = 0;
     int   *arr = calloc(++i, sizeof(int));
 
     char *ptr;
@@ -42,11 +42,11 @@ int *tokenize(char *line, size_t *len)
     while (token)
     {
         // Get number
-        long num = strtol(token, NULL, 10);
+        long num   = strtol(token, NULL, 10);
         arr[i - 1] = (int)num;
 
         // Resize and get next
-        arr = realloc(arr, (++i) * sizeof(int));
+        arr   = realloc(arr, (++i) * sizeof(int));
         token = strtok_r(NULL, " ", &ptr);
     }
 

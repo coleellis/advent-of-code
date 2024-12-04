@@ -6,7 +6,7 @@ int one(FILE *fp)
 {
     // Initialize reader variables
     char  *line = NULL;
-    size_t len = 0;
+    size_t len  = 0;
 
     // Read the file
     int total_score = 0;
@@ -47,7 +47,7 @@ int two(FILE *fp)
 {
     // Initialize reader variables
     char  *line = NULL;
-    size_t len = 0;
+    size_t len  = 0;
 
     // Read the file
     int total_score = 0;

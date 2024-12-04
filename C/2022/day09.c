@@ -17,14 +17,14 @@ typedef struct Vector
 Vector build_vector(const Point head, const Point tail)
 {
     Vector *ret = malloc(sizeof(Vector));
-    ret->x = head.x - tail.x;
-    ret->y = head.y - tail.y;
+    ret->x      = head.x - tail.x;
+    ret->y      = head.y - tail.y;
     return *ret;
 }
 
 int compare(const void *a, const void *b)
 {
-    Point const *first = (Point *)a;
+    Point const *first  = (Point *)a;
     Point const *second = (Point *)b;
 
     if (first->x < second->x)
@@ -45,9 +45,9 @@ int compare(const void *a, const void *b)
 int toInt(const char first, const char second)
 {
     char *string = calloc(2, sizeof(char));
-    string[0] = first;
-    string[1] = second;
-    int ret = atoi(string);
+    string[0]    = first;
+    string[1]    = second;
+    int ret      = atoi(string);
     free(string);
     return ret;
 }
@@ -60,7 +60,7 @@ int equal(const Point a, const Point b)
 int one(FILE *fp)
 {
     char  *line = NULL;
-    size_t len = 0;
+    size_t len  = 0;
 
     // Head and tail positions
     Point head = Point_default;
@@ -197,7 +197,7 @@ Point adjust(const Point head, Point tail)
 int two(FILE *fp)
 {
     char  *line = NULL;
-    size_t len = 0;
+    size_t len  = 0;
 
     // Build the chain
     Point *chain = malloc(10 * sizeof(Point));

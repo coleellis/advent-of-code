@@ -10,9 +10,9 @@ int   *dists = NULL;
 void get_data(FILE *fp)
 {
     char **lines = readlines(fp, NULL);
-    char **t = split(strip(split(lines[0], ":", NULL)[1]), " ", &items);
-    char **d = split(strip(split(lines[1], ":", NULL)[1]), " ", &items);
-    times = malloc(items * sizeof(int));
+    char **t     = split(strip(split(lines[0], ":", NULL)[1]), " ", &items);
+    char **d     = split(strip(split(lines[1], ":", NULL)[1]), " ", &items);
+    times        = malloc(items * sizeof(int));
     for (size_t i = 0; i < items; ++i)
         times[i] = atoi(t[i]);
     dists = malloc(items * sizeof(int));
