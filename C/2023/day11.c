@@ -9,12 +9,12 @@ typedef struct Point
     long y;
 } Point;
 
-Point *points = NULL;
+Point *points  = NULL;
 size_t npoints = 0;
 
 void get_data(FILE *fp)
 {
-    size_t n = 0;
+    size_t n     = 0;
     char **lines = readlines(fp, &n);
     for (size_t i = 0; i < n; ++i)
     {
@@ -22,7 +22,7 @@ void get_data(FILE *fp)
         {
             if (lines[i][j] == '#')
             {
-                points = realloc(points, ++npoints * sizeof(Point));
+                points              = realloc(points, ++npoints * sizeof(Point));
                 points[npoints - 1] = (Point) { j, i };
             }
         }
@@ -33,7 +33,7 @@ void get_data(FILE *fp)
 Point *scale(FILE *fp, const long dup)
 {
     fseek(fp, 0, SEEK_SET);
-    size_t n = 0;
+    size_t n     = 0;
     char **lines = readlines(fp, &n);
     long  *rows = NULL, *cols = NULL;
     size_t nrow = 0, ncol = 0;
@@ -42,7 +42,7 @@ Point *scale(FILE *fp, const long dup)
     {
         if (indexOf(lines[i], '#') == -1)
         {
-            rows = realloc(rows, sizeof(long) * (++nrow));
+            rows           = realloc(rows, sizeof(long) * (++nrow));
             rows[nrow - 1] = i;
         }
     }
@@ -60,7 +60,7 @@ Point *scale(FILE *fp, const long dup)
         }
         if (empty)
         {
-            cols = realloc(cols, sizeof(long) * (++ncol));
+            cols           = realloc(cols, sizeof(long) * (++ncol));
             cols[ncol - 1] = i;
         }
     }

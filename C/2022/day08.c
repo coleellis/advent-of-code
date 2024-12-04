@@ -52,7 +52,7 @@ int one(FILE *fp)
     {
         char tallest = grid[i][0];
 
-        vis[i][0] = VISIBLE;
+        vis[i][0]        = VISIBLE;
         vis[i][cols - 1] = VISIBLE;
 
         // Run the rows forward
@@ -80,7 +80,7 @@ int one(FILE *fp)
     {
         char tallest = grid[0][j];
 
-        vis[0][j] = VISIBLE;
+        vis[0][j]        = VISIBLE;
         vis[rows - 1][j] = VISIBLE;
 
         // Run the rows forward
@@ -157,7 +157,7 @@ int two(FILE *fp)
     {
         for (size_t col = 1; col < cols - 1; ++col)
         {
-            const char height = grid[row][col];
+            const char height      = grid[row][col];
             size_t     point_score = 1;
 
             // Check the up direction

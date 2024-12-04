@@ -3,24 +3,24 @@
 #include <stdlib.h>
 #include <string.h>
 
-size_t  nlines = 0;
-char ***vert = NULL;
+size_t  nlines  = 0;
+char ***vert    = NULL;
 char ***winning = NULL;
-char ***given = NULL;
+char ***given   = NULL;
 size_t  n_given = 0, n_win = 0;
 
 void get_data(FILE *fp)
 {
     char **lines = readlines(fp, &nlines);
-    vert = malloc(nlines * sizeof(char **));
-    winning = malloc(nlines * sizeof(char **));
-    given = malloc(nlines * sizeof(char **));
+    vert         = malloc(nlines * sizeof(char **));
+    winning      = malloc(nlines * sizeof(char **));
+    given        = malloc(nlines * sizeof(char **));
 
     for (size_t n = 0; n < nlines; ++n)
     {
-        vert[n] = split(lines[n], "|", NULL);
+        vert[n]    = split(lines[n], "|", NULL);
         winning[n] = split(strip(split(vert[n][0], ":", NULL)[1]), " ", &n_win);
-        given[n] = split(strip(vert[n][1]), " ", &n_given);
+        given[n]   = split(strip(vert[n][1]), " ", &n_given);
     }
 
     free(lines);

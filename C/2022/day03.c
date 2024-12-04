@@ -69,9 +69,9 @@ int one(FILE *fp)
 int two(FILE *fp)
 {
     // Prep the input
-    char   *first = NULL;
+    char   *first  = NULL;
     char   *second = NULL;
-    char   *third = NULL;
+    char   *third  = NULL;
     ssize_t f_read;
     size_t  len = 0;
 

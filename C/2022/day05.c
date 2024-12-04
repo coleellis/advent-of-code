@@ -9,7 +9,7 @@ char *one(FILE *fp)
     size_t  len = 0;
 
     // Read until the newline
-    size_t des_line = 0;
+    size_t des_line   = 0;
     int    num_stacks = 0;
     while ((read = getline(&line, &len, fp)) != 1)
     {
@@ -18,7 +18,7 @@ char *one(FILE *fp)
         {
             // Get the number of stacks
             size_t num_idx = 0;
-            char  *num = malloc(3 * sizeof(char));
+            char  *num     = malloc(3 * sizeof(char));
             for (int idx = read - 2; line[idx] != ' '; --idx)
                 num[num_idx++] = line[idx];
             num_stacks = atoi(num);
@@ -83,7 +83,7 @@ char *one(FILE *fp)
 
         // Get first number
         size_t num_idx = 0;
-        char  *num = malloc(3 * sizeof(char));
+        char  *num     = malloc(3 * sizeof(char));
         for (; line[idx] != ' '; ++idx)
             num[num_idx++] = line[idx];
         const size_t moving = atoi(num);
@@ -95,7 +95,7 @@ char *one(FILE *fp)
 
         // Get second number
         num_idx = 0;
-        num = malloc(3 * sizeof(char));
+        num     = malloc(3 * sizeof(char));
         for (; line[idx] != ' '; ++idx)
             num[num_idx++] = line[idx];
         const size_t origin = atoi(num) - 1;
@@ -107,7 +107,7 @@ char *one(FILE *fp)
 
         // Get third number
         num_idx = 0;
-        num = malloc(3 * sizeof(char));
+        num     = malloc(3 * sizeof(char));
         for (; line[idx] != '\n'; ++idx)
             num[num_idx++] = line[idx];
         const size_t destination = atoi(num) - 1;
@@ -141,7 +141,7 @@ char *two(FILE *fp)
     size_t  len = 0;
 
     // Read until the newline
-    size_t des_line = 0;
+    size_t des_line   = 0;
     int    num_stacks = 0;
     while ((read = getline(&line, &len, fp)) != 1)
     {
@@ -150,7 +150,7 @@ char *two(FILE *fp)
         {
             // Get the number of stacks
             size_t num_idx = 0;
-            char  *num = malloc(3 * sizeof(char));
+            char  *num     = malloc(3 * sizeof(char));
             for (int idx = read - 2; line[idx] != ' '; --idx)
                 num[num_idx++] = line[idx];
             num_stacks = atoi(num);
@@ -212,7 +212,7 @@ char *two(FILE *fp)
 
         // Get first number
         size_t num_idx = 0;
-        char  *num = malloc(3 * sizeof(char));
+        char  *num     = malloc(3 * sizeof(char));
         for (; line[idx] != ' '; ++idx)
             num[num_idx++] = line[idx];
         const size_t moving = atoi(num);
@@ -224,7 +224,7 @@ char *two(FILE *fp)
 
         // Get second number
         num_idx = 0;
-        num = malloc(3 * sizeof(char));
+        num     = malloc(3 * sizeof(char));
         for (; line[idx] != ' '; ++idx)
             num[num_idx++] = line[idx];
         const size_t origin = atoi(num) - 1;
@@ -236,7 +236,7 @@ char *two(FILE *fp)
 
         // Get third number
         num_idx = 0;
-        num = malloc(3 * sizeof(char));
+        num     = malloc(3 * sizeof(char));
         for (; line[idx] != '\n'; ++idx)
             num[num_idx++] = line[idx];
         const size_t destination = atoi(num) - 1;
