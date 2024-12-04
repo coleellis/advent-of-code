@@ -5,25 +5,28 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct Max {
+typedef struct Max
+{
     int r;
     int g;
     int b;
 } Max;
 
-int one(FILE* fp)
+int one(FILE *fp)
 {
     int total = 0, n;
     char buf[128];
 
     // get kv-pairs with colon
-    while (fscanf(fp, "%s %d:", buf, &n) == 2) {
+    while (fscanf(fp, "%s %d:", buf, &n) == 2)
+    {
         const Max m = { 12, 13, 14 };
         int i, x = 0;
         char v[128];
 
         // get kv-pairs
-        while (fscanf(fp, "%d %s", &i, v) == 2) {
+        while (fscanf(fp, "%d %s", &i, v) == 2)
+        {
             int pass = 1;
             if (strstr(v, "red") != NULL && i > m.r)
                 pass = 0;
@@ -42,18 +45,20 @@ int one(FILE* fp)
     return total;
 }
 
-int two(FILE* fp)
+int two(FILE *fp)
 {
     int total = 0, n;
     char buf[128];
 
     // get pairs with colon after
-    while (fscanf(fp, "%s %d:", buf, &n) == 2) {
+    while (fscanf(fp, "%s %d:", buf, &n) == 2)
+    {
         Max m = { 0, 0, 0 };
         int i;
         char v[128];
         // get key/values
-        while (fscanf(fp, "%d %s", &i, v) == 2) {
+        while (fscanf(fp, "%d %s", &i, v) == 2)
+        {
             // find red/blue/green
             if (strstr(v, "red") != NULL && i > m.r)
                 m.r = MAX(i, m.r);
@@ -69,8 +74,9 @@ int two(FILE* fp)
 
 int main()
 {
-    FILE* fp = fopen("day02.txt", "r");
-    if (!fp) {
+    FILE *fp = fopen("day02.txt", "r");
+    if (!fp)
+    {
         printf("Bad file read\n");
         exit(EXIT_FAILURE);
     }

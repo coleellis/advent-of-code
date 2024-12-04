@@ -34,7 +34,8 @@ int getgears(const int x, const int y)
     int sum = 0;
     for (int j = x - 1; j < x + 2; ++j)
         for (int k = y - 1; k < y + 2; ++k)
-            if (isdigit(grid[j][k])) {
+            if (isdigit(grid[j][k]))
+            {
                 if (nums == 0)
                     sum += getnumber(j, k);
                 else if (nums == 1)
@@ -48,11 +49,12 @@ int getgears(const int x, const int y)
     return sum;
 }
 
-long one(FILE* fp)
+long one(FILE *fp)
 {
     char buf[145];
     int x = 0;
-    while (fgets(buf, 145, fp) != NULL) {
+    while (fgets(buf, 145, fp) != NULL)
+    {
         buf[140] = '\0';
         strcpy(grid[++x] + 1, buf);
     }
@@ -65,11 +67,12 @@ long one(FILE* fp)
     return one;
 }
 
-long two(FILE* fp)
+long two(FILE *fp)
 {
     char buf[145];
     int x = 0;
-    while (fgets(buf, 145, fp) != NULL) {
+    while (fgets(buf, 145, fp) != NULL)
+    {
         buf[140] = '\0';
         strcpy(grid[++x] + 1, buf);
     }
@@ -84,8 +87,9 @@ long two(FILE* fp)
 
 int main()
 {
-    FILE* fp = fopen("day03.txt", "r");
-    if (fp == NULL) {
+    FILE *fp = fopen("day03.txt", "r");
+    if (fp == NULL)
+    {
         printf("error opening file\n");
         return 1;
     }
