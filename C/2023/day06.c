@@ -24,7 +24,7 @@ void get_data(FILE *fp)
     free(d);
 }
 
-int one()
+int one(void)
 {
     int one = 1;
     for (size_t i = 0; i < items; ++i)
@@ -41,7 +41,7 @@ int one()
     return one;
 }
 
-long two()
+long two(void)
 {
     char tstr[20] = "", dstr[20] = "";
     for (size_t i = 0; i < items; ++i)

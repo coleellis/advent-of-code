@@ -37,7 +37,7 @@ Point *scale(FILE *fp, const long dup)
     char **lines = readlines(fp, &n);
     long  *rows = NULL, *cols = NULL;
     size_t nrow = 0, ncol = 0;
-    // check for empty horizontal lines
+    // Check for empty horizontal lines
     for (size_t i = 0; i < n; ++i)
     {
         if (indexOf(lines[i], '#') == -1)
@@ -46,7 +46,7 @@ Point *scale(FILE *fp, const long dup)
             rows[nrow - 1] = i;
         }
     }
-    // check for empty vertical lines
+    // Check for empty vertical lines
     for (size_t i = 0; i < strlen(strip(lines[0])); ++i)
     {
         int empty = 1;

@@ -17,11 +17,11 @@ n = [0 for _ in m]
 for zz in range(10000):
     for a, l in enumerate(data):
         for i in range(len(m[a])):
-            # inspection
+            # Inspection
             n[a] += 1
             w = m[a][0]
             m[a].pop(0)
-            # operation
+            # Operation
             op = l[2].strip().split()[-2]
             r = l[2].strip().split()[-1]
             r = w if r == "old" else int(r)
@@ -29,9 +29,9 @@ for zz in range(10000):
                 w += r
             else:
                 w *= r
-            # boredom
+            # Boredom
             w //= 3
-            # testing
+            # Testing
             f = l[3].strip().split()[-1]
             if w % int(f) == 0:
                 m[int(l[4].strip().split()[-1])].append(w)

@@ -31,7 +31,7 @@ def parse(starts):
     n = {}
     i = 0
     while len(list(n.keys())) != len(starts):
-        for k in range(len(starts)):
+        for k, _ in enumerate(starts):
             if starts[k][-1] == "Z":
                 n[k] = i
             if repeater[i % len(repeater)] == "R":

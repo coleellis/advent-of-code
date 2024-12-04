@@ -4,20 +4,20 @@
 
 long *recurse(long *list, const size_t num)
 {
-    // base case -- list contains all zeros
+    // Base case -- list contains all zeros
     int empty = 1;
     for (size_t i = 0; i < num; ++i)
         empty &= list[i] == 0;
     if (empty)
         return list;
 
-    // allocate memory to pass difference list to next iteration
+    // Allocate memory to pass difference list to next iteration
     long *pass = malloc((num - 1) * sizeof(long));
     for (size_t i = 0; i < num - 1; ++i)
         pass[i] = list[i + 1] - list[i];
     const long *back = recurse(pass, num - 1);
 
-    // append the first and last elements
+    // Append the first and last elements
     long *r = malloc((num + 2) * sizeof(long));
     for (size_t i = 0; i < num; ++i)
         r[i + 1] = list[i];
@@ -29,7 +29,7 @@ long *recurse(long *list, const size_t num)
 long *solve(FILE *fp)
 {
     long *sol = calloc(2, sizeof(long));
-    // get the data
+    // Get the data
     size_t num_lines, items;
     char **lines = readlines(fp, &num_lines);
     for (size_t i = 0; i < num_lines; ++i)

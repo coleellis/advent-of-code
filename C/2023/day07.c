@@ -36,24 +36,24 @@ const int types[7][5]
 int *one(const char *h)
 {
     const size_t l = strlen(h);
-    // get indices for each one
+    // Get indices for each one
     int indices[l];
     for (size_t i = 0; i < l; ++i)
         indices[i] = indexOf("J23456789TXQKA", h[i]);
 
-    // make a map of the number of instances of each char in the string
+    // Make a map of the number of instances of each char in the string
     int *m = calloc(ASCII_SIZE, sizeof(int));
     for (size_t i = 0; i < l; ++i)
         ++m[(int)h[i]];
 
-    // filter out the 0s
+    // Filter out the 0s
     qsort(m, ASCII_SIZE, sizeof(int), c_int);
     size_t ns = 0;
     while (m[ns] != 0)
         ++ns;
     m = rev(realloc(m, ns * sizeof(int)), ns);
 
-    // determine the type of hand
+    // Determine the type of hand
     int type = -1;
     for (size_t i = 0; i < 7; ++i)
     {
@@ -76,7 +76,7 @@ int *one(const char *h)
     }
     free(m);
 
-    // concatenate the type and the indices
+    // Concatenate the type and the indices
     int *ret = calloc((l + 1), sizeof(int));
     ret[0] = type;
     for (size_t i = 0; i < l + 1; ++i)
@@ -87,13 +87,13 @@ int *one(const char *h)
 int *two(const char *h)
 {
     const size_t l = strlen(h);
-    // get indices for each char
+    // Get indices for each char
     int    indices[l];
     size_t ns;
     for (size_t i = 0; i < l; ++i)
         indices[i] = indexOf("J23456789TXQKA", h[i]);
 
-    // get the best hand based on the joker wildcard
+    // Get the best hand based on the joker wildcard
     const char *p = "J23456789TQKA";
     int       **list = malloc(1000 * sizeof(int *));
     for (ns = 0; ns < strlen(p); ++ns)
@@ -101,7 +101,7 @@ int *two(const char *h)
     list = realloc(list, ns * sizeof(int *));
     qsort(list, ns, sizeof(int *), c_map);
 
-    // use the pre-replacement indices
+    // Use the pre-replacement indices
     int *ret = malloc((l + 1) * sizeof(int));
     ret[0] = list[ns - 1][0];
     for (size_t i = 0; i < l; ++i)
@@ -120,11 +120,11 @@ int main(void)
         exit(EXIT_FAILURE);
     }
 
-    // read the hands
+    // Read the hands
     size_t len;
     char **lines = readlines(fp, &len);
 
-    // parse the hands
+    // Parse the hands
     Map *first = malloc(len * sizeof(Map));
     Map *second = malloc(len * sizeof(Map));
     for (size_t i = 0; i < len; ++i)
@@ -134,11 +134,11 @@ int main(void)
         second[i] = (Map) { two(tokens[0]), atoi(tokens[1]) };
     }
 
-    // sort the hands
+    // Sort the hands
     qsort(first, len, sizeof(Map), c_map);
     qsort(second, len, sizeof(Map), c_map);
 
-    // get the total
+    // Get the total
     int f = 0, s = 0;
     for (size_t i = 0; i < len; ++i)
     {
@@ -148,7 +148,7 @@ int main(void)
     printf("ONE: %d\n", f);
     printf("TWO: %d\n", s);
 
-    // free the hands
+    // Free the hands
     for (size_t i = 0; i < len; ++i)
     {
         free(first[i].k);

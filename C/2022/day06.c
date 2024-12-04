@@ -22,28 +22,28 @@ int unique(char *string, size_t length)
 
 int solve(FILE *fp, int strlen)
 {
-    // prep the input
+    // Prep the input
     char         *line = NULL;
     size_t        len;
     const ssize_t read = getline(&line, &len, fp);
 
-    // parse the file
+    // Parse the file
     int i = 0;
     while (i < read - strlen)
     {
-        // build a copy of the string
+        // Build a copy of the string
         char *string = malloc(strlen * sizeof(char));
         for (int j = 0; j < strlen; ++j)
             string[j] = line[i + j];
 
-        // check uniqueness
+        // Check uniqueness
         if (unique(string, strlen))
         {
             free(string);
             return i + strlen;
         }
 
-        // increment otherwise
+        // Increment otherwise
         ++i;
         free(string);
     }

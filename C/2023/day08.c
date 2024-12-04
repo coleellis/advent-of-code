@@ -25,12 +25,12 @@ Node *get(const char *k)
 
 void build_tree(FILE *fp)
 {
-    // get generator
+    // Get generator
     generator = malloc(1000 * sizeof(char));
     fscanf(fp, "%s\n\n", generator);
     generator = realloc(generator, strlen(generator) * sizeof(char));
 
-    // get tree items
+    // Get tree items
     tree = malloc(1000 * sizeof(Node));
     int i = 0;
     while (fscanf(fp, " %[^ ] = (%[^,], %[^)])\n", tree[i].k, tree[i].l, tree[i].r) == 3)
@@ -43,13 +43,13 @@ void build_tree(FILE *fp)
 
 long parse(char **s, long l)
 {
-    // make a map of successes
+    // Make a map of successes
     long f = 0, idx = 0;
     long k[l];
 
     while (f != l)
     {
-        // for each item, send it left or right (or mark it successful)
+        // For each item, send it left or right (or mark it successful)
         for (long i = 0; i < l; ++i)
         {
             if (s[i][strlen(s[i]) - 1] == 'Z')
@@ -81,11 +81,11 @@ int main(void)
 
     build_tree(fp);
 
-    // part 1 - start at just AAA
+    // Part 1 - start at just AAA
     char *f[1] = { "AAA" };
     printf("ONE: %ld\n", parse(f, 1));
 
-    // part 2 - start at all items ending in A
+    // Part 2 - start at all items ending in A
     size_t i = 0;
     char **two = malloc(e * sizeof(char *));
     for (size_t j = 0; j < e; ++j)

@@ -7,30 +7,30 @@
 
 char *strip(char *str)
 {
-    // strip leading whitespace
+    // Strip leading whitespace
     while (isspace(*str))
         ++str;
 
-    // strip trailing whitespace
+    // Strip trailing whitespace
     char *end = str + strlen(str) - 1;
     while (end > str && isspace(*end))
         --end;
     *(end + 1) = '\0';
 
-    // return stripped string
+    // Return stripped string
     return str;
 }
 
 char **split(const char *str, const char *delim, size_t *len)
 {
-    // make copy
+    // Make copy
     char *copy = strdup(str);
     if (!str)
         return NULL;
 
-    // get number of instances
+    // Get number of instances
     size_t num = 1, idx = 0;
-    char *tmp = copy, *ptr;
+    char  *tmp = copy, *ptr;
     while (*tmp)
     {
         if (strstr(tmp, delim) == tmp)
@@ -44,12 +44,12 @@ char **split(const char *str, const char *delim, size_t *len)
         }
     }
 
-    // generate list
+    // Generate list
     char **list = calloc(num, sizeof(char *));
     if (!list)
         return NULL;
 
-    // get tokens
+    // Get tokens
     char *token = strtok_r(copy, delim, &ptr);
     while (token != NULL)
     {
@@ -57,7 +57,7 @@ char **split(const char *str, const char *delim, size_t *len)
         token = strtok_r(NULL, delim, &ptr);
     }
 
-    // return list
+    // Return list
     if (len)
         *len = idx;
     return list;
@@ -65,9 +65,9 @@ char **split(const char *str, const char *delim, size_t *len)
 
 char **readlines(FILE *fp, size_t *len)
 {
-    // get number of lines
+    // Get number of lines
     size_t num = 0;
-    char *line = NULL;
+    char  *line = NULL;
     size_t dummy;
     while (getline(&line, &dummy, fp) != -1)
         ++num;

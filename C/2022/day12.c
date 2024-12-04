@@ -67,7 +67,7 @@ int BFS(const int x, const int y)
                 if (value >= 24 && map[ny][nx] == 'E')
                     return steps + 1;
 
-                // check if neighbor is movable
+                // Check if neighbor is movable
                 const int neighbor_value = getValue(nx, ny);
                 if (neighbor_value <= value + 1)
                 {
@@ -151,7 +151,7 @@ void enqueue(node **list, node *n)
         *list = n;
     }
     else
-    { // else add node to the end of the list
+    { // Else add node to the end of the list
         node *current = *list;
         while (current->next != NULL)
             current = current->next;
@@ -189,13 +189,13 @@ int main(void)
     {
         for (int x = 0; x < width; x++)
         {
-            // part 1 - provided start point
+            // Part 1 - provided start point
             if (map[y][x] == 'S')
             {
                 if (BFS(x, y) < part1)
                     part1 = BFS(x, y);
             }
-            // part 2 - any 'a' start point
+            // Part 2 - any 'a' start point
             if (map[y][x] == 'a')
             {
                 if (BFS(x, y) < part2)

@@ -12,8 +12,8 @@ int main(void)
         exit(EXIT_FAILURE);
     }
 
-    // printf("Part 1: %ld\n", solve(fp, 2));
-    // printf("Part 2: %ld\n", solve(fp, 1000000));
+    // Printf("Part 1: %ld\n", solve(fp, 2));
+    // Printf("Part 2: %ld\n", solve(fp, 1000000));
 
     fclose(fp);
     return 0;

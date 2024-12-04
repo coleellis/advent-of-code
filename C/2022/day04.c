@@ -17,7 +17,7 @@ int two(FILE *fp)
     int c = 0, ll, lr, rl, rr;
     while (fscanf(fp, "%d-%d,%d-%d\n", &ll, &lr, &rl, &rr) != EOF)
     {
-        // get our count
+        // Get our count
         const int rl_shift = rr >= ll && rr <= lr;
         const int rr_shift = rl <= lr && rl >= ll;
         const int lr_shift = ll <= rr && ll >= rl;

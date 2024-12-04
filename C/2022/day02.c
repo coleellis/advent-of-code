@@ -4,19 +4,19 @@
 
 int one(FILE *fp)
 {
-    // initialize reader variables
+    // Initialize reader variables
     char  *line = NULL;
     size_t len = 0;
 
-    // read the file
+    // Read the file
     int total_score = 0;
     while (getline(&line, &len, fp) != -1)
     {
         const char enemy = line[0], self = line[2];
 
-        total_score += ((int)self - 'W'); // score for self move
+        total_score += ((int)self - 'W'); // Score for self move
 
-        // draw case
+        // Draw case
         if (((int)enemy - 'A') == ((int)self - 'X'))
         {
             total_score += 3;
@@ -39,23 +39,23 @@ int one(FILE *fp)
         printf("Bad\n");
     }
 
-    // print the total score
+    // Print the total score
     return total_score;
 }
 
 int two(FILE *fp)
 {
-    // initialize reader variables
+    // Initialize reader variables
     char  *line = NULL;
     size_t len = 0;
 
-    // read the file
+    // Read the file
     int total_score = 0;
     while (getline(&line, &len, fp) != -1)
     {
         const char enemy = line[0], self = line[2];
 
-        total_score += 3 * ((int)self - 'X'); // score for match result
+        total_score += 3 * ((int)self - 'X'); // Score for match result
 
         if (self == 'X')
         {
@@ -67,7 +67,7 @@ int two(FILE *fp)
                 printf("Bad 1\n");
         }
         else if (self == 'Y')
-        { // total score is what enemy put
+        { // Total score is what enemy put
             total_score += (((int)enemy - 'A') + 1);
         }
         else if (self == 'Z')

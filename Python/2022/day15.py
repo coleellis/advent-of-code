@@ -1,6 +1,6 @@
 from aocd import get_data
 
-# stream = get_data(day=14, year=2022).splitlines()
+# Stream = get_data(day=14, year=2022).splitlines()
 stream = open("test.txt").read().splitlines()
 
 data = [x.split("at ")[1:] for x in stream]

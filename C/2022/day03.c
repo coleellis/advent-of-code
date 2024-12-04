@@ -9,27 +9,27 @@ int compare(const void *a, const void *b)
 
 int one(FILE *fp)
 {
-    // prep the input
+    // Prep the input
     char   *line = NULL;
     ssize_t read;
     size_t  len = 0;
 
-    // get the input
+    // Get the input
     char    *items = malloc(1000 * sizeof(char));
     uint16_t count = 0;
     while ((read = getline(&line, &len, fp)) != -1)
     {
-        // populate the left
+        // Populate the left
         char *left = malloc((read - 1) / 2 * sizeof(char));
         for (uint16_t i = 0; i < (read - 1) / 2; ++i)
             left[i] = line[i];
 
-        // populate the right
+        // Populate the right
         char *right = malloc((read - 1) / 2 * sizeof(char));
         for (uint16_t i = 0; i < (read - 1) / 2; ++i)
             right[i] = line[(read - 1) / 2 + i];
 
-        // check for commonality
+        // Check for commonality
         for (uint32_t i = 0; i < (read - 1) / 2; ++i)
         {
             for (uint32_t j = 0; j < (read - 1) / 2; ++j)
@@ -39,17 +39,17 @@ int one(FILE *fp)
             }
         }
 
-        // inc counter
+        // Inc counter
         ++count;
 
-        // free memory
+        // Free memory
         if (left)
             free(left);
         if (right)
             free(right);
     }
 
-    // get the total
+    // Get the total
     uint32_t total = 0;
     for (uint16_t i = 0; i < 1000; ++i)
     {
@@ -68,23 +68,23 @@ int one(FILE *fp)
 
 int two(FILE *fp)
 {
-    // prep the input
+    // Prep the input
     char   *first = NULL;
     char   *second = NULL;
     char   *third = NULL;
     ssize_t f_read;
     size_t  len = 0;
 
-    // get the input
+    // Get the input
     char    *items = malloc(1000 * sizeof(char));
     uint16_t count = 0;
     while ((f_read = getline(&first, &len, fp)) != -1)
     {
-        // get the second and third lines
+        // Get the second and third lines
         const ssize_t s_read = getline(&second, &len, fp);
         const ssize_t t_read = getline(&third, &len, fp);
 
-        // check for commonality
+        // Check for commonality
         for (uint16_t i = 0; i < f_read - 1; ++i)
         {
             for (uint16_t j = 0; j < s_read - 1; ++j)
@@ -99,11 +99,11 @@ int two(FILE *fp)
             }
         }
 
-        // inc counter
+        // Inc counter
         ++count;
     }
 
-    // get the total
+    // Get the total
     uint32_t total = 0;
     for (uint16_t i = 0; i < 1000; ++i)
     {

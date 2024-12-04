@@ -9,12 +9,12 @@ enum Visible
 
 int one(FILE *fp)
 {
-    // prep file
+    // Prep file
     char   *line = NULL;
     ssize_t read;
     size_t  len;
 
-    // get the size of the file
+    // Get the size of the file
     size_t rows = 0;
     size_t cols = 0;
     while ((read = getline(&line, &len, fp)) != -1)
@@ -23,12 +23,12 @@ int one(FILE *fp)
         ++rows;
     }
 
-    // allocate the grid
+    // Allocate the grid
     char **grid = calloc(rows, sizeof(char *));
     for (size_t i = 0; i < rows; ++i)
         grid[i] = calloc(cols, sizeof(char));
 
-    // read the lines and allocate again
+    // Read the lines and allocate again
     fseek(fp, 0, SEEK_SET);
     size_t count = 0;
     while (getline(&line, &len, fp) != -1)
@@ -38,7 +38,7 @@ int one(FILE *fp)
         ++count;
     }
 
-    // allocate a visibility grid
+    // Allocate a visibility grid
     int **vis = malloc(rows * sizeof(int *));
     for (size_t i = 0; i < rows; ++i)
     {
@@ -47,7 +47,7 @@ int one(FILE *fp)
             vis[i][j] = NOT_VISIBLE;
     }
 
-    // run the rows
+    // Run the rows
     for (size_t i = 0; i < rows; ++i)
     {
         char tallest = grid[i][0];
@@ -55,7 +55,7 @@ int one(FILE *fp)
         vis[i][0] = VISIBLE;
         vis[i][cols - 1] = VISIBLE;
 
-        // run the rows forward
+        // Run the rows forward
         for (size_t j = 0; j < cols; ++j)
         {
             if (grid[i][j] > tallest)
@@ -63,7 +63,7 @@ int one(FILE *fp)
             tallest = (grid[i][j] > tallest) ? grid[i][j] : tallest;
         }
 
-        // run the rows in reverse
+        // Run the rows in reverse
         tallest = grid[i][cols - 1];
         for (size_t j = cols - 1; j < cols; --j)
         {
@@ -71,11 +71,11 @@ int one(FILE *fp)
                 vis[i][j] = VISIBLE;
             tallest = (grid[i][j] > tallest) ? grid[i][j] : tallest;
             if (j == 0)
-                break; // prevent underflow
+                break; // Prevent underflow
         }
     }
 
-    // run the columns
+    // Run the columns
     for (size_t j = 0; j < cols; ++j)
     {
         char tallest = grid[0][j];
@@ -83,7 +83,7 @@ int one(FILE *fp)
         vis[0][j] = VISIBLE;
         vis[rows - 1][j] = VISIBLE;
 
-        // run the rows forward
+        // Run the rows forward
         for (size_t i = 0; i < rows; ++i)
         {
             if (grid[i][j] > tallest)
@@ -91,7 +91,7 @@ int one(FILE *fp)
             tallest = (grid[i][j] > tallest) ? grid[i][j] : tallest;
         }
 
-        // run the rows in reverse
+        // Run the rows in reverse
         tallest = grid[rows - 1][j];
         for (size_t i = rows - 1; i < rows; --i)
         {
@@ -99,12 +99,12 @@ int one(FILE *fp)
                 vis[i][j] = VISIBLE;
             tallest = (grid[i][j] > tallest) ? grid[i][j] : tallest;
             if (i == 0)
-                break; // prevent underflow
+                break; // Prevent underflow
         }
     }
     free(grid);
 
-    // count the number of visible
+    // Count the number of visible
     int num_visible = 0;
     for (size_t i = 0; i < rows; ++i)
     {
@@ -122,12 +122,12 @@ int one(FILE *fp)
 
 int two(FILE *fp)
 {
-    // prep file
+    // Prep file
     char   *line = NULL;
     ssize_t read;
     size_t  len;
 
-    // get the size of the file
+    // Get the size of the file
     size_t rows = 0;
     size_t cols = 0;
     while ((read = getline(&line, &len, fp)) != -1)
@@ -136,12 +136,12 @@ int two(FILE *fp)
         ++rows;
     }
 
-    // allocate the grid
+    // Allocate the grid
     char **grid = malloc(rows * sizeof(char *));
     for (size_t i = 0; i < rows; ++i)
         grid[i] = malloc(cols * sizeof(char));
 
-    // read the lines and allocate again
+    // Read the lines and allocate again
     fseek(fp, 0, SEEK_SET);
     size_t count = 0;
     while (getline(&line, &len, fp) != -1)
@@ -151,7 +151,7 @@ int two(FILE *fp)
         ++count;
     }
 
-    // find the max score
+    // Find the max score
     size_t max_score = 0;
     for (size_t row = 1; row < rows - 1; ++row)
     {
@@ -160,7 +160,7 @@ int two(FILE *fp)
             const char height = grid[row][col];
             size_t     point_score = 1;
 
-            // check the up direction
+            // Check the up direction
             size_t up_score = 1;
             for (size_t i = row - 1; i > 0; --i)
             {
@@ -168,11 +168,11 @@ int two(FILE *fp)
                 if (height <= grid[i][col])
                     break;
                 if (i == 0)
-                    break; // prevent underflow
+                    break; // Prevent underflow
             }
             point_score *= up_score;
 
-            // check the down direction
+            // Check the down direction
             size_t down_score = 1;
             for (size_t i = row + 1; i < rows; ++i)
             {
@@ -182,7 +182,7 @@ int two(FILE *fp)
             }
             point_score *= down_score;
 
-            // check the left direction
+            // Check the left direction
             size_t left_score = 1;
             for (size_t j = col - 1; j > 0; --j)
             {
@@ -190,11 +190,11 @@ int two(FILE *fp)
                 if (height <= grid[row][j])
                     break;
                 if (j == 0)
-                    break; // prevent underflow
+                    break; // Prevent underflow
             }
             point_score *= left_score;
 
-            // check the right direction
+            // Check the right direction
             size_t right_score = 1;
             for (size_t j = col + 1; j < cols; ++j)
             {
@@ -204,7 +204,7 @@ int two(FILE *fp)
             }
             point_score *= right_score;
 
-            // check the max
+            // Check the max
             max_score = (point_score > max_score) ? point_score : max_score;
         }
     }

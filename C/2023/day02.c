@@ -1,4 +1,4 @@
-// inspiration: https://github.com/fuzesmarcell/aoc/blob/main/2023/day_02.c
+// Inspiration: https://github.com/fuzesmarcell/aoc/blob/main/2023/day_02.c
 
 #include <advent.h>
 #include <stdio.h>
@@ -17,14 +17,14 @@ int one(FILE *fp)
     int  total = 0, n;
     char buf[128];
 
-    // get kv-pairs with colon
+    // Get kv-pairs with colon
     while (fscanf(fp, "%s %d:", buf, &n) == 2)
     {
         const Max m = { 12, 13, 14 };
         int       i, x = 0;
         char      v[128];
 
-        // get kv-pairs
+        // Get kv-pairs
         while (fscanf(fp, "%d %s", &i, v) == 2)
         {
             int pass = 1;
@@ -38,7 +38,7 @@ int one(FILE *fp)
             if (!pass)
                 ++x;
         }
-        // x == 0 implies no failures this line
+        // X == 0 implies no failures this line
         if (x == 0)
             total += n;
     }
@@ -50,16 +50,16 @@ int two(FILE *fp)
     int  total = 0, n;
     char buf[128];
 
-    // get pairs with colon after
+    // Get pairs with colon after
     while (fscanf(fp, "%s %d:", buf, &n) == 2)
     {
         Max  m = { 0, 0, 0 };
         int  i;
         char v[128];
-        // get key/values
+        // Get key/values
         while (fscanf(fp, "%d %s", &i, v) == 2)
         {
-            // find red/blue/green
+            // Find red/blue/green
             if (strstr(v, "red") != NULL && i > m.r)
                 m.r = MAX(i, m.r);
             else if (strstr(v, "green") != NULL && i > m.g)

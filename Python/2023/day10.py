@@ -24,12 +24,12 @@ dist = {}
 sx, sy = list(k for k, v in grid.items() if v == "S")[0]
 xx, yy = sx, sy
 
-# base case, move away from S
+# Base case, move away from S
 for x, y in [(0, 1), (0, -1), (1, 0), (-1, 0)]:
     if grid[(xx + x, yy + y)] != ".":
         xx, yy = xx + x, yy + y
         break
-# run until we find S again
+# Run until we find S again
 while True:
     dist[(xx, yy)] = i
     i += 1

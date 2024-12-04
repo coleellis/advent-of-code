@@ -16,14 +16,14 @@ int one(FILE *fp)
     while (getline(&line, &len, fp) != -1)
     {
         int l = 0, r = strlen(line) - 1;
-        // send left
+        // Send left
         while (l != r)
         {
             if (isInt(line[l]))
                 break;
             ++l;
         }
-        // send right
+        // Send right
         while (l != r)
         {
             if (isInt(line[r]))
@@ -54,7 +54,7 @@ int last(const void *a, const void *b)
 
 int two(FILE *fp)
 {
-    // starter pack
+    // Starter pack
     char  *s[9] = { "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
     char  *line = NULL;
     size_t len;
@@ -62,7 +62,7 @@ int two(FILE *fp)
 
     while (getline(&line, &len, fp) != -1)
     {
-        // find the letters
+        // Find the letters
         map *n = malloc(9 * sizeof(map));
         for (int i = 0; i < 9; ++i)
         {
@@ -76,7 +76,7 @@ int two(FILE *fp)
             }
         }
 
-        // send l and s to find the numbers
+        // Send l and s to find the numbers
         int l = 0, r = strlen(line) - 1;
         while (l != r)
         {
@@ -91,7 +91,7 @@ int two(FILE *fp)
             --r;
         }
 
-        // get first and last
+        // Get first and last
         qsort(n, 9, sizeof(map), last);
         if (l == r && !isInt(line[l]))
             r = n[0].i;

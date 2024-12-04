@@ -64,7 +64,7 @@ int one(void)
 
 int two(void)
 {
-    // make an array of card counts
+    // Make an array of card counts
     int *cards = malloc(nlines * sizeof(int));
     for (size_t i = 0; i < nlines; ++i)
         cards[i] = 1;
@@ -82,7 +82,7 @@ int two(void)
                     card += 1;
             }
         }
-        // add number of matches to next cards in line
+        // Add number of matches to next cards in line
         for (int i = 0; i < card; ++i)
             cards[n + i + 1] += cards[n];
     }

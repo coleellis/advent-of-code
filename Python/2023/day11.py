@@ -16,14 +16,14 @@ def shortest_path(pair):
 
 def solve(dup):
     """Solve the cosmic expansion problem for some duplicate size"""
-    # get the original points
+    # Get the original points
     p = set()
     for y, line in enumerate(stream):
         for x, c in enumerate(line):
             if c == "#":
                 p.add((x, y))
 
-    # get empty rows and columns
+    # Get empty rows and columns
     rows = []
     for i, x in enumerate(stream):
         if x.find("#") == -1:
@@ -34,7 +34,7 @@ def solve(dup):
         if not any("#" in e for e in x):
             cols.append(i)
 
-    # duplicate rows/columns dup times
+    # Duplicate rows/columns dup times
     n = set()
     for x, y in p:
         r_inc = sum(1 for r in rows if r < y) * (dup - 1)

@@ -6,12 +6,12 @@ int one(FILE *fp)
     size_t len;
     char  *line = NULL;
 
-    size_t cycles = 1;      // cycle counter
-    int    keys[6] = { 0 }; // holds strengths at indices
-    int    X = 1;           // register value of X
+    size_t cycles = 1;      // Cycle counter
+    int    keys[6] = { 0 }; // Holds strengths at indices
+    int    X = 1;           // Register value of X
     while (getline(&line, &len, fp) != -1)
     {
-        // check cycles
+        // Check cycles
         ++cycles;
         if (cycles == 20 || cycles == 60 || cycles == 100 || cycles == 140 || cycles == 180
             || cycles == 220)
@@ -20,13 +20,13 @@ int one(FILE *fp)
         if (line[0] == 'n')
             continue;
 
-        // finally finish operation
+        // Finally finish operation
         char *toInt = malloc(4 * sizeof(char));
         for (int i = 5; line[i] != '\n'; ++i)
             toInt[i - 5] = line[i];
         X += atoi(toInt);
 
-        // let another cycle go by
+        // Let another cycle go by
         ++cycles;
         if (cycles == 20 || cycles == 60 || cycles == 100 || cycles == 140 || cycles == 180
             || cycles == 220)
@@ -41,13 +41,13 @@ void two(FILE *fp)
     size_t len;
     char  *line = NULL;
 
-    size_t cycles = 1;          // cycle counter
-    int    X = 1;               // register value of X
-    char   lights[240] = { 0 }; // array of lights
+    size_t cycles = 1;          // Cycle counter
+    int    X = 1;               // Register value of X
+    char   lights[240] = { 0 }; // Array of lights
     while (getline(&line, &len, fp) != -1)
     {
         int position = (cycles - 1) % 40;
-        // check cycles
+        // Check cycles
         if (abs(X - position) <= 1)
             lights[cycles - 1] = '#';
         else
@@ -58,7 +58,7 @@ void two(FILE *fp)
         if (line[0] == 'n')
             continue;
 
-        // let another cycle go by
+        // Let another cycle go by
         if (abs(X - position) <= 1)
             lights[cycles - 1] = '#';
         else
@@ -66,7 +66,7 @@ void two(FILE *fp)
         ++cycles;
         ++position;
 
-        // finally finish operation
+        // Finally finish operation
         char *toInt = malloc(4 * sizeof(char));
         for (int i = 5; line[i] != '\n'; ++i)
             toInt[i - 5] = line[i];

@@ -58,7 +58,7 @@ def check(json, rule):
 def recurse(xmas, rule):
     """Recursively find the number of valid combinations"""
     nx1, nx2, cc = xmas.copy(), xmas.copy(), 0
-    # base case: at accept/reject
+    # Base case: at accept/reject
     if rule in ["A", "R"]:
         return (
             0
@@ -68,7 +68,7 @@ def recurse(xmas, rule):
     if isinstance(rule, str):
         rule = rules[rule]
 
-    # parse the rule
+    # Parse the rule
     if "<" in rule[0]:
         o, v = rule[0].split("<")
         if int(v) < xmas[o].lower:

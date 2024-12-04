@@ -8,27 +8,27 @@ int one(FILE *fp)
     size_t  len = 0;
     ssize_t read;
 
-    // initialize array
+    // Initialize array
     uint32_t totals[1000] = { 0 };
     uint16_t i = 0;
     uint32_t sum = 0;
 
-    // read the file till no more lines
+    // Read the file till no more lines
     while ((read = getline(&line, &len, fp)) != -1)
     {
         if (read == 1)
-        { // if blank line, store total
+        { // If blank line, store total
             totals[i] = sum;
             ++i;
             sum = 0;
         }
         else
-        { // else, add to total
+        { // Else, add to total
             sum += (uint32_t)atoi(line);
         }
     }
 
-    // get the max
+    // Get the max
     uint32_t max = 0;
     for (uint32_t j = 0; j < 1000; ++j)
     {
@@ -52,33 +52,33 @@ int two(FILE *fp)
     size_t  len = 0;
     ssize_t read;
 
-    // initialize array
+    // Initialize array
     int      totals[1000] = { 0 };
     uint16_t i = 0;
     uint32_t sum = 0;
 
-    // read the file till no more lines
+    // Read the file till no more lines
     while ((read = getline(&line, &len, fp)) != -1)
     {
         if (read == 1)
-        { // if blank line, store total
+        { // If blank line, store total
             totals[i] = sum;
             ++i;
             sum = 0;
         }
         else
-        { // else, add to total
+        { // Else, add to total
             sum += atoi(line);
         }
     }
 
-    // sort the array
+    // Sort the array
     qsort(totals, 1000, sizeof(int), compare);
 
     if (line)
         free(line);
 
-    // print the sum of the top 3
+    // Print the sum of the top 3
     return totals[0] + totals[1] + totals[2];
 }
 
