@@ -1,35 +1,38 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct Point {
+typedef struct Point
+{
     int x;
     int y;
 } Point;
 Point Point_default = { 0, 0 };
 
-typedef struct Vector {
+typedef struct Vector
+{
     int x;
     int y;
 } Vector;
 
 Vector build_vector(const Point head, const Point tail)
 {
-    Vector* ret = malloc(sizeof(Vector));
+    Vector *ret = malloc(sizeof(Vector));
     ret->x = head.x - tail.x;
     ret->y = head.y - tail.y;
     return *ret;
 }
 
-int compare(const void* a, const void* b)
+int compare(const void *a, const void *b)
 {
-    Point const* first = (Point*)a;
-    Point const* second = (Point*)b;
+    Point const *first = (Point *)a;
+    Point const *second = (Point *)b;
 
     if (first->x < second->x)
         return -1;
     else if (first->x > second->x)
         return 1;
-    else {
+    else
+    {
         if (first->y < second->y)
             return -1;
         if (first->y > second->y)
@@ -41,33 +44,39 @@ int compare(const void* a, const void* b)
 
 int toInt(const char first, const char second)
 {
-    char* string = malloc(2 * sizeof(char));
+    char *string = calloc(2, sizeof(char));
     string[0] = first;
-    if (string[1] != '\n')
-        string[1] = second;
-    return atoi(string);
+    string[1] = second;
+    int ret = atoi(string);
+    free(string);
+    return ret;
 }
 
-int equal(const Point a, const Point b) { return (a.x == b.x && a.y == b.y); }
-
-int one(FILE* fp)
+int equal(const Point a, const Point b)
 {
-    char* line = NULL;
+    return (a.x == b.x && a.y == b.y);
+}
+
+int one(FILE *fp)
+{
+    char  *line = NULL;
     size_t len = 0;
 
-    // head and tail positions
+    // Head and tail positions
     Point head = Point_default;
     Point tail = Point_default;
 
-    // list of points
-    Point* tail_visits = malloc(20000 * sizeof(Point));
+    // List of points
+    Point *tail_visits = malloc(20000 * sizeof(Point));
 
-    // read the directional changes
+    // Read the directional changes
     size_t count = 0;
-    while (getline(&line, &len, fp) != -1) {
+    while (getline(&line, &len, fp) != -1)
+    {
         int times = toInt(line[2], line[3]);
-        while (times-- > 0) {
-            // adjust the head coordinate
+        while (times-- > 0)
+        {
+            // Adjust the head coordinate
             if (line[0] == 'U')
                 ++head.y;
             else if (line[0] == 'D')
@@ -76,36 +85,41 @@ int one(FILE* fp)
                 --head.x;
             else if (line[0] == 'R')
                 ++head.x;
-            else {
+            else
+            {
                 printf("Bad\n");
                 exit(EXIT_FAILURE);
             }
-            // build the vector
+            // Build the vector
             const Vector distance = build_vector(head, tail);
 
-            // adjust tail location based on vector
-            if (distance.x == 2) {
+            // Adjust tail location based on vector
+            if (distance.x == 2)
+            {
                 ++tail.x;
                 if (distance.y == 1)
                     ++tail.y;
                 if (distance.y == -1)
                     --tail.y;
             }
-            if (distance.x == -2) {
+            if (distance.x == -2)
+            {
                 --tail.x;
                 if (distance.y == 1)
                     ++tail.y;
                 if (distance.y == -1)
                     --tail.y;
             }
-            if (distance.y == 2) {
+            if (distance.y == 2)
+            {
                 ++tail.y;
                 if (distance.x == 1)
                     ++tail.x;
                 if (distance.x == -1)
                     --tail.x;
             }
-            if (distance.y == -2) {
+            if (distance.y == -2)
+            {
                 --tail.y;
                 if (distance.x == 1)
                     ++tail.x;
@@ -113,21 +127,28 @@ int one(FILE* fp)
                     --tail.x;
             }
 
-            // record location in list
+            // Record location in list
             tail_visits[count++] = tail;
         }
     }
 
-    // sort the list of points
+    // Sort the list of points
     qsort(tail_visits, count, sizeof(Point), compare);
 
-    // count non-duplicates
+    // Count non-duplicates
     int visited = 1;
-    for (size_t i = 1; i < count; ++i) {
-        if (!equal(tail_visits[i], tail_visits[i - 1])) {
+    for (size_t i = 1; i < count; ++i)
+    {
+        if (!equal(tail_visits[i], tail_visits[i - 1]))
+        {
             ++visited;
         }
     }
+
+    // Free memory
+    free(tail_visits);
+    if (line)
+        free(line);
 
     return visited;
 }
@@ -136,29 +157,33 @@ Point adjust(const Point head, Point tail)
 {
     const Vector distance = build_vector(head, tail);
 
-    // adjust tail location based on vector
-    if (distance.x == 2) {
+    // Adjust tail location based on vector
+    if (distance.x == 2)
+    {
         ++tail.x;
         if (distance.y == 1)
             ++tail.y;
         if (distance.y == -1)
             --tail.y;
     }
-    if (distance.x == -2) {
+    if (distance.x == -2)
+    {
         --tail.x;
         if (distance.y == 1)
             ++tail.y;
         if (distance.y == -1)
             --tail.y;
     }
-    if (distance.y == 2) {
+    if (distance.y == 2)
+    {
         ++tail.y;
         if (distance.x == 1)
             ++tail.x;
         if (distance.x == -1)
             --tail.x;
     }
-    if (distance.y == -2) {
+    if (distance.y == -2)
+    {
         --tail.y;
         if (distance.x == 1)
             ++tail.x;
@@ -169,25 +194,27 @@ Point adjust(const Point head, Point tail)
     return tail;
 }
 
-int two(FILE* fp)
+int two(FILE *fp)
 {
-    char* line = NULL;
+    char  *line = NULL;
     size_t len = 0;
 
-    // build the chain
-    Point* chain = malloc(10 * sizeof(Point));
+    // Build the chain
+    Point *chain = malloc(10 * sizeof(Point));
     for (size_t i = 0; i < 10; ++i)
         chain[i] = Point_default;
 
-    // list of points
-    Point* tail_visits = malloc(20000 * sizeof(Point));
+    // List of points
+    Point *tail_visits = malloc(20000 * sizeof(Point));
 
-    // read the directional changes
+    // Read the directional changes
     size_t count = 0;
-    while (getline(&line, &len, fp) != -1) {
+    while (getline(&line, &len, fp) != -1)
+    {
         int times = toInt(line[2], line[3]);
-        while (times-- > 0) {
-            // adjust the head coordinate
+        while (times-- > 0)
+        {
+            // Adjust the head coordinate
             if (line[0] == 'U')
                 ++chain[0].y;
             else if (line[0] == 'D')
@@ -196,43 +223,55 @@ int two(FILE* fp)
                 --chain[0].x;
             else if (line[0] == 'R')
                 ++chain[0].x;
-            else {
+            else
+            {
                 printf("Bad\n");
                 exit(EXIT_FAILURE);
             }
 
-            // adjust the links of the chain
+            // Adjust the links of the chain
             for (size_t i = 0; i < 9; ++i)
                 chain[i + 1] = adjust(chain[i], chain[i + 1]);
 
-            // record tail location in list
+            // Record tail location in list
             tail_visits[count++] = chain[9];
         }
     }
 
-    // sort the list of points
+    // Sort the list of points
     tail_visits = realloc(tail_visits, count * sizeof(Point));
     qsort(tail_visits, count, sizeof(Point), compare);
 
-    // count non-duplicates
+    // Count non-duplicates
     int visited = 1;
-    for (size_t i = 1; i < count; ++i) {
-        if (!equal(tail_visits[i], tail_visits[i - 1])) {
+    for (size_t i = 1; i < count; ++i)
+    {
+        if (!equal(tail_visits[i], tail_visits[i - 1]))
+        {
             ++visited;
         }
     }
 
+    // Free memory
+    free(chain);
+    free(tail_visits);
+    if (line)
+        free(line);
+
     return visited;
 }
 
-int main()
+int main(void)
 {
-    FILE* fp = fopen("day09.txt", "r");
-    if (!fp) {
+    // Get input file
+    FILE *fp = fopen("day09.txt", "r");
+    if (!fp)
+    {
         printf("Bad file read\n");
         exit(EXIT_FAILURE);
     }
 
+    // Both parts
     printf("ONE: %d\n", one(fp));
     fseek(fp, 0, 0);
     printf("TWO: %d\n", two(fp));

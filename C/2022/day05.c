@@ -1,49 +1,56 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-char* one(FILE* fp)
+char *one(FILE *fp)
 {
-    // prep the input
-    char* line = NULL;
+    // Prep the input
+    char   *line = NULL;
     ssize_t read;
-    size_t len = 0;
+    size_t  len = 0;
 
-    // read until the newline
+    // Read until the newline
     size_t des_line = 0;
-    int num_stacks = 0;
-    while ((read = getline(&line, &len, fp)) != 1) {
-        // our desired line guaranteed starts with a space
-        if (line[0] == ' ') {
-            // get the number of stacks
+    int    num_stacks = 0;
+    while ((read = getline(&line, &len, fp)) != 1)
+    {
+        // Our desired line guaranteed starts with a space
+        if (line[0] == ' ')
+        {
+            // Get the number of stacks
             size_t num_idx = 0;
-            char* num = malloc(3 * sizeof(char));
-            for (size_t idx = read - 2; line[idx] != ' '; --idx)
+            char  *num = malloc(3 * sizeof(char));
+            for (int idx = read - 2; line[idx] != ' '; --idx)
                 num[num_idx++] = line[idx];
             num_stacks = atoi(num);
             break;
-        } else {
+        }
+        else
+        {
             ++des_line;
         }
     }
 
-    // this resets the file to start reading from the beginning
+    // This resets the file to start reading from the beginning
     fseek(fp, 0, 0);
 
-    // allocate the storage
-    char** stacks = malloc(num_stacks * sizeof(char*));
-    for (size_t i = 0; i < num_stacks; ++i) {
+    // Allocate the storage
+    char **stacks = malloc(num_stacks * sizeof(char *));
+    for (int i = 0; i < num_stacks; ++i)
+    {
         stacks[i] = malloc(100 * sizeof(char));
     }
-    size_t* size = malloc(9 * sizeof(size_t));
+    size_t *size = malloc(9 * sizeof(size_t));
 
-    // now read the first 8 lines and get the data
+    // Now read the first 8 lines and get the data
     size_t line_num = 0;
-    while (line_num != des_line) {
-        // get the line
+    while (line_num != des_line)
+    {
+        // Get the line
         read = getline(&line, &len, fp);
 
-        // read across the line looking for chars
-        for (size_t i = 0; i < read; ++i) {
+        // Read across the line looking for chars
+        for (int i = 0; i < read; ++i)
+        {
             if (line[i] >= 'A' && line[i] <= 'Z')
                 stacks[i / 4][size[i / 4]++] = line[i];
         }
@@ -51,9 +58,10 @@ char* one(FILE* fp)
         ++line_num;
     }
 
-    // we put them in backwards, reverse the lists
-    for (size_t i = 0; i < num_stacks; ++i) {
-        char* rev_stack = malloc(100 * sizeof(char));
+    // We put them in backwards, reverse the lists
+    for (int i = 0; i < num_stacks; ++i)
+    {
+        char *rev_stack = malloc(100 * sizeof(char));
         for (size_t j = 0; j <= size[i]; ++j)
             rev_stack[j] = stacks[i][size[i] - j - 1];
         free(stacks[i]);
@@ -61,61 +69,63 @@ char* one(FILE* fp)
         free(rev_stack);
     }
 
-    // push the line twice to get to the right spot
+    // Push the line twice to get to the right spot
     getline(&line, &len, fp);
     getline(&line, &len, fp);
 
-    // now we need to parse the rest of the lines
-    while (getline(&line, &len, fp) != -1) {
-        // move to first number
+    // Now we need to parse the rest of the lines
+    while (getline(&line, &len, fp) != -1)
+    {
+        // Move to first number
         size_t idx;
         for (idx = 1; line[idx - 1] != ' '; ++idx)
             ;
 
-        // get first number
+        // Get first number
         size_t num_idx = 0;
-        char* num = malloc(3 * sizeof(char));
+        char  *num = malloc(3 * sizeof(char));
         for (; line[idx] != ' '; ++idx)
             num[num_idx++] = line[idx];
         const size_t moving = atoi(num);
 
-        // move to second
+        // Move to second
         idx += 2;
         for (; line[idx - 1] != ' '; ++idx)
             ;
 
-        // get second number
+        // Get second number
         num_idx = 0;
         num = malloc(3 * sizeof(char));
         for (; line[idx] != ' '; ++idx)
             num[num_idx++] = line[idx];
         const size_t origin = atoi(num) - 1;
 
-        // move to third
+        // Move to third
         idx += 2;
         for (; line[idx - 1] != ' '; ++idx)
             ;
 
-        // get third number
+        // Get third number
         num_idx = 0;
         num = malloc(3 * sizeof(char));
         for (; line[idx] != '\n'; ++idx)
             num[num_idx++] = line[idx];
         const size_t destination = atoi(num) - 1;
 
-        // perform the action
-        for (size_t action = 0; action < moving; ++action) {
+        // Perform the action
+        for (size_t action = 0; action < moving; ++action)
+        {
             stacks[destination][size[destination]++] = stacks[origin][(size[origin]--) - 1];
         }
     }
 
-    // store top stacks in return
-    char* ret = malloc(num_stacks * sizeof(char));
-    for (size_t i = 0; i < num_stacks; ++i)
+    // Store top stacks in return
+    char *ret = malloc(num_stacks * sizeof(char));
+    for (int i = 0; i < num_stacks; ++i)
         ret[i] = stacks[i][size[i] - 1];
 
-    // clear the memory
-    for (size_t i = 0; i < num_stacks; ++i)
+    // Clear the memory
+    for (int i = 0; i < num_stacks; ++i)
         free(stacks[i]);
     free(stacks);
     free(size);
@@ -123,23 +133,25 @@ char* one(FILE* fp)
     return ret;
 }
 
-char* two(FILE* fp)
+char *two(FILE *fp)
 {
-    // prep the input
-    char* line = NULL;
+    // Prep the input
+    char   *line = NULL;
     ssize_t read;
-    size_t len = 0;
+    size_t  len = 0;
 
-    // read until the newline
+    // Read until the newline
     size_t des_line = 0;
-    int num_stacks = 0;
-    while ((read = getline(&line, &len, fp)) != 1) {
-        // our desired line guaranteed starts with a space
-        if (line[0] == ' ') {
-            // get the number of stacks
+    int    num_stacks = 0;
+    while ((read = getline(&line, &len, fp)) != 1)
+    {
+        // Our desired line guaranteed starts with a space
+        if (line[0] == ' ')
+        {
+            // Get the number of stacks
             size_t num_idx = 0;
-            char* num = malloc(3 * sizeof(char));
-            for (size_t idx = read - 2; line[idx] != ' '; --idx)
+            char  *num = malloc(3 * sizeof(char));
+            for (int idx = read - 2; line[idx] != ' '; --idx)
                 num[num_idx++] = line[idx];
             num_stacks = atoi(num);
             break;
@@ -147,24 +159,27 @@ char* two(FILE* fp)
         ++des_line;
     }
 
-    // this resets the file to start reading from the beginning
+    // This resets the file to start reading from the beginning
     fseek(fp, 0, 0);
 
-    // allocate the storage
-    char** stacks = malloc(num_stacks * sizeof(char*));
-    for (size_t i = 0; i < num_stacks; ++i) {
+    // Allocate the storage
+    char **stacks = malloc(num_stacks * sizeof(char *));
+    for (int i = 0; i < num_stacks; ++i)
+    {
         stacks[i] = malloc(100 * sizeof(char));
     }
-    size_t* size = malloc(9 * sizeof(size_t));
+    size_t *size = malloc(9 * sizeof(size_t));
 
-    // now read the first 8 lines and get the data
+    // Now read the first 8 lines and get the data
     size_t line_num = 0;
-    while (line_num != des_line) {
-        // get the line
+    while (line_num != des_line)
+    {
+        // Get the line
         read = getline(&line, &len, fp);
 
-        // read across the line looking for chars
-        for (size_t i = 0; i < read; ++i) {
+        // Read across the line looking for chars
+        for (int i = 0; i < read; ++i)
+        {
             if (line[i] >= 'A' && line[i] <= 'Z')
                 stacks[i / 4][size[i / 4]++] = line[i];
         }
@@ -172,9 +187,10 @@ char* two(FILE* fp)
         ++line_num;
     }
 
-    // we put them in backwards, reverse the lists
-    for (size_t i = 0; i < num_stacks; ++i) {
-        char* rev_stack = malloc(100 * sizeof(char));
+    // We put them in backwards, reverse the lists
+    for (int i = 0; i < num_stacks; ++i)
+    {
+        char *rev_stack = malloc(100 * sizeof(char));
         for (size_t j = 0; j <= size[i]; ++j)
             rev_stack[j] = stacks[i][size[i] - j - 1];
         free(stacks[i]);
@@ -182,62 +198,65 @@ char* two(FILE* fp)
         free(rev_stack);
     }
 
-    // push the line twice to get to the right spot
+    // Push the line twice to get to the right spot
     getline(&line, &len, fp);
     getline(&line, &len, fp);
 
-    // now we need to parse the rest of the lines
-    while (getline(&line, &len, fp) != -1) {
-        // move to first number
+    // Now we need to parse the rest of the lines
+    while (getline(&line, &len, fp) != -1)
+    {
+        // Move to first number
         size_t idx;
         for (idx = 1; line[idx - 1] != ' '; ++idx)
             ;
 
-        // get first number
+        // Get first number
         size_t num_idx = 0;
-        char* num = malloc(3 * sizeof(char));
+        char  *num = malloc(3 * sizeof(char));
         for (; line[idx] != ' '; ++idx)
             num[num_idx++] = line[idx];
         const size_t moving = atoi(num);
 
-        // move to second
+        // Move to second
         idx += 2;
         for (; line[idx - 1] != ' '; ++idx)
             ;
 
-        // get second number
+        // Get second number
         num_idx = 0;
         num = malloc(3 * sizeof(char));
         for (; line[idx] != ' '; ++idx)
             num[num_idx++] = line[idx];
         const size_t origin = atoi(num) - 1;
 
-        // move to third
+        // Move to third
         idx += 2;
         for (; line[idx - 1] != ' '; ++idx)
             ;
 
-        // get third number
+        // Get third number
         num_idx = 0;
         num = malloc(3 * sizeof(char));
         for (; line[idx] != '\n'; ++idx)
             num[num_idx++] = line[idx];
         const size_t destination = atoi(num) - 1;
 
-        // perform the action
-        for (size_t action = 0; action < moving; ++action) {
-            stacks[destination][size[destination]++] = stacks[origin][(size[origin] - moving) + action];
+        // Perform the action
+        for (size_t action = 0; action < moving; ++action)
+        {
+            stacks[destination][size[destination]++]
+                = stacks[origin][(size[origin] - moving) + action];
         }
         size[origin] -= moving;
     }
 
-    // store top stacks in return
-    char* ret = malloc(num_stacks * sizeof(char));
-    for (size_t i = 0; i < num_stacks; ++i)
+    // Store top stacks in return
+    char *ret = malloc(num_stacks * sizeof(char));
+    for (int i = 0; i < num_stacks; ++i)
         ret[i] = stacks[i][size[i] - 1];
 
-    // clear the memory
-    for (size_t i = 0; i < num_stacks; ++i)
+    // Clear the memory
+    for (int i = 0; i < num_stacks; ++i)
         free(stacks[i]);
     free(stacks);
     free(size);
@@ -245,10 +264,11 @@ char* two(FILE* fp)
     return ret;
 }
 
-int main()
+int main(void)
 {
-    FILE* fp = fopen("day05.txt", "r");
-    if (!fp) {
+    FILE *fp = fopen("day05.txt", "r");
+    if (!fp)
+    {
         printf("Bad file read\n");
         exit(EXIT_FAILURE);
     }

@@ -5,7 +5,7 @@
 from aocd import get_data
 
 data = get_data(day=2, year=2023).split("\n")
-# data = open("test.txt").read().split("\n")
+# Data = open("test.txt").read().split("\n")
 
 red = 12
 green = 13

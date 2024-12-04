@@ -21,7 +21,7 @@ def intersect(pair, a, b):
     l1, l2 = pair
     p1, v1 = l1["p"], l1["v"]
     p2, v2 = l2["p"], l2["v"]
-    # find coordinates of intersection (just basic algebra)
+    # Find coordinates of intersection (just basic algebra)
     lhs = p1[1] - p2[1] + (v1[1] / v1[0]) * (p2[0] - p1[0])
     rhs = v2[1] - (v2[0] / v1[0]) * v1[1]
     if rhs == 0:

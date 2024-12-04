@@ -1,21 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int one(FILE* fp)
+int one(FILE *fp)
 {
     int c = 0, ll, lr, rl, rr;
-    while (fscanf(fp, "%d-%d,%d-%d\n", &ll, &lr, &rl, &rr) != EOF) {
+    while (fscanf(fp, "%d-%d,%d-%d\n", &ll, &lr, &rl, &rr) != EOF)
+    {
         if ((ll <= rl && lr >= rr) || (ll >= rl && lr <= rr))
             ++c;
     }
     return c;
 }
 
-int two(FILE* fp)
+int two(FILE *fp)
 {
     int c = 0, ll, lr, rl, rr;
-    while (fscanf(fp, "%d-%d,%d-%d\n", &ll, &lr, &rl, &rr) != EOF) {
-        // get our count
+    while (fscanf(fp, "%d-%d,%d-%d\n", &ll, &lr, &rl, &rr) != EOF)
+    {
+        // Get our count
         const int rl_shift = rr >= ll && rr <= lr;
         const int rr_shift = rl <= lr && rl >= ll;
         const int lr_shift = ll <= rr && ll >= rl;
@@ -27,10 +29,11 @@ int two(FILE* fp)
     return c;
 }
 
-int main()
+int main(void)
 {
-    FILE* fp = fopen("day04.txt", "r");
-    if (!fp) {
+    FILE *fp = fopen("day04.txt", "r");
+    if (!fp)
+    {
         printf("Bad file read\n");
         exit(EXIT_FAILURE);
     }

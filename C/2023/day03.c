@@ -5,7 +5,7 @@
 
 char grid[142][142] = { 0 };
 
-// get number from grid, replace with '.'
+// Get number from grid, replace with '.'
 int getnumber(const int x, int y)
 {
     while (isdigit(grid[x][y]))
@@ -16,7 +16,7 @@ int getnumber(const int x, int y)
     return result;
 }
 
-// part 1 - get sum of all adjacent numbers
+// Part 1 - get sum of all adjacent numbers
 int getparts(const int x, const int y)
 {
     int sum = 0;
@@ -27,14 +27,15 @@ int getparts(const int x, const int y)
     return sum;
 }
 
-// part 2 - get sum of all gears, but multiply instead of add
+// Part 2 - get sum of all gears, but multiply instead of add
 int getgears(const int x, const int y)
 {
     int nums = 0;
     int sum = 0;
     for (int j = x - 1; j < x + 2; ++j)
         for (int k = y - 1; k < y + 2; ++k)
-            if (isdigit(grid[j][k])) {
+            if (isdigit(grid[j][k]))
+            {
                 if (nums == 0)
                     sum += getnumber(j, k);
                 else if (nums == 1)
@@ -48,11 +49,12 @@ int getgears(const int x, const int y)
     return sum;
 }
 
-long one(FILE* fp)
+long one(FILE *fp)
 {
     char buf[145];
-    int x = 0;
-    while (fgets(buf, 145, fp) != NULL) {
+    int  x = 0;
+    while (fgets(buf, 145, fp) != NULL)
+    {
         buf[140] = '\0';
         strcpy(grid[++x] + 1, buf);
     }
@@ -65,11 +67,12 @@ long one(FILE* fp)
     return one;
 }
 
-long two(FILE* fp)
+long two(FILE *fp)
 {
     char buf[145];
-    int x = 0;
-    while (fgets(buf, 145, fp) != NULL) {
+    int  x = 0;
+    while (fgets(buf, 145, fp) != NULL)
+    {
         buf[140] = '\0';
         strcpy(grid[++x] + 1, buf);
     }
@@ -82,10 +85,11 @@ long two(FILE* fp)
     return two;
 }
 
-int main()
+int main(void)
 {
-    FILE* fp = fopen("day03.txt", "r");
-    if (fp == NULL) {
+    FILE *fp = fopen("day03.txt", "r");
+    if (fp == NULL)
+    {
         printf("error opening file\n");
         return 1;
     }

@@ -1,53 +1,64 @@
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-int compare(const void* a, const void* b) { return *(char*)a < *(char*)b; }
-
-int one(FILE* fp)
+int compare(const void *a, const void *b)
 {
-    // prep the input
-    char* line = NULL;
-    ssize_t read;
-    size_t len = 0;
+    return *(char *)a < *(char *)b;
+}
 
-    // get the input
-    char* items = malloc(1000 * sizeof(char));
+int one(FILE *fp)
+{
+    // Prep the input
+    char   *line = NULL;
+    ssize_t read;
+    size_t  len = 0;
+
+    // Get the input
+    char    *items = malloc(1000 * sizeof(char));
     uint16_t count = 0;
-    while ((read = getline(&line, &len, fp)) != -1) {
-        // populate the left
-        char* left = malloc((read - 1) / 2 * sizeof(char));
+    while ((read = getline(&line, &len, fp)) != -1)
+    {
+        // Populate the left
+        char *left = malloc((read - 1) / 2 * sizeof(char));
         for (uint16_t i = 0; i < (read - 1) / 2; ++i)
             left[i] = line[i];
 
-        // populate the right
-        char* right = malloc((read - 1) / 2 * sizeof(char));
+        // Populate the right
+        char *right = malloc((read - 1) / 2 * sizeof(char));
         for (uint16_t i = 0; i < (read - 1) / 2; ++i)
             right[i] = line[(read - 1) / 2 + i];
 
-        // check for commonality
-        for (uint32_t i = 0; i < (read - 1) / 2; ++i) {
-            for (uint32_t j = 0; j < (read - 1) / 2; ++j) {
+        // Check for commonality
+        for (uint32_t i = 0; i < (read - 1) / 2; ++i)
+        {
+            for (uint32_t j = 0; j < (read - 1) / 2; ++j)
+            {
                 if (left[i] == right[j])
                     items[count] = left[i];
             }
         }
 
-        // inc counter
+        // Inc counter
         ++count;
 
-        // free memory
+        // Free memory
         if (left)
             free(left);
         if (right)
             free(right);
     }
 
-    // get the total
+    // Get the total
     uint32_t total = 0;
-    for (uint16_t i = 0; i < 1000; ++i) {
-        if ((int)items[i] >= 0x61) {
+    for (uint16_t i = 0; i < 1000; ++i)
+    {
+        if ((int)items[i] >= 0x61)
+        {
             total += (((int)items[i] - 'a') + 1);
-        } else if ((int)items[i] >= 0x41) {
+        }
+        else if ((int)items[i] >= 0x41)
+        {
             total += (((int)items[i] - 'A') + 27);
         }
     }
@@ -55,44 +66,53 @@ int one(FILE* fp)
     return total;
 }
 
-int two(FILE* fp)
+int two(FILE *fp)
 {
-    // prep the input
-    char* first = NULL;
-    char* second = NULL;
-    char* third = NULL;
+    // Prep the input
+    char   *first = NULL;
+    char   *second = NULL;
+    char   *third = NULL;
     ssize_t f_read;
-    size_t len = 0;
+    size_t  len = 0;
 
-    // get the input
-    char* items = malloc(1000 * sizeof(char));
+    // Get the input
+    char    *items = malloc(1000 * sizeof(char));
     uint16_t count = 0;
-    while ((f_read = getline(&first, &len, fp)) != -1) {
-        // get the second and third lines
+    while ((f_read = getline(&first, &len, fp)) != -1)
+    {
+        // Get the second and third lines
         const ssize_t s_read = getline(&second, &len, fp);
         const ssize_t t_read = getline(&third, &len, fp);
 
-        // check for commonality
-        for (uint16_t i = 0; i < f_read - 1; ++i) {
-            for (uint16_t j = 0; j < s_read - 1; ++j) {
-                for (uint16_t k = 0; k < t_read - 1; ++k) {
-                    if (first[i] == second[j] && first[i] == third[k]) {
+        // Check for commonality
+        for (uint16_t i = 0; i < f_read - 1; ++i)
+        {
+            for (uint16_t j = 0; j < s_read - 1; ++j)
+            {
+                for (uint16_t k = 0; k < t_read - 1; ++k)
+                {
+                    if (first[i] == second[j] && first[i] == third[k])
+                    {
                         items[count] = first[i];
                     }
                 }
             }
         }
 
-        // inc counter
+        // Inc counter
         ++count;
     }
 
-    // get the total
+    // Get the total
     uint32_t total = 0;
-    for (uint16_t i = 0; i < 1000; ++i) {
-        if ((int)items[i] >= 0x61) {
+    for (uint16_t i = 0; i < 1000; ++i)
+    {
+        if ((int)items[i] >= 0x61)
+        {
             total += (((int)items[i] - 'a') + 1);
-        } else if ((int)items[i] >= 0x41) {
+        }
+        else if ((int)items[i] >= 0x41)
+        {
             total += (((int)items[i] - 'A') + 27);
         }
     }
@@ -100,10 +120,11 @@ int two(FILE* fp)
     return total;
 }
 
-int main()
+int main(void)
 {
-    FILE* fp = fopen("day03.txt", "r");
-    if (!fp) {
+    FILE *fp = fopen("day03.txt", "r");
+    if (!fp)
+    {
         printf("Bad file read\n");
         exit(EXIT_FAILURE);
     }

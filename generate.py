@@ -21,7 +21,7 @@ def c_write():
     os.chdir("C")
     try:
         os.mkdir(f"{year}")
-        # if we're here, we made a new directory
+        # If we're here, we made a new directory
         with open("CMakeLists.txt", "a", encoding="utf-8") as f:
             f.write(f"add_subdirectory({year})\n")
     except FileExistsError:
@@ -30,7 +30,7 @@ def c_write():
 
     ay = f"ay{int(day):02d}"
 
-    # generate the day's files
+    # Generate the day's files
     with open("CMakeLists.txt", "a", encoding="utf-8") as f:
         f.write(f"\n\n# day {int(day)}\n")
         f.write(f"add_executable({int(year)}-D{ay} d{ay}.c)\n")
@@ -58,7 +58,7 @@ def c_write():
         f.write("\treturn 0;\n")
         f.write("}\n")
         f.write("\n")
-        f.write("int main()\n")
+        f.write("int main(void)\n")
         f.write("{\n")
         f.write(f'\tFILE *fp = fopen("d{ay}.txt", "r");\n')
         f.write("\tif (!fp)\n")

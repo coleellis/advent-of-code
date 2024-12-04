@@ -1,18 +1,17 @@
 #include <advent.h>
-#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-int* times = NULL;
+int   *times = NULL;
 size_t items = 0;
-int* dists = NULL;
+int   *dists = NULL;
 
-void get_data(FILE* fp)
+void get_data(FILE *fp)
 {
-    char** lines = readlines(fp, NULL);
-    char** t = split(strip(split(lines[0], ":", NULL)[1]), " ", &items);
-    char** d = split(strip(split(lines[1], ":", NULL)[1]), " ", &items);
+    char **lines = readlines(fp, NULL);
+    char **t = split(strip(split(lines[0], ":", NULL)[1]), " ", &items);
+    char **d = split(strip(split(lines[1], ":", NULL)[1]), " ", &items);
     times = malloc(items * sizeof(int));
     for (size_t i = 0; i < items; ++i)
         times[i] = atoi(t[i]);
@@ -25,13 +24,15 @@ void get_data(FILE* fp)
     free(d);
 }
 
-int one()
+int one(void)
 {
     int one = 1;
-    for (size_t i = 0; i < items; ++i) {
+    for (size_t i = 0; i < items; ++i)
+    {
         const int t = times[i], d = dists[i];
-        long w = 0;
-        for (size_t j = 0; j < t; ++j) {
+        long      w = 0;
+        for (int j = 0; j < t; ++j)
+        {
             if (j * (t - j) > d)
                 ++w;
         }
@@ -40,10 +41,11 @@ int one()
     return one;
 }
 
-long two()
+long two(void)
 {
     char tstr[20] = "", dstr[20] = "";
-    for (int i = 0; i < items; ++i) {
+    for (size_t i = 0; i < items; ++i)
+    {
         char t[5], d[5];
         sprintf(t, "%d", times[i]);
         sprintf(d, "%d", dists[i]);
@@ -53,17 +55,19 @@ long two()
     const long time = atol(tstr), dist = atol(dstr);
 
     int two = 0;
-    for (long i = 0; i < time; ++i) {
+    for (long i = 0; i < time; ++i)
+    {
         if (i * (time - i) > dist)
             ++two;
     }
     return two;
 }
 
-int main()
+int main(void)
 {
-    FILE* fp = fopen("day06.txt", "r");
-    if (!fp) {
+    FILE *fp = fopen("day06.txt", "r");
+    if (!fp)
+    {
         printf("Bad file read\n");
         exit(EXIT_FAILURE);
     }

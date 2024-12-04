@@ -29,7 +29,7 @@ def drop(i, m):
             return i
 
 
-# add rocks to set
+# Add rocks to set
 bad = set()
 for p in data:
     for l in zip(p, p[1:]):
@@ -37,7 +37,7 @@ for p in data:
             for b in range(min(l)[1], max(l)[1] + 1):
                 bad.add((a, b))
 
-# add sand to set
+# Add sand to set
 h = max(p[1] for p in bad)
 one = drop(0, h)
 two = drop(one, 0)

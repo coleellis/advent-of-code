@@ -2,24 +2,30 @@
 #include <stdlib.h>
 #include <string.h>
 
-int isInt(const char c) { return c >= 0x30 && c <= 0x39; }
-
-int one(FILE* fp)
+int isInt(const char c)
 {
-    char* line = NULL;
+    return c >= 0x30 && c <= 0x39;
+}
+
+int one(FILE *fp)
+{
+    char  *line = NULL;
     size_t len;
 
     int t = 0;
-    while (getline(&line, &len, fp) != -1) {
+    while (getline(&line, &len, fp) != -1)
+    {
         int l = 0, r = strlen(line) - 1;
-        // send left
-        while (l != r) {
+        // Send left
+        while (l != r)
+        {
             if (isInt(line[l]))
                 break;
             ++l;
         }
-        // send right
-        while (l != r) {
+        // Send right
+        while (l != r)
+        {
             if (isInt(line[r]))
                 break;
             --r;
@@ -30,57 +36,62 @@ int one(FILE* fp)
     return t;
 }
 
-typedef struct map {
-    char* first;
-    char* last;
-    int i;
+typedef struct map
+{
+    char *first;
+    char *last;
+    int   i;
 } map;
 
-int first(const void* a, const void* b)
+int first(const void *a, const void *b)
 {
-    return ((map*)b)->first - ((map*)a)->first;
+    return ((map *)b)->first - ((map *)a)->first;
 }
-int last(const void* a, const void* b)
+int last(const void *a, const void *b)
 {
-    return ((map*)b)->last - ((map*)a)->last;
+    return ((map *)b)->last - ((map *)a)->last;
 }
 
-int two(FILE* fp)
+int two(FILE *fp)
 {
-    // starter pack
-    char* s[9] = { "one", "two", "three", "four", "five",
-        "six", "seven", "eight", "nine" };
-    char* line = NULL;
+    // Starter pack
+    char  *s[9] = { "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+    char  *line = NULL;
     size_t len;
-    int t = 0;
+    int    t = 0;
 
-    while (getline(&line, &len, fp) != -1) {
-        // find the letters
-        map* n = malloc(9 * sizeof(map));
-        for (int i = 0; i < 9; ++i) {
+    while (getline(&line, &len, fp) != -1)
+    {
+        // Find the letters
+        map *n = malloc(9 * sizeof(map));
+        for (int i = 0; i < 9; ++i)
+        {
             n[i] = (map) { strstr(line, s[i]), strstr(line, s[i]), i + 1 };
-            char* re = n[i].last;
-            while (re != NULL) {
+            char *re = n[i].last;
+            while (re != NULL)
+            {
                 re = strstr(n[i].last + 1, s[i]);
                 if (re != NULL)
                     n[i].last = re;
             }
         }
 
-        // send l and s to find the numbers
+        // Send l and s to find the numbers
         int l = 0, r = strlen(line) - 1;
-        while (l != r) {
+        while (l != r)
+        {
             if (isInt(line[l]))
                 break;
             ++l;
         }
-        while (l != r) {
+        while (l != r)
+        {
             if (isInt(line[r]))
                 break;
             --r;
         }
 
-        // get first and last
+        // Get first and last
         qsort(n, 9, sizeof(map), last);
         if (l == r && !isInt(line[l]))
             r = n[0].i;
@@ -101,10 +112,11 @@ int two(FILE* fp)
     return t;
 }
 
-int main()
+int main(void)
 {
-    FILE* fp = fopen("day01.txt", "r");
-    if (!fp) {
+    FILE *fp = fopen("day01.txt", "r");
+    if (!fp)
+    {
         printf("Can't open file\n");
         return 1;
     }

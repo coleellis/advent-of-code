@@ -43,7 +43,7 @@ print("Part 1:", load(shake(data)))
 hh = []
 T = 0
 while True:
-    # have we seen this iteration before?
+    # Have we seen this iteration before?
     lst = ["".join(l) for l in list(nd)]
     h = hash(tuple(["".join(l) for l in list(nd)]))
     if h in hh and not T:
