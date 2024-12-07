@@ -7,10 +7,10 @@
 Python/**/.venv
 
 # C ignores
-C/.cache
-C/cmake-build-debug
-C/.cmake-backup
-C/bin
+**/.cache
+**/cmake-build-debug
+**/.cmake-backup
+**/bin
 
 # Input files
 **/*.txt

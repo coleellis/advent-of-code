@@ -8,9 +8,19 @@ My solutions for the Advent of Code challenges. The Wakatime badge shows my enti
 
 My goal is to solve each challenge using multiple languages to provide the most exposure. 2023 is my first year going for speed, so I've been using Python for the initial solution and then solving it in other languages later.
 
-I have a significant number of solutions in C and Python. I'm currently learning Haskell and plan to solve some of the challenges in it.
+I have a significant number of solutions in C and Python. I might add some other languages later.
 
 # Challenge Calendars
+
+### 2024 Challenges ( 14/50 )
+
+| M             | T             | W             | R             | F             | S             | U             |
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
+|               |               |               |               |               |               | ![](gold.ico) |
+| ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |               |
+|               |               |               |               |               |               |               |
+|               |               |               |               |               |               |               |
+|               |               |               |               |               |               |               |
 
 ### 2023 Challenges ( 50/50 )
 
