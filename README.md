@@ -17,7 +17,7 @@ I have a significant number of solutions in C and Python. I might add some other
 | M             | T             | W             | R             | F             | S             | U             |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 |               |               |               |               |               |               | ![](gold.ico) |
-| ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |               |
+| ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |
 |               |               |               |               |               |               |               |
 |               |               |               |               |               |               |               |
 |               |               |               |               |               |               |               |
@@ -50,9 +50,7 @@ I have a significant number of solutions in C and Python. I might add some other
 
 ### 2018 Challenges
 
-### 2017 Challenges
-
-### 2016 Challenges ( 14/50 )
+### 2017 Challenges ( 2/50 )
 
 | M             | T             | W             | R             | F             | S             | U             |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
@@ -61,6 +59,16 @@ I have a significant number of solutions in C and Python. I might add some other
 |               |               |               |               |               |               |               |
 |               |               |               |               |               |               |               |
 |               |               |               |               |               |               |               |
+
+### 2016 Challenges ( 14/50 )
+
+| M   | T             | W   | R   | F   | S   | U   |
+| --- | ------------- | --- | --- | --- | --- | --- |
+|     | ![](gold.ico) |     |     |     |     |     |
+|     |               |     |     |     |     |     |
+|     |               |     |     |     |     |     |
+|     |               |     |     |     |     |     |
+|     |               |     |     |     |     |     |
 
 ### 2015 Challenges ( 50/50 )
 
