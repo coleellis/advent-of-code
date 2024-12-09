@@ -12,13 +12,13 @@ I have a significant number of solutions in C and Python. I might add some other
 
 # Challenge Calendars
 
-### 2024 Challenges ( 14/50 )
+### 2024 Challenges ( 18/50 )
 
 | M             | T             | W             | R             | F             | S             | U             |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 |               |               |               |               |               |               | ![](gold.ico) |
 | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |
-|               |               |               |               |               |               |               |
+| ![](gold.ico) |               |               |               |               |               |               |
 |               |               |               |               |               |               |               |
 |               |               |               |               |               |               |               |
 
