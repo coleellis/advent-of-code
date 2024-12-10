@@ -7,7 +7,7 @@ int   *times = NULL;
 size_t items = 0;
 int   *dists = NULL;
 
-void get_data(FILE *fp)
+void parse_data(FILE *fp)
 {
     char **lines = readlines(fp, NULL);
     char **t     = split(strip(split(lines[0], ":", NULL)[1]), " ", &items);
@@ -72,7 +72,7 @@ int main(void)
         exit(EXIT_FAILURE);
     }
 
-    get_data(fp);
+    parse_data(fp);
 
     printf("ONE: %d\n", one());
     printf("TWO: %ld\n", two());

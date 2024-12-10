@@ -12,7 +12,7 @@ typedef struct Point
 Point *points  = NULL;
 size_t npoints = 0;
 
-void get_data(FILE *fp)
+void parse_data(FILE *fp)
 {
     size_t n     = 0;
     char **lines = readlines(fp, &n);
@@ -101,7 +101,7 @@ int main(void)
         exit(EXIT_FAILURE);
     }
 
-    get_data(fp);
+    parse_data(fp);
     printf("Part 1: %ld\n", solve(fp, 2));
     printf("Part 2: %ld\n", solve(fp, 1000000));
 

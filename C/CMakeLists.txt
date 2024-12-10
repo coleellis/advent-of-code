@@ -10,7 +10,7 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -Wall -Wextra -pedantic")
 
 # Advent Static Library
 include_directories(${CMAKE_SOURCE_DIR})
-add_library(advent STATIC "advent.c" advent.h)
+add_library(advent STATIC "advent.c" "common.c" common.h advent.h)
 
 # Output Directory
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin")
@@ -45,7 +45,7 @@ foreach(YEAR_DIR ${YEARS})
         target_compile_options(${EXECUTABLE_NAME} PRIVATE -O3 -g -Wall -Wextra -pedantic)
 
         # Link the advent static library
-        target_link_libraries(${EXECUTABLE_NAME} PRIVATE advent)
+        target_link_libraries(${EXECUTABLE_NAME} PRIVATE advent curl)
 
         # Set output directory per year
         set_target_properties(${EXECUTABLE_NAME} PROPERTIES

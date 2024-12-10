@@ -1,172 +1,132 @@
 #include "advent.h"
 
-#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <curl/curl.h>
 
-char *strip(char *str)
+
+char *get_token(void)
 {
-    // Strip leading whitespace
-    while (isspace(*str))
-        ++str;
-
-    // Strip trailing whitespace
-    char *end = str + strlen(str) - 1;
-    while (end > str && isspace(*end))
-        --end;
-    *(end + 1) = '\0';
-
-    // Return stripped string
-    return str;
-}
-
-char **split(const char *str, const char *delim, size_t *len)
-{
-    // Make copy
-    char *copy = strdup(str);
-    if (!str)
-        return NULL;
-
-    // Get number of instances
-    size_t num = 1, idx = 0;
-    char  *tmp = copy, *ptr;
-    while (*tmp)
+    // Get realpath
+    char *home = getenv("HOME");
+    if (!home)
     {
-        if (strstr(tmp, delim) == tmp)
-        {
-            ++num;
-            tmp += strlen(delim);
-        }
-        else
-        {
-            ++tmp;
-        }
+        fprintf(stderr, "HOME environment variable not set.\n");
+        exit(EXIT_FAILURE);
     }
 
-    // Generate list
-    char **list = calloc(num, sizeof(char *));
-    if (!list)
-        return NULL;
+    // Full pathname
+    char rpath[1024];
+    snprintf(rpath, sizeof(rpath), "%s/.config/aocd/token", home);
 
-    // Get tokens
-    char *token = strtok_r(copy, delim, &ptr);
-    while (token != NULL)
+    char *token;
+    // Pass 1: ~/.config/aocd/token
+    FILE *fp = fopen(rpath, "r");
+    if (fp)
     {
-        list[idx++] = token;
-        token = strtok_r(NULL, delim, &ptr);
+        size_t len;
+        getline(&token, &len, fp);
+        token[strcspn(token, "\n")] = '\0';
+        fclose(fp);
+    }
+    // Pass 2: AOCD_TOKEN env
+    else
+    {
+        token = getenv("AOCD_TOKEN");
     }
 
-    // Return list
-    if (len)
-        *len = idx;
-    return list;
-}
-
-char **readlines(FILE *fp, size_t *len)
-{
-    // Get number of lines
-    size_t num = 0;
-    char  *line = NULL;
-    size_t dummy;
-    while (getline(&line, &dummy, fp) != -1)
-        ++num;
-    fseek(fp, 0, 0);
-
-    char **lines = calloc(num, sizeof(char *));
-    for (size_t i = 0; i < num; ++i)
+    // Validate we got a token
+    if (!token || !strlen(token))
     {
-        getline(&line, &dummy, fp);
-        lines[i] = strdup(line);
+        fprintf(stderr, "get_data: No AOCD_TOKEN found. Please add an AOCD_TOKEN environment "
+                        "variable or add the token inside ~/.config/aocd/token.\n");
+        exit(EXIT_FAILURE);
     }
-    if (len)
-        *len = num;
-    return lines;
+
+    return token;
 }
 
-int indexOf(const char *str, const char c)
+char *get_data(int day, int year)
 {
-    const char *l = strchr(str, c);
-    return l != NULL ? (l - str) : -1;
-}
+    char *token = get_token();
+    char *data, url[256];
 
-int *rev(int *arr, const size_t len)
-{
-    for (size_t i = 0; i < len / 2; ++i)
+    // Validate date input
+    if (year < 2015)
     {
-        const int tmp = arr[i];
-        arr[i] = arr[len - i - 1];
-        arr[len - i - 1] = tmp;
+        fprintf(stderr, "AOC started in 2015!\n");
+        exit(EXIT_FAILURE);
     }
-    return arr;
+    if (day < 0 || day > 25)
+    {
+        fprintf(stderr, "AOC only runs until Christmas!\n");
+        exit(EXIT_FAILURE);
+    }
+
+    // Get URL
+    snprintf(url, sizeof(url), "https://adventofcode.com/%d/day/%d/input", year, day);
+
+    // Make request
+    data = curl_request(url, token);
+
+    // free(token);
+    return data;
 }
 
-char *replace(const char *s, const char a, const char b)
+size_t callback_write(void *contents, size_t size, size_t nmemb, void *userp)
 {
-    char *ret = strdup(s);
-    for (size_t i = 0; i < strlen(s); ++i)
-        if (s[i] == a)
-            ret[i] = b;
-    return ret;
+    size_t total_size = size * nmemb;
+    struct Memory *mem = (struct Memory *)userp;
+
+    char *ptr = realloc(mem->response, mem->size + total_size + 1);
+    if (ptr == NULL)
+    {
+        perror("realloc");
+        return 0;
+    }
+
+    mem->response = ptr;
+    memcpy(&(mem->response[mem->size]), contents, total_size);
+    mem->size += total_size;
+    mem->response[mem->size] = 0;
+
+    return total_size;
 }
 
-long gcd(const long a, const long b)
+char *curl_request(char *url, char *token)
 {
-    if (b == 0)
-        return a;
-    return gcd(b, a % b);
-}
+    CURL *curl;
+    CURLcode res;
 
-long lcm(const long a[], const size_t n)
-{
-    long ans = a[0];
-    for (size_t i = 1; i < n; ++i)
-        ans = (((a[i] * ans)) / (gcd(a[i], ans)));
-    return ans;
-}
+    struct Memory chunk = { 0 };
+    struct curl_slist *headers = NULL;
 
-int *intify(char **a, const size_t n)
-{
-    int *r = calloc(n, sizeof(int));
-    for (size_t i = 0; i < n; ++i)
-        r[i] = atoi(a[i]);
-    free(a);
-    return r;
-}
+    curl = curl_easy_init();
+    if (curl)
+    {
+        // URL
+        curl_easy_setopt(curl, CURLOPT_URL, url);
 
-long *longify(char **a, const size_t n)
-{
-    long *r = calloc(n, sizeof(long));
-    for (size_t i = 0; i < n; ++i)
-        r[i] = atol(a[i]);
-    free(a);
-    return r;
-}
+        // Authorization header
+        char auth[256];
+        snprintf(auth, sizeof(auth), "Cookie: session=%s", token);
+        headers = curl_slist_append(headers, auth);
 
-void sprint(const char **a, const size_t n)
-{
-    for (size_t i = 0; i < n; ++i)
-        printf("%s ", a[i]);
-    printf("\n");
-}
+        // Options
+        curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, callback_write);
+        curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void*)&chunk);
 
-void dprint(const int *a, const size_t n)
-{
-    for (size_t i = 0; i < n; ++i)
-        printf("%d ", a[i]);
-    printf("\n");
-}
+        // CURL
+        res = curl_easy_perform(curl);
+        if (res != CURLE_OK)
+            fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(res));
 
-void lprint(const long *a, const size_t n)
-{
-    for (size_t i = 0; i < n; ++i)
-        printf("%ld ", a[i]);
-    printf("\n");
-}
-
-void fprint(const double *a, const size_t n)
-{
-    for (size_t i = 0; i < n; ++i)
-        printf("%f ", a[i]);
-    printf("\n");
+        // Cleanup
+        curl_slist_free_all(headers);
+        curl_easy_cleanup(curl);
+        return chunk.response;
+    }
+    return NULL;
 }

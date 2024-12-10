@@ -9,7 +9,7 @@ char ***winning = NULL;
 char ***given   = NULL;
 size_t  n_given = 0, n_win = 0;
 
-void get_data(FILE *fp)
+void parse_data(FILE *fp)
 {
     char **lines = readlines(fp, &nlines);
     vert         = malloc(nlines * sizeof(char **));
@@ -103,7 +103,7 @@ int main(void)
         exit(EXIT_FAILURE);
     }
 
-    get_data(fp);
+    parse_data(fp);
     printf("ONE: %d\n", one());
     printf("TWO: %d\n", two());
 

@@ -14,3 +14,4 @@ Python/**/.venv
 
 # Input files
 **/*.txt
+!**/CMakeLists.txt
