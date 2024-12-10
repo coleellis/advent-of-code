@@ -7,7 +7,8 @@ section .text
 global _start
 
 _start:
-    ; 0x3c (exit)
+
+                                     ; 0x3c (exit)
     mov rax, 0x3c
     xor rdi, rdi
     syscall

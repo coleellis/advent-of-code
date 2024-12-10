@@ -2,9 +2,9 @@
 %define MACROS_INC 1
 
 ; Default file descriptors
-%define SYS_STDIN 0
-%define SYS_STDOUT 1
-%define SYS_STDERR 2
+%define SYS_STDIN   0
+%define SYS_STDOUT  1
+%define SYS_STDERR  2
 
 ; Syscall Table
 %define SYS_READ    0x00
