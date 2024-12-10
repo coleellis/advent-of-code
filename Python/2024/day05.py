@@ -65,6 +65,7 @@ def topsort(s, r):
                 break
     return res
 
+
 # Get and parse data
 data = get_data(day=5, year=2024)
 rules, updates = parse(data)
