@@ -8,17 +8,17 @@ My solutions for the Advent of Code challenges. The Wakatime badge shows my enti
 
 My goal is to solve each challenge using multiple languages to provide the most exposure. 2023 is my first year going for speed, so I've been using Python for the initial solution and then solving it in other languages later.
 
-I have a significant number of solutions in C and Python. I might add some other languages later.
+I have a significant number of solutions in C and Python and am starting to draft solutions in x64 Assembly. I might add some other languages later.
 
 # Challenge Calendars
 
-### 2024 Challenges ( 18/50 )
+### 2024 Challenges ( 22/50 )
 
 | M             | T             | W             | R             | F             | S             | U             |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 |               |               |               |               |               |               | ![](gold.ico) |
 | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |
-| ![](gold.ico) |               |               |               |               |               |               |
+| ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |               |               |               |               |
 |               |               |               |               |               |               |               |
 |               |               |               |               |               |               |               |
 
@@ -32,7 +32,7 @@ I have a significant number of solutions in C and Python. I might add some other
 | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |
 | ![](gold.ico) |               |               |               |               |               |               |
 
-### 2022 Challenges ( 22/50 )
+### 2022 Challenges ( 26/50 )
 
 | M             | T             | W             | R             | F             | S             | U             |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
@@ -52,23 +52,22 @@ I have a significant number of solutions in C and Python. I might add some other
 
 ### 2017 Challenges ( 2/50 )
 
+| M   | T   | W   | R   | F             | S   | U   |
+| --- | --- | --- | --- | ------------- | --- | --- |
+|     |     |     |     | ![](gold.ico) |     |     |
+|     |     |     |     |               |     |     |
+|     |     |     |     |               |     |     |
+|     |     |     |     |               |     |     |
+|     |     |     |     |               |     |     |
+
+### 2016 Challenges ( 16/50 )
+
 | M             | T             | W             | R             | F             | S             | U             |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 |               |               |               | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |
 | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |               |               |               |               |
+| ![](gold.ico) |               |               |               |               |               |               |
 |               |               |               |               |               |               |               |
-|               |               |               |               |               |               |               |
-|               |               |               |               |               |               |               |
-
-### 2016 Challenges ( 14/50 )
-
-| M   | T             | W   | R   | F   | S   | U   |
-| --- | ------------- | --- | --- | --- | --- | --- |
-|     | ![](gold.ico) |     |     |     |     |     |
-|     |               |     |     |     |     |     |
-|     |               |     |     |     |     |     |
-|     |               |     |     |     |     |     |
-|     |               |     |     |     |     |     |
 
 ### 2015 Challenges ( 50/50 )
 
@@ -78,4 +77,3 @@ I have a significant number of solutions in C and Python. I might add some other
 | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |
 | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |
 | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) | ![](gold.ico) |               |               |
-|               |               |               |               |               |               |               |
